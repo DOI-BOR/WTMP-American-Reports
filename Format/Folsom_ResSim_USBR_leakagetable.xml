@@ -1,0 +1,1398 @@
+<Chapters>
+	<Chapter>
+		<Name>Folsom</Name>
+		<Region>Folsom</Region>
+		<Sections>
+			<Section>
+				<Header>Folsom Reservoir Temperatures</Header>
+				<Object>
+					<Type>ProfilePlot</Type>
+					<Description>Folsom %%year%%</Description>
+					<XLabel>Temperature (%%units%%)</XLabel>
+					<SplitByYear>True</SplitByYear>
+					<Parameter>Temperature</Parameter>
+					<profilesperrow>4</profilesperrow>
+					<DatesSource>Observed_Dam</DatesSource>
+					<XLims>
+						<min>0</min>
+						<max>30</max>
+					</XLims>
+					<YLims>
+						<min>190</min>
+						<max>510</max>
+					</YLims>
+					<xticks>
+						<spacing>5</spacing>
+					</xticks>
+					<Lines>
+						<Line>
+							<label>Computed</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<ResSimResName>Folsom Lake</ResSimResName>
+							<lineColor>Red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>2</lineWidth>
+							<zorder>8</zorder>
+						</Line>
+						<Line>
+							<label>Observed Dam</label>
+							<Flag>Observed_Dam</Flag>
+							<Parameter>Temperature</Parameter>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>2</lineWidth>
+							<units>f</units>
+							<zorder>5</zorder>
+							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							</wse>
+						</Line>
+						<Line>
+							<label>Loc A</label>
+							<Flag>Observed_A</Flag>
+							<units>f</units>
+							<Parameter>Temperature</Parameter>
+							<lineColor>darkgrey</lineColor>
+							<lineWidth>1</lineWidth>
+							<zorder>4</zorder>
+							<FileName>%%observedDir%%\American_profiles_Site A.txt</FileName>
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							</wse>
+						</Line>
+						<Line>
+							<label>Loc B</label>
+							<Flag>Observed_B</Flag>
+							<units>f</units>
+							<Parameter>Temperature</Parameter>
+							<lineColor>darkgrey</lineColor>
+							<lineWidth>1</lineWidth>
+							<zorder>4</zorder>
+							<FileName>%%observedDir%%\American_profiles_Site B.txt</FileName>
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							</wse>
+						</Line>
+						<Line>
+							<label>Loc C</label>
+							<Flag>Observed_C</Flag>
+							<units>f</units>
+							<Parameter>Temperature</Parameter>
+							<lineColor>darkgrey</lineColor>
+							<lineWidth>1</lineWidth>
+							<zorder>4</zorder>
+							<FileName>%%observedDir%%\American_profiles_Site C.txt</FileName>
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							</wse>
+						</Line>
+						<Line>
+							<label>Loc D</label>
+							<Flag>Observed_D</Flag>
+							<units>f</units>
+							<Parameter>Temperature</Parameter>
+							<lineColor>darkgrey</lineColor>
+							<lineWidth>1</lineWidth>
+							<zorder>4</zorder>
+							<FileName>%%observedDir%%\American_profiles_Site D.txt</FileName>
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							</wse>
+						</Line>
+						<Line>
+							<label>Loc E</label>
+							<Flag>Observed_E</Flag>
+							<units>f</units>
+							<Parameter>Temperature</Parameter>
+							<lineColor>darkgrey</lineColor>
+							<lineWidth>1</lineWidth>
+							<zorder>4</zorder>
+							<FileName>%%observedDir%%\American_profiles_Site E.txt</FileName>
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							</wse>
+						</Line>
+					</Lines>
+					<hlines>
+						<hline>
+							<label>Obs. WSE</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<linecolor>darkblue</linecolor>
+							<omitvalue>-901.0</omitvalue>
+						</hline>
+						<hline>
+							<label>Sim. WSE</label>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Folsom Lake-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+							<linecolor>darkred</linecolor>
+							<lineStylePattern>dashed</lineStylePattern>
+						</hline>
+					</hlines>
+				</Object>
+				<Object>
+					<Type>ProfileStatisticsTable</Type>
+					<Description>Folsom Lake Profile Statistics %%year%%</Description>
+					<Parameter>Temperature</Parameter>
+					<resolution>60</resolution>
+					<DataPaths>
+						<DataPath>
+							<label>Computed</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<ResSimResName>Folsom Lake</ResSimResName>							
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>				
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>								
+				</Object>
+			</Section>
+			<Section>
+				<Header>Folsom Lake Outflow</Header>
+				<description>Folsom Lake Outflow</description>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>Folsom Outflow Temperature %%year%%</Description>
+					<unitsystem>metric</unitsystem>
+					<legend_outside>False</legend_outside>
+					<legendsize>9</legendsize>
+					<ylims>
+						<min>4</min>
+						<max>22</max>
+					</ylims>
+					<splitbyyear>True</splitbyyear>
+					<includeallyears>True</includeallyears>
+					<ylabel>Temperature (%%units%%)</ylabel>
+					<lines>
+						<line>
+							<label>Observed Daily</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Folsom_FW_penstock_6.dss</DSS_Filename>
+							<parameter>temperature</parameter>
+							<DSS_Path>/FOLSOM-DA_50cfsFilt/PENSTOCK_FW/TEMP-WATER//1DAY/FLOW-WEIGHTED/</DSS_Path>
+							<linecolor>#5b9bd5</linecolor>
+							<omitvalue>-901.0</omitvalue>
+						</line>
+						<line>
+							<label>Simulated Daily</label>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>temperature</parameter>
+							<DSS_Path>//FOLSOM LAKE-PENSTOCK_FW_50cfsFilt/TEMP-WATER//1DAY/FLOW-WEIGHTED/</DSS_Path>
+							<linecolor>red</linecolor>
+							<lineStylePattern>dashed</lineStylePattern>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>Folsom Lake Buzz Plot %%Year%%</Title>
+					<Description>Folsom Lake Buzz Plot %%Year%%</Description>
+					<YLabel>Daily Average Temperature @ Folsom (Deg F)</YLabel>
+					<YLabel2>Release (cfs) - Volume (AF/100)</YLabel2>
+					<unitsystem>english</unitsystem>
+					<XLabel>Julian Day</XLabel>
+					<useblanklegendentry>False</useblanklegendentry>
+					<dateformat>jdate</dateformat>
+					<numlegendcolumns>1</numlegendcolumns>
+					<twinx>true</twinx>
+					<twiny>true</twiny>
+					<dateformat2>datetime</dateformat2>
+					<splitbyyear>True</splitbyyear>
+					<includeallyears>False</includeallyears>
+					<legendsize>8</legendsize>
+					<xticks>
+						<ondays>
+							<onday>1</onday>
+							<onday>15</onday>
+						</ondays>
+					</xticks>
+					<xticks2>
+						<copybottom>True</copybottom>
+						<rotation>90</rotation>
+						<datetimeformat>%m/%d/%y</datetimeformat>
+					</xticks2>
+					<xlims>
+						<min>180</min>
+					</xlims>
+					<mergelines>
+						<mergeline>
+							<controller>leakage-P1L1</controller>
+							<keeplines>False</keeplines>
+							<math>add</math>
+							<flags>
+								<flag>leakage-P1L1</flag>
+								<flag>leakage-P2L1</flag>
+								<flag>leakage-P3L1</flag>
+							</flags>
+						</mergeline>
+						<mergeline>
+							<controller>2OUT_P1</controller>
+							<keeplines>False</keeplines>
+							<math>add</math>
+							<flags>
+								<flag>2OUT_P1</flag>
+								<flag>2OUT_P2</flag>
+								<flag>2OUT_P3</flag>
+							</flags>
+						</mergeline>
+						<mergeline>
+							<controller>DMS_P1</controller>
+							<keeplines>False</keeplines>
+							<math>add</math>
+							<flags>
+								<flag>DMS_P1</flag>
+								<flag>DMS_P2</flag>
+								<flag>DMS_P3</flag>
+							</flags>
+						</mergeline>
+						<mergeline>
+							<controller>1OUT_P1</controller>
+							<keeplines>False</keeplines>
+							<math>add</math>
+							<flags>
+								<flag>1OUT_P1</flag>
+								<flag>1OUT_P2</flag>
+								<flag>1OUT_P3</flag>
+							</flags>
+						</mergeline>
+						<mergeline>
+							<controller>AllIn_P1</controller>
+							<keeplines>False</keeplines>
+							<math>add</math>
+							<flags>
+								<flag>AllIn_P1</flag>
+								<flag>AllIn_P2</flag>
+								<flag>AllIn_P3</flag>
+							</flags>
+						</mergeline>
+						<mergeline>
+							<controller>ROPB_UPRRIVER</controller>
+							<keeplines>False</keeplines>
+							<math>add</math>
+							<flags>
+								<flag>ROPB_UPRRIVER</flag>
+								<flag>ROPB_LWRRIVER</flag>
+							</flags>
+						</mergeline>
+					</mergelines>
+					<YLims>
+						<min>42</min>
+						<max>70</max>
+					</YLims>
+					<YLims2>
+						<min>0</min>
+						<!-- <max>35000</max> -->
+					</YLims2>
+					<Lines>
+						<line>
+							<label>Obs Watt Ave Temp</label>
+							<Flag>ObservedWatt</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>green</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>dashed</lineStylePattern>
+							<zorder>8</zorder>
+						</line>
+						<line>
+							<label>Obs Hazel Ave Temp</label>
+							<Flag>ObservedHazel</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<yaxis>left</yaxis>
+							<DSS_Path>/USBR/AT_FAIR_OAKS_AMERICAN 11446500/TEMP-WATER//1HOUR/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>9</zorder>
+						</line>
+						<line>
+							<label>Sim Watt Ave Temp</label>
+							<Flag>SimulatedWatt</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<lineColor>darkgreen</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>8</zorder>
+						</line>
+						<line>
+							<label>Sim Hazel Ave Temp</label>
+							<Flag>SimulatedHazel</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<yaxis>left</yaxis>
+							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<lineColor>darkred</lineColor>
+							<lineStylePattern>solid</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>9</zorder>
+						</line>
+						<Line>
+							<label>Leakage</label>
+							<Flag>leakage-SUM</Flag>
+							<DSS_Path>/Folsom Gate SUM/Penstock_leakage_SUM/Flow//1Day/Computed/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/HistoricalPenstockLeakage_6.dss</DSS_Filename>
+							<lineColor>#010066</lineColor>
+							<lineWidth>1</lineWidth>
+							<yaxis>right</yaxis>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<lineType>stacked</lineType>
+						</Line>
+						<!-- <Line>
+							<label>Leakage</label>
+							<Flag>leakage-P1L1</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 1/Flow-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>#010066</lineColor>
+							<lineWidth>1</lineWidth>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<yaxis>right</yaxis>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<lineType>stacked</lineType>
+							<scalartable>%%observedDir%%/FolsomLeakageTable.csv</scalartable>
+							<scalefrom>
+								<DSS_Path>/FOLSOM/GATE1/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</scalefrom>
+						</Line>
+						<Line>
+							<Flag>leakage-P2L1</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 2/Flow-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<scalartable>%%observedDir%%/FolsomLeakageTable.csv</scalartable>
+							<scalefrom>
+								<DSS_Path>/FOLSOM/GATE2/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</scalefrom>
+						</Line>
+						<Line>
+							<Flag>leakage-P3L1</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 3/Flow-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<scalartable>%%observedDir%%/FolsomLeakageTable.csv</scalartable>
+							<scalefrom>
+								<DSS_Path>/FOLSOM/GATE3/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</scalefrom>
+						</Line> -->
+						<Line>
+							<label>2 Out</label>
+							<Flag>2OUT_P1</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 1/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>powderblue</lineColor>
+							<lineWidth>1</lineWidth>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<yaxis>right</yaxis>
+							<target_elevation>336</target_elevation>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<lineType>stacked</lineType>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE1/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<Flag>2OUT_P2</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 2/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<target_elevation>336</target_elevation>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE2/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<Flag>2OUT_P3</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 3/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<target_elevation>336</target_elevation>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE3/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<label>Deganged Middle Shutter</label>
+							<Flag>DMS_P1</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 1/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>lightslategray</lineColor>
+							<lineWidth>1</lineWidth>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<yaxis>right</yaxis>
+							<target_elevation>349</target_elevation>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<lineType>stacked</lineType>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE1/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<Flag>DMS_P2</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 2/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<target_elevation>349</target_elevation>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE2/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<Flag>DMS_P3</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 3/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<target_elevation>349</target_elevation>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE3/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<label>1 Out</label>
+							<Flag>1OUT_P1</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 1/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>#6797ff</lineColor>
+							<lineWidth>1</lineWidth>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<yaxis>right</yaxis>
+							<target_elevation>362</target_elevation>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<lineType>stacked</lineType>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE1/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<Flag>1OUT_P2</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 2/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<target_elevation>362</target_elevation>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE2/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<Flag>1OUT_P3</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 3/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<target_elevation>362</target_elevation>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE3/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<label>All In</label>
+							<Flag>AllIn_P1</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 1/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>#0002fe</lineColor>
+							<lineWidth>1</lineWidth>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<yaxis>right</yaxis>
+							<target_elevation>401</target_elevation>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<lineType>stacked</lineType>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE1/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<Flag>AllIn_P2</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 2/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<target_elevation>401</target_elevation>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE2/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<Flag>AllIn_P3</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 3/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<target_elevation>401</target_elevation>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE3/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<label>River Outlet/Power Bypass</label>
+							<Flag>ROPB_UPRRIVER</Flag>
+							<DSS_Path>//Folsom Lake-Upper River Gates/Flow//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>#24ff00</lineColor>
+							<lineWidth>1</lineWidth>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<yaxis>right</yaxis>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<lineType>stacked</lineType>
+						</Line>
+						<Line>
+							<label>River Outlet/Power Bypass</label>
+							<Flag>ROPB_LWRRIVER</Flag>
+							<DSS_Path>//Folsom Lake-Lower River Gates/Flow//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+						</Line>
+						<Line>
+							<label>Cold Water Pool (AF/100) 58 Deg F</label>
+							<flag>CWP_58Deg</flag>
+							<ResSimResName>Folsom Lake</ResSimResName>
+							<parameter>elevation</parameter>
+							<yaxis>right</yaxis>
+							<units>ft</units>
+							<target>
+								<parameter>temperature</parameter>
+								<value>14.444</value>
+							</target>
+							<elevation_storage_area_file>%%observedDir%%/Folsom_ElevStorArea.csv</elevation_storage_area_file>
+							<scalar>.01</scalar>
+							<linecolor>gold</linecolor>
+						</Line>
+						<Line>
+							<label>Storage</label>
+							<Flag>Storage</Flag>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<Parameter>storage</Parameter>
+							<DSS_Path>//Folsom Lake-Pool/Stor//1Hour/%%fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>orange</lineColor>
+							<lineStylePattern>dash</lineStylePattern>
+							<yaxis>right</yaxis>
+							<parameter>storage</parameter>
+							<scalar>.01</scalar>
+							<lineWidth>2</lineWidth>
+							<zorder>4</zorder>
+						</Line>
+						<!-- <Line>
+							<label>ATSP 49</label>
+						</Line> -->
+					</Lines>
+				</Object>
+			</Section>
+			<Section>
+				<Header>Folsom Lake Elevation</Header>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>Folsom Elevation %%year%%</Description>
+					<unitsystem>metric</unitsystem>
+					<legend_outside>true</legend_outside>
+					<legendsize>9</legendsize>
+					<splitbyyear>True</splitbyyear>
+					<includeallyears>True</includeallyears>
+					<axs>
+						<ax>
+							<ylabel>Elevation, %%units%%</ylabel>
+							<weight>0.6</weight>
+							<unitsystem>english</unitsystem>
+							<lines>
+								<line>
+									<label>Observed</label>
+									<flag>Observed</flag>
+									<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+									<parameter>elevation</parameter>
+									<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+									<linecolor>#5b9bd5</linecolor>
+									<omitvalue>-901.0</omitvalue>
+									<zorder>5</zorder>
+									<alpha>.3</alpha>
+								</line>
+								<line>
+									<label>Observed Daily</label>
+									<flag>ObservedDaily</flag>
+									<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+									<parameter>elevation</parameter>
+									<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+									<linecolor>#5b9bd5</linecolor>
+									<zorder>7</zorder>
+									<omitvalue>-901.0</omitvalue>
+								</line>
+								<line>
+									<label>Simulated</label>
+									<flag>Computed</flag>
+									<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+									<parameter>elevation</parameter>
+									<DSS_Path>//Folsom Lake-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+									<linecolor>red</linecolor>
+									<lineStylePattern>dashed</lineStylePattern>
+									<zorder>5</zorder>
+									<alpha>.3</alpha>
+								</line>
+								<line>
+									<label>Simulated Daily</label>
+									<flag>Computeddaily</flag>
+									<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+									<parameter>elevation</parameter>
+									<DSS_Path>//Folsom Lake-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+									<linecolor>red</linecolor>
+									<zorder>7</zorder>
+									<lineStylePattern>dashed</lineStylePattern>
+								</line>
+							</lines>
+						</ax>
+					</axs>
+				</Object>
+			</Section>
+		</Sections>
+	</Chapter>
+	<Chapter>
+		<Name>Lake Natoma</Name>
+		<Region>Lake Natoma</Region>
+		<Sections>
+			<Section>
+				<Header>Lake Natoma Temperature</Header>
+				<Object>
+					<Type>ProfilePlot</Type>
+					<Description>Lake Natoma %%year%%</Description>
+					<XLabel>Temperature (%%units%%)</XLabel>
+					<SplitByYear>True</SplitByYear>
+					<Parameter>Temperature</Parameter>
+					<profilesperrow>4</profilesperrow>
+					<DatesSource>Observed_Dam</DatesSource>
+					<y_unitsystem>english</y_unitsystem>
+					<XLims>
+						<min>0</min>
+						<max>30</max>
+					</XLims>
+					<YLims>
+						<min>80</min>
+						<max>130</max>
+					</YLims>
+					<xticks>
+						<spacing>5</spacing>
+					</xticks>
+					<yticks>
+						<spacing>10</spacing>
+					</yticks>
+					<Lines>
+						<Line>
+							<label>Computed</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<ResSimResName>Lake Natoma</ResSimResName>
+							<lineColor>Red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>2</lineWidth>
+							<zorder>8</zorder>
+						</Line>
+						<Line>
+							<label>Observed Dam</label>
+							<Flag>Observed_Dam</Flag>
+							<Parameter>Temperature</Parameter>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>2</lineWidth>
+							<units>c</units>
+							<zorder>5</zorder>
+							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_Sparser_ft.txt</FileName>
+							<wse>
+								<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/NATOMA/NATOMA POOL/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							</wse>
+						</Line>
+					</Lines>
+					<hlines>
+						<hline>
+							<label>Observed</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<linecolor>darkblue</linecolor>
+							<omitvalue>-901.0</omitvalue>
+						</hline>
+						<hline>
+							<label>Computed</label>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Lake Natoma-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+							<linecolor>darkred</linecolor>
+							<lineStylePattern>dashed</lineStylePattern>
+						</hline>
+					</hlines>
+				</Object>
+				<Object>
+					<Type>ProfileStatisticsTable</Type>
+					<Description>Folsom Lake Profile Statistics %%year%%</Description>
+					<Parameter>Temperature</Parameter>
+					<resolution>60</resolution>
+					<DataPaths>
+						<DataPath>
+							<label>Computed</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<ResSimResName>Lake Natoma</ResSimResName>							
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_Sparser_ft.txt</FileName>
+							<wse>
+								<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/NATOMA/NATOMA POOL/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>								
+				</Object>
+			</Section>
+			<Section>
+				<Header>Lake Natoma Elevation</Header>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>Lake Natoma Elevation %%year%%</Description>
+					<unitsystem>metric</unitsystem>
+					<legend_outside>False</legend_outside>
+					<legendsize>9</legendsize>
+					<splitbyyear>True</splitbyyear>
+					<includeallyears>True</includeallyears>
+					<axs>
+						<ax>
+							<ylabel>Elevation, %%units%%</ylabel>
+							<weight>0.6</weight>
+							<unitsystem>english</unitsystem>
+							<lines>
+								<line>
+									<label>Observed</label>
+									<flag>Observed</flag>
+									<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+									<parameter>elevation</parameter>
+									<DSS_Path>/NATOMA/NATOMA POOL/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+									<linecolor>#5b9bd5</linecolor>
+									<omitvalue>-901.0</omitvalue>
+								</line>
+								<line>
+									<label>Computed</label>
+									<flag>Computed</flag>
+									<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+									<parameter>elevation</parameter>
+									<DSS_Path>//Lake Natoma-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+									<linecolor>red</linecolor>
+									<lineStylePattern>dashed</lineStylePattern>
+								</line>
+							</lines>
+						</ax>
+					</axs>
+				</Object>
+			</Section>
+		</Sections>
+	</Chapter>
+	<Chapter>
+		<Name>American Downstream Natoma</Name>
+		<Region>American Downstream Natoma</Region>
+		<Sections>
+			<Section>
+				<Header>American at Fair Oaks (AFO)</Header>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>American at Fair Oaks (AFO) Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>American at Fair Oaks (AFO) Temperature %%year%%</Description>
+					<ylabel>Temperature (%%units%%)</ylabel>
+					<splitbyyear>True</splitbyyear>
+					<includeallyears>True</includeallyears>
+					<ylims>
+						<max>22</max>
+						<min>6</min>
+					</ylims>
+					<yticks>
+						<spacing>2</spacing>
+					</yticks>
+					<lines>
+						<line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<alpha>0.3</alpha>
+						</line>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>8</zorder>
+						</line>	
+						<line>
+							<label>Computed</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>7</zorder>
+							<alpha>0.4</alpha>
+						</line>
+						<line>
+							<label>Computed Daily</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>9</zorder>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<Description>American at Fair Oaks (AFO) Temperature Error Statistics</Description>
+					<Parameter>Temperature</Parameter>
+					<SplitByYear>True</SplitByYear>
+					<tablecolors>
+						<tablecolor>
+							<statistic>meanbias</statistic>
+							<thresholds>
+								<threshold>
+									<value>0.75</value>
+									<colorwhen>over</colorwhen>
+								</threshold>
+								<threshold>
+									<value>-0.75</value>
+									<colorwhen>under</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+						<tablecolor>
+							<statistic>nse</statistic>
+							<thresholds>
+								<threshold>
+									<value>0.65</value>
+									<colorwhen>under</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+						<tablecolor>
+							<statistic>MAE</statistic>
+							<thresholds>
+								<threshold>
+									<value>1.0</value>
+									<colorwhen>over</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+						<tablecolor>
+							<statistic>RMSE</statistic>
+							<thresholds>
+								<threshold>
+									<value>1.5</value>
+									<colorwhen>over</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+					</tablecolors>					
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>American at Fair Oaks (AFO) Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>American at Fair Oaks (AFO) Flow %%year%%</Description>
+					<ylabel>Flow (%%units%%)</ylabel>
+					<unitsystem>english</unitsystem>
+					<splitbyyear>True</splitbyyear>
+					<includeallyears>True</includeallyears>
+					<lines>
+						<line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<alpha>0.3</alpha>
+						</line>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<Parameter>Flow</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>8</zorder>
+						</line>	
+						<line>
+							<label>Computed</label>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>7</zorder>
+							<alpha>0.4</alpha>
+						</line>
+						<line>
+							<label>Computed Daily</label>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>9</zorder>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<Description>American at Fair Oaks (AFO) Flow Error Statistics</Description>
+					<Parameter>Flow</Parameter>
+					<unitsystem>english</unitsystem>
+					<SplitByYear>True</SplitByYear>
+					<tablecolors>
+						<tablecolor>
+							<statistic>meanbias</statistic>
+							<thresholds>
+								<threshold>
+									<value>0.75</value>
+									<colorwhen>over</colorwhen>
+								</threshold>
+								<threshold>
+									<value>-0.75</value>
+									<colorwhen>under</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+						<tablecolor>
+							<statistic>nse</statistic>
+							<thresholds>
+								<threshold>
+									<value>0.65</value>
+									<colorwhen>under</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+						<tablecolor>
+							<statistic>MAE</statistic>
+							<thresholds>
+								<threshold>
+									<value>1.0</value>
+									<colorwhen>over</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+						<tablecolor>
+							<statistic>RMSE</statistic>
+							<thresholds>
+								<threshold>
+									<value>1.5</value>
+									<colorwhen>over</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+					</tablecolors>					
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<parameter>flow</parameter>
+							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<parameter>flow</parameter>
+							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+			</Section>
+			<Section>
+				<Header>American at William Pond Park</Header>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>American at William Pond Park Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>American at William Pond Park Temperature %%year%%</Description>
+					<ylabel>Temperature (%%units%%)</ylabel>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>True</includeallyears>
+					<Ylims>
+						<min>5</min>
+						<max>25</max>
+					</Ylims>
+					<yticks>
+						<spacing>5</spacing>
+					</yticks>
+					<lines>
+						<line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<alpha>0.3</alpha>
+						</line>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>8</zorder>
+						</line>	
+						<line>
+							<label>Computed</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>7</zorder>
+							<alpha>0.4</alpha>
+						</line>
+						<line>
+							<label>Computed Daily</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>9</zorder>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<Description>American at William Pond Park Temperature Error Statistics</Description>
+					<Parameter>Temperature</Parameter>
+					<SplitByYear>True</SplitByYear>
+					<tablecolors>
+						<tablecolor>
+							<statistic>meanbias</statistic>
+							<thresholds>
+								<threshold>
+									<value>0.75</value>
+									<colorwhen>over</colorwhen>
+								</threshold>
+								<threshold>
+									<value>-0.75</value>
+									<colorwhen>under</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+						<tablecolor>
+							<statistic>nse</statistic>
+							<thresholds>
+								<threshold>
+									<value>0.65</value>
+									<colorwhen>under</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+						<tablecolor>
+							<statistic>MAE</statistic>
+							<thresholds>
+								<threshold>
+									<value>1.0</value>
+									<colorwhen>over</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+						<tablecolor>
+							<statistic>RMSE</statistic>
+							<thresholds>
+								<threshold>
+									<value>1.5</value>
+									<colorwhen>over</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+					</tablecolors>					
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+			</Section>
+			<Section>
+				<Header>Watt Bridge near Carmichael</Header>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>Watt Bridge near Carmichael Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>Watt Bridge near Carmichael Temperature %%year%%</Description>
+					<ylabel>Temperature (%%units%%)</ylabel>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>True</includeallyears>
+					<Ylims>
+						<min>5</min>
+						<max>25</max>
+					</Ylims>
+					<yticks>
+						<spacing>5</spacing>
+					</yticks>
+					<lines>
+						<line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<alpha>0.3</alpha>
+						</line>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>8</zorder>
+						</line>	
+						<line>
+							<label>Computed</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>7</zorder>
+							<alpha>0.4</alpha>
+						</line>
+						<line>
+							<label>Computed Daily</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>9</zorder>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<Description>Watt Bridge near Carmichael Temperature Error Statistics</Description>
+					<Parameter>Temperature</Parameter>
+					<SplitByYear>True</SplitByYear>
+					<tablecolors>
+						<tablecolor>
+							<statistic>meanbias</statistic>
+							<thresholds>
+								<threshold>
+									<value>0.75</value>
+									<colorwhen>over</colorwhen>
+								</threshold>
+								<threshold>
+									<value>-0.75</value>
+									<colorwhen>under</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+						<tablecolor>
+							<statistic>nse</statistic>
+							<thresholds>
+								<threshold>
+									<value>0.65</value>
+									<colorwhen>under</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+						<tablecolor>
+							<statistic>MAE</statistic>
+							<thresholds>
+								<threshold>
+									<value>1.0</value>
+									<colorwhen>over</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+						<tablecolor>
+							<statistic>RMSE</statistic>
+							<thresholds>
+								<threshold>
+									<value>1.5</value>
+									<colorwhen>over</colorwhen>
+								</threshold>
+							</thresholds>
+						</tablecolor>
+					</tablecolors>					
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+			</Section>
+		</Sections>
+	</Chapter>
+</Chapters>
