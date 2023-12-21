@@ -7,7 +7,6 @@
 		<SplitByYear>True</SplitByYear>
 		<ProfilesPerRow>3</ProfilesPerRow>
 		<RowsPerPage>3</RowsPerPage>
-		<y_unitsystem>english</y_unitsystem>
 		<DefaultGateEnvelope>20</DefaultGateEnvelope>
 		<showgates>false</showgates>
 		<unitsystem>metric</unitsystem>
@@ -15,6 +14,7 @@
 		<datetext>True</datetext>
 		<UseDepth>False</UseDepth>
 		<dateformat>datetime</dateformat>
+		<y_unitsystem>english</y_unitsystem>
 		<YLabel>Elevation (ft)</YLabel>
 		<DatesSource>Observed</DatesSource>
 		<Legend>True</Legend>
@@ -50,7 +50,7 @@
 			<Row>Mean Bias (%%units%%)|%%meanbias.Computed.Observed%%</Row>
 			<Row>MAE (%%units%%)|%%MAE.Computed.Observed%%</Row>
 			<Row>RMSE (%%units%%)|%%RMSE.Computed.Observed%%</Row>
-			<Row>Nash-Sutcliffe (NSE)|%%NSE.Computed.Observed%%</Row>
+			<Row>NSE (-)|%%NSE.Computed.Observed%%</Row>
 			<Row>COUNT|%%COUNT.Computed.Observed%%</Row>
 		</Rows>
 	</ReportObject>
@@ -66,10 +66,10 @@
 		</Headers>
 		<DataPaths>
 			<DataPath>
-				<Flag>Computed</Flag>
+				<Flag>Observed</Flag>
 			</DataPath>
 			<DataPath>
-				<Flag>Observed</Flag>
+				<Flag>Computed</Flag>
 			</DataPath>
 		</DataPaths>
 		<Rows>
@@ -88,24 +88,14 @@
 		</Rows>
 	</ReportObject>
 	<ReportObject>
-		<Type>BuzzPlot</Type>
-		<ObjectType>Plot</ObjectType>
-		<Gridlines>True</Gridlines>
-		<Legend>True</Legend>
-		<unitsystem>english</unitsystem>
-		<twinx>True</twinx>
-		<twiny>True</twiny>
-		<dateformat>jdate</dateformat>
-		<dateformat2>datetime</dateformat2>
-	</ReportObject>
-	<ReportObject>
 		<Type>ProfileStatisticsTable</Type>
 		<ObjectType>Table</ObjectType>
 		<SplitByYear>True</SplitByYear>
 		<unitsystem>metric</unitsystem>
 		<dateformat>datetime</dateformat>
 		<DatesSource>Observed</DatesSource>
-		<UseDepth>False</UseDepth>
+		<interpolationsource>Observed</interpolationsource>
+		<UseDepth>True</UseDepth>
 		<filterbylimits>True</filterbylimits>
 		<headers>
 			<header>%%Computed%%%%SimulationName%%</header>
@@ -122,7 +112,8 @@
 			<Row>Mean Bias (%%units%%)|%%meanbias.Computed.Observed%%</Row>
 			<Row>MAE (%%units%%)|%%MAE.Computed.Observed%%</Row>
 			<Row>RMSE (%%units%%)|%%RMSE.Computed.Observed%%</Row>
-			<Row>Nash-Sutcliffe (NSE)|%%NSE.Computed.Observed%%</Row>
+			<Row>NSE (-)|%%NSE.Computed.Observed%%</Row>
+			<Row>Count (#)|%%COUNT.Computed.Observed%%</Row>
 		</rows>
 	</ReportObject>
 	<ReportObject>
@@ -143,7 +134,6 @@
 		<Type>SingleStatisticTable</Type>
 		<ObjectType>Table</ObjectType>
 		<unitsystem>metric</unitsystem>
-		<DatesSource>Observed</DatesSource>
 		<UseDepth>False</UseDepth>
 		<statistic>NSE</statistic>
 		<includeallyears>False</includeallyears>
@@ -162,7 +152,8 @@
 		<ObjectType>Table</ObjectType>
 		<unitsystem>metric</unitsystem>
 		<DatesSource>Observed</DatesSource>
-		<UseDepth>False</UseDepth>
+		<interpolationsource>Observed</interpolationsource>
+		<UseDepth>True</UseDepth>
 		<statistic>NSE</statistic>
 		<includeallyears>False</includeallyears>
 		<filterbylimits>True</filterbylimits>

@@ -1,30 +1,30 @@
 <Chapters>
 	<Chapter>
-		<Name>Folsom</Name>
-		<Region>Folsom</Region>
+		<Name>Folsom Lake</Name>
+		<Region>Folsom Lake</Region>
 		<debug>True</debug>
 		<Sections>
 			<Section>
-				<Header>Folsom Reservoir Temperatures</Header>
+				<Header>Folsom Lake Temperatures</Header>
+				<Object>
+					<Type>textbox</Type>
+					<Text>Temperature profiles plots represent the vertical distribution of water temperatures in the lake. Because water temperatures impact density, warmer waters occupy the surface portions of the lake and cooler waters occupy the deeper portions of the lake. In the winter or in shallower reservoirs with substantial flow through, vertical temperature profiles can be uniform from the surface to the bottom (Isothermal conditions). 
+
+These plots compare simulated and observed temperature profiles throughout the calendar year that aided in model calibration.  Temperature (%%degrees%%F) is represented on the x-axis and elevation (ft) is represented on the y-axis.  Generally, observed temperature profiles were available monthly; however, in certain years profiles were more or less frequently.   When there are more than 12 observed temperature profiles available for a year, the information is presented in two graphs. If the lake has multiple locations observed profiles, individual graphs are provided for each location or at the site immediately upstream of the dam (not all locations are available in all years).
+
+Each profile includes the date, observed (light blue) and simulated (red-dashed) water temperature profile, and observed (dark blue) and simulated (dark red dashed) water surface elevation (WSE) on the date of the simulation (plotted as a horizontal line at the respective elevation).
+</Text>
+				</Object>
 				<Object>
 					<Type>ProfilePlot</Type>
-					<Description>Folsom %%year%%</Description>
+					<Description>Folsom Lake near dam temperature profiles, %%year%%. ResSim.</Description>
+					<Template>format/templates/Plot_Defaults_FOL_TW.xml</Template>
+					<unitsystem>english</unitsystem>
 					<XLabel>Temperature (%%units%%)</XLabel>
 					<SplitByYear>True</SplitByYear>
 					<Parameter>Temperature</Parameter>
 					<profilesperrow>4</profilesperrow>
 					<DatesSource>Observed_Dam</DatesSource>
-					<XLims>
-						<min>0</min>
-						<max>30</max>
-					</XLims>
-					<YLims>
-						<min>190</min>
-						<max>510</max>
-					</YLims>
-					<xticks>
-						<spacing>5</spacing>
-					</xticks>
 					<Lines>
 						<Line>
 							<label>Computed</label>
@@ -128,7 +128,7 @@
 						</Line>
 					</Lines>
 					<hlines>
-						<hline>
+						<!--<hline>
 							<label>Obs. WSE</label>
 							<flag>Observed</flag>
 							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
@@ -136,9 +136,9 @@
 							<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
 							<linecolor>darkblue</linecolor>
 							<omitvalue>-901.0</omitvalue>
-						</hline>
+						</hline>-->
 						<hline>
-							<label>Sim. WSE</label>
+							<label>Simulated WSE</label>
 							<flag>Computed</flag>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<parameter>elevation</parameter>
@@ -152,7 +152,9 @@
 					<Type>ProfileStatisticsTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Lake Profile Statistics %%year%%</Description>
+					<Description>Folsom Lake near dam temperature profiles, performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). ResSim.</Description>
+					<Template>format/templates/ProfileStatisticsTable_Defaults_TW.xml</Template>
+					<unitsystem>english</unitsystem>
 					<Parameter>Temperature</Parameter>
 					<resolution>60</resolution>
 					<DataPaths>
@@ -166,6 +168,7 @@
 							<label>Observed</label>
 							<Flag>Observed</Flag>
 							<Parameter>Temperature</Parameter>
+							<units>f</units>
 							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>				
 							<wse>
 								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
@@ -180,31 +183,14 @@
 					<Type>SingleStatisticProfileTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Profile Temperature Mean Bias, outside performance metric range when +- .75</Description>
+					<Description>Folsom Lake near dam temperature profiles, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). ResSim.</Description>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MeanBias.xml</Template>
+					<unitsystem>english</unitsystem>
 					<Parameter>Temperature</Parameter>
 					<statistic>meanbias</statistic>
 					<includeallyears>true</includeallyears>
 					<SplitByYear>True</SplitByYear>
-					<thresholds>
-						<threshold>
-							<value>0.75</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-						<threshold>
-							<value>-0.75</value>
-							<colorwhen>under</colorwhen>
-						</threshold>
-					</thresholds>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
+					<resolution>60</resolution>
 					<DataPaths>
 						<DataPath>
 							<label>Simulated</label>
@@ -215,6 +201,7 @@
 						<DataPath>
 							<label>Observed</label>
 							<Flag>Observed</Flag>
+							<units>f</units>
 							<Parameter>Temperature</Parameter>
 							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>				
 							<wse>
@@ -229,27 +216,14 @@
 					<Type>SingleStatisticProfileTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Profile Temperature MAE, outside performance metric range over 1.0</Description>
+					<Description>Folsom Lake near dam temperature profiles, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). ResSim.</Description>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MAE.xml</Template>
+					<unitsystem>english</unitsystem>
 					<Parameter>Temperature</Parameter>
 					<statistic>MAE</statistic>
 					<includeallyears>true</includeallyears>
 					<SplitByYear>True</SplitByYear>
-					<thresholds>
-						<threshold>
-							<value>1.0</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
+					<resolution>60</resolution>
 					<DataPaths>
 						<DataPath>
 							<label>Simulated</label>
@@ -262,6 +236,7 @@
 							<Flag>Observed</Flag>
 							<Parameter>Temperature</Parameter>
 							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>				
+							<units>f</units>
 							<wse>
 								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
 								<parameter>elevation</parameter>
@@ -274,27 +249,14 @@
 					<Type>SingleStatisticProfileTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Profile Temperature RMSE, outside performance metric range over 1.5</Description>
+					<Description>Folsom Lake near dam temperature profiles, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). ResSim.</Description>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_RMSE.xml</Template>
+					<unitsystem>english</unitsystem>
 					<Parameter>Temperature</Parameter>
 					<statistic>RMSE</statistic>
 					<includeallyears>true</includeallyears>
 					<SplitByYear>True</SplitByYear>
-					<thresholds>
-						<threshold>
-							<value>1.5</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
+					<resolution>60</resolution>
 					<DataPaths>
 						<DataPath>
 							<label>Simulated</label>
@@ -307,6 +269,7 @@
 							<Flag>Observed</Flag>
 							<Parameter>Temperature</Parameter>
 							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>				
+							<units>f</units>
 							<wse>
 								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
 								<parameter>elevation</parameter>
@@ -319,27 +282,14 @@
 					<Type>SingleStatisticProfileTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Profile Temperature NSE, outside performance metric range under .65</Description>
+					<Description>Folsom Lake near dam temperature profiles, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). ResSim.</Description>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_NSE.xml</Template>
+					<unitsystem>english</unitsystem>
 					<Parameter>Temperature</Parameter>
 					<statistic>NSE</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>true</includeallyears>
-					<thresholds>
-						<threshold>
-							<value>0.65</value>
-							<colorwhen>under</colorwhen>
-						</threshold>
-					</thresholds>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
+					<resolution>60</resolution>
 					<DataPaths>
 						<DataPath>
 							<label>Simulated</label>
@@ -352,6 +302,7 @@
 							<Flag>Observed</Flag>
 							<Parameter>Temperature</Parameter>
 							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>				
+							<units>f</units>
 							<wse>
 								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
 								<parameter>elevation</parameter>
@@ -361,20 +312,22 @@
 					</DataPaths>
 				</Object>
 			</Section>
+			
 			<Section>
 				<Header>Folsom Lake Powerhouse Temperature</Header>
 				<description>Folsom Lake Powerhouse Temperature</description>
 				<Object>
+					<Type>textbox</Type>
+					<Text>Reservoir outflow temperatures are plotted as daily flow-weighted averages.  Reservoir outflow temperature figures represent time series from January through December.  Time (date) is represented on the x-axis and temperature (%%degrees%%F) is represented on the y-axis. These plots compare simulated and observed daily flow-weighted temperature throughout the calendar year.  Daily flow weighted average values were used to assess water temperature releases from the dam because flows were highly variable due to peaking.  Two lines are included in the figure: observed (dark blue) and simulated (dark red) daily average outflow.</Text>
+				</Object>
+				<Object>
 					<Type>TimeSeriesPlot</Type>
 					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
-					<Description>Folsom Powerhouse Temperature %%year%%</Description>
-					<unitsystem>metric</unitsystem>
+					<Description>Folsom Lake daily powerhouse temperature, %%year%%. ResSim.</Description>
+					<Template>format/templates/Plot_Defaults_FOL_TW.xml</Template>
+					<unitsystem>english</unitsystem>					
 					<legend_outside>False</legend_outside>
 					<legendsize>9</legendsize>
-					<ylims>
-						<min>4</min>
-						<max>22</max>
-					</ylims>
 					<includeallyears>True</includeallyears><!--Phase1-->
 					<splitbyyear>True</splitbyyear>
 					<yearblocks>10</yearblocks>
@@ -394,7 +347,7 @@
 							<flag>Computed</flag>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<parameter>temperature</parameter>
-							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Path>//Folsom_FWA_Outlet/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
 							<linecolor>red</linecolor>
 							<lineStylePattern>dashed</lineStylePattern>
 						</line>
@@ -405,58 +358,18 @@
 					<Type>ErrorStatisticsTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Lake Powerhouse Temperature Error Statistics</Description>
+					<unitsystem>english</unitsystem>
+					<Description>Folsom Lake daily powerhouse temperature, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). ResSim.</Description>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_TW.xml</Template>					
 					<Parameter>Temperature</Parameter>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
-					<tablecolors>
-						<tablecolor>
-							<statistic>meanbias</statistic>
-							<thresholds>
-								<threshold>
-									<value>0.75</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-								<threshold>
-									<value>-0.75</value>
-									<colorwhen>under</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>nse</statistic>
-							<thresholds>
-								<threshold>
-									<value>0.65</value>
-									<colorwhen>under</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>MAE</statistic>
-							<thresholds>
-								<threshold>
-									<value>1.0</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>RMSE</statistic>
-							<thresholds>
-								<threshold>
-									<value>1.5</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-					</tablecolors>					
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
 							<Parameter>Temperature</Parameter>
 							<Interval>1DAY</Interval>
-							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Path>//Folsom_FWA_Outlet/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<omitvalue>0.0</omitvalue>
 						</DataPath>
@@ -469,41 +382,72 @@
 						</DataPath>
 					</DataPaths>
 				</Object>
+				
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>Folsom Lake daily powerhouse temperature, monthly means (%%units%%) and counts. ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<SplitByYear>True</SplitByYear>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<DSS_Path>//Folsom_FWA_Outlet/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_FW_penstock_6.dss</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<DSS_Path>/FOLSOM-DA_50cfsFilt/PENSTOCK_FW/TEMP-WATER//1DAY/FLOW-WEIGHTED/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object> 
+				
 				<Object>
 					<Type>SingleStatisticTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Lake Powerhouse Temperature Mean Bias, outside performance metric range when +- .75</Description>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MeanBias.xml</Template>
+					<unitsystem>english</unitsystem>					
+					<Description>Folsom Lake daily powerhouse temperature, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>				
 					<Parameter>Temperature</Parameter>
 					<statistic>meanbias</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>0.75</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-						<threshold>
-							<value>-0.75</value>
-							<colorwhen>under</colorwhen>
-						</threshold>
-					</thresholds>
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
 							<Parameter>Temperature</Parameter>
 							<Interval>1DAY</Interval>
-							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Path>//Folsom_FWA_Outlet/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<omitvalue>0.0</omitvalue>
 						</DataPath>
@@ -518,36 +462,21 @@
 				</Object>
 				<Object>
 					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MAE.xml</Template>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Lake Powerhouse Temperature MAE, outside performance metric range over 1.0</Description>
-					<Parameter>Temperature</Parameter>
+					<unitsystem>english</unitsystem>
+					<Description>Folsom Lake daily powerhouse temperature, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). ResSim.</Description>
 					<statistic>MAE</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>1.0</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
 							<Parameter>Temperature</Parameter>
 							<Interval>1DAY</Interval>
 							<Type>INST-VAL</Type>
-							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Path>//Folsom_FWA_Outlet/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<omitvalue>0.0</omitvalue>
 						</DataPath>
@@ -563,36 +492,53 @@
 				</Object>
 				<Object>
 					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_RMSE.xml</Template>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Lake Powerhouse Temperature RMSE, outside performance metric range over 1.5</Description>
+					<unitsystem>english</unitsystem>					
+					<Description>Folsom Lake daily powerhouse temperature, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). ResSim.</Description>
 					<Parameter>Temperature</Parameter>
 					<statistic>RMSE</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>1.5</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
 							<Parameter>Temperature</Parameter>
 							<Interval>1DAY</Interval>
 							<Type>INST-VAL</Type>
-							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Path>//Folsom_FWA_Outlet/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1DAY</Interval>
+							<Type>INST-VAL</Type>
+							<DSS_Filename>%%observedDir%%/Folsom_FW_penstock_6.dss</DSS_Filename>
+							<DSS_Path>/FOLSOM-DA_50cfsFilt/PENSTOCK_FW/TEMP-WATER//1DAY/FLOW-WEIGHTED/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_NSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<unitsystem>english</unitsystem>					
+					<Description>Folsom Lake daily powerhouse temperature, monthly average NSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>True</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>INST-VAL</Type>
+							<DSS_Path>//Folsom_FWA_Outlet/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<omitvalue>0.0</omitvalue>
 						</DataPath>
@@ -611,7 +557,8 @@
 					<Type>TimeSeriesPlot</Type>
 					<Title>Folsom Lake Buzz Plot %%Year%%</Title>
 					<Description>Folsom Lake Buzz Plot %%Year%%</Description>
-					<YLabel>Daily Average Temperature @ Folsom (Deg F)</YLabel>
+					<unitsystem>english</unitsystem>
+					<YLabel>Daily Average Temperature @ Folsom (%%degrees%%F)</YLabel>
 					<YLabel2>Release (cfs) - Volume (AF/100)</YLabel2>
 					<unitsystem>english</unitsystem>
 					<XLabel>Julian Day</XLabel>
@@ -1011,7 +958,7 @@
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
 						</Line>
-						<Line>
+						<!--<Line>
 							<label>Cold Water Pool (AF/100) 58 Deg F</label>
 							<flag>CWP_58Deg</flag>
 							<ResSimResName>Folsom Lake</ResSimResName>
@@ -1025,7 +972,7 @@
 							<elevation_storage_area_file>%%observedDir%%/Folsom_ElevStorArea.csv</elevation_storage_area_file>
 							<scalar>.01</scalar>
 							<linecolor>gold</linecolor>
-						</Line>
+						</Line>-->
 						<Line>
 							<label>Storage</label>
 							<Flag>Storage</Flag>
@@ -1051,9 +998,15 @@
 			<Section>
 				<Header>Folsom Lake Outflow</Header>			
 				<Object>
+					<Type>textbox</Type>
+					<Text>Reservoir outflow figures compare simulated and observed flow time series from January through December to aid calibration.  Time (date) is represented on the x-axis and flow (cfs) is represented on the y-axis. Four lines are included in the figure: observed (light blue) and simulated (red-dashed) hourly water temperature and observed (dark blue) and simulated (dark red dashed) daily average outflow. In certain instances, time series for multiple years are shown to indicate comparison of observed data and model simulations for longer time periods.</Text>
+				</Object>
+				<Object>
 					<Type>TimeSeriesPlot</Type>
-					<Title>Folsom Lake Simulation: %%SimulationName%% %%year%%</Title>
-					<Description>Folsom Lake Dam Outflow %%year%%</Description>
+					<Title>%%region%% Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>Folsom Lake hourly outflow, %%year%%. ResSim.</Description>
+					<Template>format/templates/Plot_Defaults_FOL_Q.xml</Template>	
+					<unitsystem>english</unitsystem>
 					<ylabel>Flow (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
 					<splitbyyear>True</splitbyyear>
@@ -1120,7 +1073,8 @@
 					<Type>ErrorStatisticsTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Lake Dam Outflow Error Statistics</Description>
+					<Description>Folsom Lake hourly outflow outflow, %%year%%. ResSim.</Description>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_Q.xml</Template>
 					<Parameter>Flow</Parameter>
 					<unitsystem>english</unitsystem>
 					<SplitByYear>True</SplitByYear>
@@ -1148,25 +1102,70 @@
 					</DataPaths>
 				</Object>
 				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_Q.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>Folsom Lake hourly outflow, monthly means (%%units%%) and counts. ResSim.</Description>
+					<Parameter>Flow</Parameter>
+					<unitsystem>english</unitsystem>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>true</includeallyears>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<parameter>flow</parameter>
+							<DSS_Path>//FOLSOM LAKE-DAM AT NORTH FORK AMERICAN RIVER TAILWATER/FLOW//1HOUR/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<parameter>flow</parameter>
+							<DSS_Path>/FOLSOM/FOLSOM DAM TOTAL OUTFLOW RESSIM/FLOW/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Folsom_balance_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+
+				<Object>
 					<Type>SingleStatisticTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Lake Dam Outflow Mean Bias</Description>
+					<Description>Folsom Lake hourly outflow, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 150 %%units%%). ResSim.</Description>					
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_MeanBias.xml</Template>
 					<Parameter>Flow</Parameter>
 					<statistic>meanbias</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
 					<unitsystem>english</unitsystem>
-					<numberformats>
-						<numberformat>
-							<min>100</min>
-							<decimalplaces>0</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>100</max>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-					</numberformats>
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
@@ -1190,22 +1189,13 @@
 					<Type>SingleStatisticTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Lake Dam Outflow MAE</Description>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_MAE.xml</Template>
+					<Description>Folsom Lake hourly outflow, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%300 %%units%%). CE-QUAL-W2.</Description>					
 					<Parameter>Flow</Parameter>
 					<statistic>MAE</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
 					<unitsystem>english</unitsystem>
-					<numberformats>
-						<numberformat>
-							<min>100</min>
-							<decimalplaces>0</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>100</max>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-					</numberformats>
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
@@ -1228,23 +1218,44 @@
 				<Object>
 					<Type>SingleStatisticTable</Type>
 					<missingmarker>--</missingmarker>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_RMSE.xml</Template>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Lake Dam Outflow Flow RMSE</Description>
+					<Description>Folsom Lake hourly outflow, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%500 %%units%%). ResSim.</Description>
 					<Parameter>Flow</Parameter>
 					<statistic>RMSE</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
 					<unitsystem>english</unitsystem>
-					<numberformats>
-						<numberformat>
-							<min>100</min>
-							<decimalplaces>0</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>100</max>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-					</numberformats>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//FOLSOM LAKE-DAM AT NORTH FORK AMERICAN RIVER TAILWATER/FLOW//1HOUR/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/FOLSOM/FOLSOM DAM TOTAL OUTFLOW RESSIM/FLOW/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Folsom_balance_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<missingmarker>--</missingmarker>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_NSE.xml</Template>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake hourly outflow, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<Parameter>Flow</Parameter>
+					<statistic>NSE</statistic>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>True</includeallyears>
+					<unitsystem>english</unitsystem>
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
@@ -1269,10 +1280,15 @@
 			<Section>
 				<Header>Folsom Lake Elevation</Header>
 				<Object>
+					<Type>textbox</Type>
+					<Text>Reservoir elevation figures compare simulated and observed elevation time series from January through December to aid calibration.  Time (date) is represented on the x-axis and elevation (ft) is represented on the y-axis. Four lines are included in the figure: observed (light blue) and simulated (red-dashed) hourly water temperature and observed (dark blue) and simulated (dark red dashed) daily average elevation. In certain instances, time series for multiple years are shown to indicate comparison of observed data and model simulations for longer time periods.</Text>
+				</Object>
+				<Object>
 					<Type>TimeSeriesPlot</Type>
 					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
-					<Description>Folsom Elevation %%year%%</Description>
-					<unitsystem>metric</unitsystem>
+					<Template>format/templates/Plot_Defaults_FOL_EL.xml</Template>
+					<Description>Folsom Lake hourly elevation, %%year%%. ResSim.</Description>					
+					<unitsystem>english</unitsystem>
 					<legend_outside>true</legend_outside>
 					<legendsize>9</legendsize>
 					<includeallyears>True</includeallyears><!--Phase1-->
@@ -1281,12 +1297,11 @@
 					<axs>
 						<ax>
 							<ylabel>Elevation, %%units%%</ylabel>
-							<weight>0.6</weight>
 							<unitsystem>english</unitsystem>
 							<lines>
 								<line>
 									<label>Observed</label>
-									<flag>Observed</flag>
+									<flag>WSComp</flag>
 									<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
 									<parameter>elevation</parameter>
 									<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
@@ -1295,7 +1310,7 @@
 								</line>
 								<line>
 									<label>Simulated</label>
-									<flag>Computed</flag>
+									<flag>WSComp</flag>
 									<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 									<parameter>elevation</parameter>
 									<DSS_Path>//Folsom Lake-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
@@ -1306,30 +1321,216 @@
 						</ax>
 					</axs>
 				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<Description>Folsom Lake hourly elevation, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 0.50 %%units%%, MAE: %%gt%%1.00 %%units%%, RMSE: %%gt%%1.50 %%units%%, NSE: %%lt%%0.65). ResSim.</Description>					
+					<Template>format/templates/ErrorStatisticsTable_Defaults_Elev.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Parameter>elevation</Parameter>
+					<SplitByYear>True</SplitByYear>					
+					<includeallyears>True</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Folsom Lake-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_EL.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake hourly elevation, monthly means (%%units%%) and counts. ResSim.</Description>				
+					<Parameter>elevation</Parameter>
+					<SplitByYear>True</SplitByYear>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Folsom Lake-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Description>Folsom Lake hourly elevation, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 0.50 %%units%%). ResSim.</Description>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_MeanBias.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Parameter>elevation</Parameter>
+					<statistic>meanbias</statistic>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>True</includeallyears>
+					<unitsystem>english</unitsystem>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Folsom Lake-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Description>Folsom Lake hourly elevation, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.00 %%units%%). ResSim.</Description>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_MAE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Parameter>elevation</Parameter>
+					<unitsystem>english</unitsystem>
+					<statistic>MAE</statistic>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>True</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Folsom Lake-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>				
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Description>Folsom Lake hourly elevation, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.50 %%units%%). ResSim.</Description>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_RMSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Parameter>elevation</Parameter>
+					<unitsystem>english</unitsystem>
+					<statistic>RMSE</statistic>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>True</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Folsom Lake-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Description>Folsom Lake hourly elevation, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). ResSim.</Description>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_NSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Parameter>elevation</Parameter>
+					<unitsystem>english</unitsystem>
+					<statistic>NSE</statistic>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>True</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Folsom Lake-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>				
+
 			</Section>
 		</Sections>
 	</Chapter>
+	
 	<Chapter>
 		<Name>Lake Natoma</Name>
 		<Region>Lake Natoma</Region>
 		<Sections>
 			<Section>
-				<Header>Below Folsom Dam (USGS)</Header>
+				<Header>Lake Natoma Below Folsom Dam (USGS)</Header>
+				<Object>
+					<Type>textbox</Type>
+					<Text>Reservoir outflow temperature figures compare simulated and observed temperature time series from January through December to aid calibration.  Time (date) is represented on the x-axis and temperature (%%degrees%%F) is represented on the y-axis. Four lines are included in the figure: observed (light blue) and simulated (red-dashed) hourly water temperature and observed (dark blue) and simulated (dark red dashed) daily average water temperature. In certain instances, time series for multiple years are shown to indicate comparison of observed data and model simulations for longer time periods. </Text>
+				</Object>
 				<Object>
 					<Type>TimeSeriesPlot</Type>
-					<Title>Below Folsom Dam (USGS) Simulation: %%SimulationName%% %%year%%</Title>
-					<Description>Below Folsom Dam (USGS) Temperature %%year%%</Description>
+					<Title>Below Folsom Dam (USGS) temperature, Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>Below Folsom Dam (USGS) temperature, %%year%%. ResSim.</Description>
+					<Template>format/templates/Plot_Defaults_FOL_TW.xml</Template>
+					<unitsystem>english</unitsystem>					
 					<ylabel>Temperature (%%units%%)</ylabel>
 					<includeallyears>True</includeallyears><!--Phase1-->
 					<splitbyyear>True</splitbyyear>
 					<yearblocks>10</yearblocks>
-					<ylims>
-						<max>22</max>
-						<min>6</min>
-					</ylims>
-					<yticks>
-						<spacing>2</spacing>
-					</yticks>
 					<lines>
 						<line>
 							<label>Observed</label>
@@ -1387,52 +1588,12 @@
 					<Type>ErrorStatisticsTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Below Folsom Dam (USGS) Temperature Error Statistics</Description>
+					<unitsystem>english</unitsystem>
+					<Description>Below Folsom Dam (USGS) temperature, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). ResSim.</Description>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_TW.xml</Template>					
 					<Parameter>Temperature</Parameter>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
-					<tablecolors>
-						<tablecolor>
-							<statistic>meanbias</statistic>
-							<thresholds>
-								<threshold>
-									<value>0.75</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-								<threshold>
-									<value>-0.75</value>
-									<colorwhen>under</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>nse</statistic>
-							<thresholds>
-								<threshold>
-									<value>0.65</value>
-									<colorwhen>under</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>MAE</statistic>
-							<thresholds>
-								<threshold>
-									<value>1.0</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>RMSE</statistic>
-							<thresholds>
-								<threshold>
-									<value>1.5</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-					</tablecolors>					
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
@@ -1451,35 +1612,66 @@
 						</DataPath>
 					</DataPaths>
 				</Object>
+				
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>Below Folsom Dam (USGS) temperature, monthly means (%%units%%) and counts. ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<SplitByYear>True</SplitByYear>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1DAY</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1DAY</Interval>
+							<DSS_Path>/USBR/USGS 11446220 FLOW-WEIGHTED/TEMP-WATER//1DAY/GRAB2_DERVIED/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object> 
+				
 				<Object>
 					<Type>SingleStatisticTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Below Folsom Dam (USGS) Temperature Mean Bias, outside performance metric range when +- .75</Description>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MeanBias.xml</Template>
+					<unitsystem>english</unitsystem>					
+					<Description>Below Folsom Dam (USGS) temperature, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>				
 					<Parameter>Temperature</Parameter>
 					<statistic>meanbias</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>0.75</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-						<threshold>
-							<value>-0.75</value>
-							<colorwhen>under</colorwhen>
-						</threshold>
-					</thresholds>
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
@@ -1500,29 +1692,15 @@
 				</Object>
 				<Object>
 					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MAE.xml</Template>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Below Folsom Dam (USGS) Temperature MAE, outside performance metric range over 1.0</Description>
+					<unitsystem>english</unitsystem>
+					<Description>Below Folsom Dam (USGS) temperature, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). ResSim.</Description>
 					<Parameter>Temperature</Parameter>
 					<statistic>MAE</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>1.0</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
@@ -1546,27 +1724,13 @@
 					<Type>SingleStatisticTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Below Folsom Dam (USGS) Temperature RMSE, outside performance metric range over 1.5</Description>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_RMSE.xml</Template>
+					<unitsystem>english</unitsystem>					
+					<Description>Below Folsom Dam (USGS) temperature, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). ResSim.</Description>
 					<Parameter>Temperature</Parameter>
 					<statistic>RMSE</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>1.5</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
@@ -1586,33 +1750,59 @@
 						</DataPath>
 					</DataPaths>
 				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_NSE.xml</Template>
+					<unitsystem>english</unitsystem>					
+					<Description>Below Folsom Dam (USGS) temperature, monthly average NSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>True</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1DAY</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1DAY</Interval>
+							<Type>INST-VAL</Type>
+							<DSS_Path>/USBR/USGS 11446220 FLOW-WEIGHTED/TEMP-WATER//1DAY/GRAB2_DERVIED/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>				
 			</Section>
 
 			<Section>
 				<Header>Lake Natoma Temperature</Header>
 				<Object>
+					<Type>textbox</Type>
+					<Text>Temperature profiles plots represent the vertical distribution of water temperatures in the lake. Because water temperatures impact density, warmer waters occupy the surface portions of the lake and cooler waters occupy the deeper portions of the lake. In the winter or in shallower reservoirs with substantial flow through, vertical temperature profiles can be uniform from the surface to the bottom (Isothermal conditions). 
+
+These plots compare simulated and observed temperature profiles throughout the calendar year that aided in model calibration.  Temperature (%%degrees%%F) is represented on the x-axis and elevation (ft) is represented on the y-axis.  Generally, observed temperature profiles were available monthly; however, in certain years profiles were more or less frequently.   When there are more than 12 observed temperature profiles available for a year, the information is presented in two graphs. If the lake has multiple locations observed profiles, individual graphs are provided for each location or at the site immediately upstream of the dam (not all locations are available in all years).
+
+Each profile includes the date, observed (light blue) and simulated (red-dashed) water temperature profile, and observed (dark blue) and simulated (dark red dashed) water surface elevation (WSE) on the date of the simulation (plotted as a horizontal line at the respective elevation).
+</Text>
+				</Object>
+				<Object>
 					<Type>ProfilePlot</Type>
-					<Description>Lake Natoma %%year%%</Description>
+					<Description>Lake Natoma near dam temperature profiles, %%year%%. ResSim.</Description>
+					<Template>format/templates/Plot_Defaults_NAT_TW.xml</Template>
+					<unitsystem>english</unitsystem>
 					<XLabel>Temperature (%%units%%)</XLabel>
 					<SplitByYear>True</SplitByYear>
 					<Parameter>Temperature</Parameter>
 					<profilesperrow>4</profilesperrow>
 					<DatesSource>Observed_Dam</DatesSource>
-					<y_unitsystem>english</y_unitsystem>
-					<XLims>
-						<min>0</min>
-						<max>30</max>
-					</XLims>
-					<YLims>
-						<min>80</min>
-						<max>130</max>
-					</YLims>
-					<xticks>
-						<spacing>5</spacing>
-					</xticks>
-					<yticks>
-						<spacing>10</spacing>
-					</yticks>
 					<Lines>
 						<Line>
 							<label>Computed</label>
@@ -1641,7 +1831,7 @@
 						</Line>
 					</Lines>
 					<hlines>
-						<hline>
+						<!--<hline>
 							<label>Observed</label>
 							<flag>Observed</flag>
 							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
@@ -1649,10 +1839,10 @@
 							<DSS_Path>/NATOMA/NATOMA POOL/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
 							<linecolor>darkblue</linecolor>
 							<omitvalue>-901.0</omitvalue>
-						</hline>
+						</hline>-->
 						<hline>
-							<label>Computed</label>
-							<flag>Computed</flag>
+							<label>Simulated WSE</label>
+							<flag>waterlevel</flag>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<parameter>elevation</parameter>
 							<DSS_Path>//Lake Natoma-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
@@ -1665,7 +1855,9 @@
 					<Type>ProfileStatisticsTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Folsom Lake Profile Statistics %%year%%</Description>
+					<Description>Lake Natoma near dam temperature profiles, performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). ResSim.</Description>
+					<Template>format/templates/ProfileStatisticsTable_Defaults_TW.xml</Template>
+					<unitsystem>english</unitsystem>
 					<Parameter>Temperature</Parameter>
 					<resolution>60</resolution>
 					<DataPaths>
@@ -1678,6 +1870,7 @@
 						<DataPath>
 							<label>Observed</label>
 							<Flag>Observed</Flag>
+							<units>c</units>
 							<Parameter>Temperature</Parameter>
 							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_Sparser_ft.txt</FileName>
 							<wse>
@@ -1694,31 +1887,14 @@
 					<Type>SingleStatisticProfileTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Natoma Profile Temperature Mean Bias, outside performance metric range when +- .75</Description>
+					<Description>Lake Natoma near dam temperature profiles, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). ResSim.</Description>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MeanBias.xml</Template>
+					<unitsystem>english</unitsystem>
 					<Parameter>Temperature</Parameter>
 					<statistic>meanbias</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
-					<thresholds>
-						<threshold>
-							<value>0.75</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-						<threshold>
-							<value>-0.75</value>
-							<colorwhen>under</colorwhen>
-						</threshold>
-					</thresholds>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
+					<resolution>60</resolution>
 					<DataPaths>
 						<DataPath>
 							<label>Simulated</label>
@@ -1731,6 +1907,7 @@
 							<Flag>Observed</Flag>
 							<Parameter>Temperature</Parameter>
 							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_Sparser_ft.txt</FileName>
+							<units>c</units>
 							<wse>
 								<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
 								<parameter>elevation</parameter>
@@ -1743,27 +1920,14 @@
 					<Type>SingleStatisticProfileTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Natoma Profile Temperature MAE, outside performance metric range over 1.0</Description>
+					<Description>Lake Natoma near dam temperature profiles, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). ResSim.</Description>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MAE.xml</Template>
+					<unitsystem>english</unitsystem>
 					<Parameter>Temperature</Parameter>
 					<statistic>MAE</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
-					<thresholds>
-						<threshold>
-							<value>1.0</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
+					<resolution>60</resolution>
 					<DataPaths>
 						<DataPath>
 							<label>Simulated</label>
@@ -1776,6 +1940,7 @@
 							<Flag>Observed</Flag>
 							<Parameter>Temperature</Parameter>
 							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_Sparser_ft.txt</FileName>
+							<units>c</units>
 							<wse>
 								<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
 								<parameter>elevation</parameter>
@@ -1788,27 +1953,14 @@
 					<Type>SingleStatisticProfileTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Natoma Profile Temperature RMSE, outside performance metric range over 1.5</Description>
+					<Description>Lake Natoma near dam temperature profiles, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). ResSim.</Description>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_RMSE.xml</Template>
+					<unitsystem>english</unitsystem>
 					<Parameter>Temperature</Parameter>
 					<statistic>RMSE</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
-					<thresholds>
-						<threshold>
-							<value>1.5</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
+					<resolution>60</resolution>
 					<DataPaths>
 						<DataPath>
 							<label>Simulated</label>
@@ -1819,6 +1971,7 @@
 						<DataPath>
 							<label>Observed</label>
 							<Flag>Observed</Flag>
+							<units>c</units>
 							<Parameter>Temperature</Parameter>
 							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_Sparser_ft.txt</FileName>
 							<wse>
@@ -1833,27 +1986,14 @@
 					<Type>SingleStatisticProfileTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Natoma Profile Temperature NSE, outside performance metric range under .65</Description>
+					<Description>Lake Natoma near dam temperature profiles, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). ResSim.</Description>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_NSE.xml</Template>
+					<unitsystem>english</unitsystem>
 					<Parameter>Temperature</Parameter>
 					<statistic>NSE</statistic>
 					<SplitByYear>True</SplitByYear>
 					<includeallyears>True</includeallyears>
-					<thresholds>
-						<threshold>
-							<value>0.65</value>
-							<colorwhen>under</colorwhen>
-						</threshold>
-					</thresholds>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
+					<resolution>60</resolution>
 					<DataPaths>
 						<DataPath>
 							<label>Simulated</label>
@@ -1866,6 +2006,7 @@
 							<Flag>Observed</Flag>
 							<Parameter>Temperature</Parameter>
 							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_Sparser_ft.txt</FileName>
+							<units>c</units>
 							<wse>
 								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
 								<parameter>elevation</parameter>
@@ -1875,14 +2016,20 @@
 					</DataPaths>
 				</Object>
 			</Section>
+			
 			<Section>
 				<Header>Lake Natoma Outflow</Header>			
 				<Object>
+					<Type>textbox</Type>
+					<Text>Reservoir outflow figures compare simulated and observed flow time series from January through December to aid calibration.  Time (date) is represented on the x-axis and flow (cfs) is represented on the y-axis. Four lines are included in the figure: observed (light blue) and simulated (red-dashed) hourly water temperature and observed (dark blue) and simulated (dark red dashed) daily average outflow. In certain instances, time series for multiple years are shown to indicate comparison of observed data and model simulations for longer time periods.</Text>
+				</Object>
+				<Object>
 					<Type>TimeSeriesPlot</Type>
 					<Title>Lake Natoma Simulation: %%SimulationName%% %%year%%</Title>
-					<Description>Lake Natoma Dam Outflow %%year%%</Description>
-					<ylabel>Flow (%%units%%)</ylabel>
+					<Description>Lake Natoma hourly outflow, %%year%%. ResSim.</Description>
+					<Template>format/templates/Plot_Defaults_NAT_Q.xml</Template>	
 					<unitsystem>english</unitsystem>
+					<ylabel>Flow (%%units%%)</ylabel>
 					<splitbyyear>True</splitbyyear>
 					<includeallyears>True</includeallyears><!--Phase1-->
 					<yearblocks>10</yearblocks>
@@ -1947,7 +2094,8 @@
 					<Type>ErrorStatisticsTable</Type>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Lake Natoma Dam Outflow Error Statistics</Description>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_Q.xml</Template>
+					<Description>Lake Natoma hourly outflow, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 150 %%units%%, MAE: %%gt%%300 %%units%%, RMSE: %%gt%%500 %%units%%, NSE: %%lt%%0.65). ResSim.</Description>									
 					<Parameter>Flow</Parameter>
 					<unitsystem>english</unitsystem>
 					<SplitByYear>True</SplitByYear>
@@ -1975,30 +2123,76 @@
 					</DataPaths>
 				</Object>
 				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_Q.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>Lake Natoma hourly outflow, monthly means (%%units%%) and counts. ResSim.</Description>
+					<Parameter>Flow</Parameter>
+					<unitsystem>english</unitsystem>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>true</includeallyears>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<parameter>flow</parameter>
+							<DSS_Path>//LAKE NATOMA-NIMBUS DAM AT AMERICAN RIVER TAILWATER/FLOW//1HOUR/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<parameter>flow</parameter>
+							<DSS_Path>/NATOMA/SUM-DAM-OUTFLOW/FLOW//1HOUR/CDEC-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Folsom_balance_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
 					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_MeanBias.xml</Template>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Lake Natoma Dam Outflow Mean Bias</Description>
-					<Parameter>Flow</Parameter>
+					<Description>Lake Natoma hourly outflow, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 150 %%units%%). ResSim.</Description>					
+					<Parameter>flow</Parameter>
 					<statistic>meanbias</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
 					<unitsystem>english</unitsystem>
-					<numberformats>
-						<numberformat>
-							<min>100</min>
-							<decimalplaces>0</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>100</max>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-					</numberformats>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>true</includeallyears>
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
 							<Interval>1HOUR</Interval>
 							<Type>PER-AVER</Type>
+							<parameter>flow</parameter>
 							<DSS_Path>//LAKE NATOMA-NIMBUS DAM AT AMERICAN RIVER TAILWATER/FLOW//1HOUR/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<omitvalue>0.0</omitvalue>
@@ -2007,6 +2201,7 @@
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
 							<Type>PER-AVER</Type>
+							<parameter>flow</parameter>
 							<DSS_Path>/NATOMA/SUM-DAM-OUTFLOW/FLOW//1HOUR/CDEC-CARDNO/</DSS_Path>
 							<DSS_Filename>%%observedDir%%/Folsom_balance_6.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
@@ -2015,29 +2210,22 @@
 				</Object>
 				<Object>
 					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_MAE.xml</Template>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Lake Natoma Dam Outflow MAE</Description>
-					<Parameter>Flow</Parameter>
+					<Description>Lake Natoma hourly outflow, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%300 %%units%%). CE-QUAL-W2.</Description>					
+					<Parameter>flow</Parameter>
 					<statistic>MAE</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
 					<unitsystem>english</unitsystem>
-					<numberformats>
-						<numberformat>
-							<min>100</min>
-							<decimalplaces>0</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>100</max>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-					</numberformats>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>true</includeallyears>
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
 							<Interval>1HOUR</Interval>
 							<Type>PER-AVER</Type>
+							<parameter>flow</parameter>
 							<DSS_Path>//LAKE NATOMA-NIMBUS DAM AT AMERICAN RIVER TAILWATER/FLOW//1HOUR/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<omitvalue>0.0</omitvalue>
@@ -2046,6 +2234,7 @@
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
 							<Type>PER-AVER</Type>
+							<parameter>flow</parameter>
 							<DSS_Path>/NATOMA/SUM-DAM-OUTFLOW/FLOW//1HOUR/CDEC-CARDNO/</DSS_Path>
 							<DSS_Filename>%%observedDir%%/Folsom_balance_6.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
@@ -2054,29 +2243,22 @@
 				</Object>
 				<Object>
 					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_RMSE.xml</Template>
 					<missingmarker>--</missingmarker>
 					<addasterisk>True</addasterisk>
-					<Description>Lake Natoma Dam Outflow Flow RMSE</Description>
-					<Parameter>Flow</Parameter>
+					<Description>Lake Natoma hourly outflow, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%500 %%units%%). ResSim.</Description>
+					<Parameter>flow</Parameter>
 					<statistic>RMSE</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
 					<unitsystem>english</unitsystem>
-					<numberformats>
-						<numberformat>
-							<min>100</min>
-							<decimalplaces>0</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>100</max>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-					</numberformats>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>true</includeallyears>
 					<DataPaths>
 						<DataPath>
 							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
 							<Interval>1HOUR</Interval>
 							<Type>PER-AVER</Type>
+							<parameter>flow</parameter>
 							<DSS_Path>//LAKE NATOMA-NIMBUS DAM AT AMERICAN RIVER TAILWATER/FLOW//1HOUR/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<omitvalue>0.0</omitvalue>
@@ -2085,22 +2267,61 @@
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
 							<Type>PER-AVER</Type>
+							<parameter>flow</parameter>
 							<DSS_Path>/NATOMA/SUM-DAM-OUTFLOW/FLOW//1HOUR/CDEC-CARDNO/</DSS_Path>
 							<DSS_Filename>%%observedDir%%/Folsom_balance_6.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
 						</DataPath>
 					</DataPaths>
 				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_NSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma hourly outflow, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<Parameter>flow</Parameter>
+					<statistic>NSE</statistic>
+					<unitsystem>english</unitsystem>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>True</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<parameter>flow</parameter>
+							<DSS_Path>//LAKE NATOMA-NIMBUS DAM AT AMERICAN RIVER TAILWATER/FLOW//1HOUR/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<parameter>flow</parameter>
+							<DSS_Path>/NATOMA/SUM-DAM-OUTFLOW/FLOW//1HOUR/CDEC-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Folsom_balance_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>	
 
 			</Section>
 
 			<Section>
 				<Header>Lake Natoma Elevation</Header>
 				<Object>
+					<Type>textbox</Type>
+					<Text>Reservoir elevation figures compare simulated and observed elevation time series from January through December to aid calibration.  Time (date) is represented on the x-axis and elevation (ft) is represented on the y-axis. Four lines are included in the figure: observed (light blue) and simulated (red-dashed) hourly water temperature and observed (dark blue) and simulated (dark red dashed) daily average elevation. In certain instances, time series for multiple years are shown to indicate comparison of observed data and model simulations for longer time periods.</Text>
+				</Object>
+				<Object>
 					<Type>TimeSeriesPlot</Type>
 					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
-					<Description>Lake Natoma Elevation %%year%%</Description>
-					<unitsystem>metric</unitsystem>
+					<Template>format/templates/Plot_Defaults_NAT_EL.xml</Template>
+					<Description>Lake Natoma hourly elevation, %%year%%. ResSim.</Description>					
+					<unitsystem>english</unitsystem>
 					<legend_outside>False</legend_outside>
 					<legendsize>9</legendsize>
 					<includeallyears>True</includeallyears><!--Phase1-->
@@ -2134,1167 +2355,1271 @@
 						</ax>
 					</axs>
 				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<Description>Lake Natoma hourly elevation, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 0.50 %%units%%, MAE: %%gt%%1.00 %%units%%, RMSE: %%gt%%1.50 %%units%%, NSE: %%lt%%0.65). ResSim.</Description>					
+					<Template>format/templates/ErrorStatisticsTable_Defaults_Elev.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Parameter>elevation</Parameter>
+					<SplitByYear>True</SplitByYear>					
+					<includeallyears>True</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Lake Natoma-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_EL.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma hourly elevation, monthly means (%%units%%) and counts. ResSim.</Description>				
+					<Parameter>elevation</Parameter>
+					<SplitByYear>True</SplitByYear>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Lake Natoma-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Description>Lake Natoma hourly elevation, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 0.50 %%units%%). ResSim.</Description>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_MeanBias.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Parameter>elevation</Parameter>
+					<statistic>meanbias</statistic>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>True</includeallyears>
+					<unitsystem>english</unitsystem>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Lake Natoma-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Description>Lake Natoma hourly elevation, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.00 %%units%%). ResSim.</Description>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_MAE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Parameter>elevation</Parameter>
+					<unitsystem>english</unitsystem>
+					<statistic>MAE</statistic>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>True</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Lake Natoma-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>				
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Description>Lake Natoma hourly elevation, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.50 %%units%%). ResSim.</Description>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_RMSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Parameter>elevation</Parameter>
+					<unitsystem>english</unitsystem>
+					<statistic>RMSE</statistic>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>True</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Lake Natoma-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Description>Lake Natoma hourly elevation, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). ResSim.</Description>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_NSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Parameter>elevation</Parameter>
+					<unitsystem>english</unitsystem>
+					<statistic>NSE</statistic>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>True</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>//Lake Natoma-Pool/Elev//1Hour/%%Fpart%%/</DSS_Path>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<flag>Observed</flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>				
+
+
 			</Section>
 		</Sections>
 	</Chapter>
 	<Chapter>
-		<Name>American Downstream Natoma</Name>
-		<Region>American Downstream Natoma</Region>
+		<Name>American River</Name>
+		<Region>American River</Region>
 		<Sections>
 			<Section>
-				<Header>American at Fair Oaks (AFO)</Header>
+				<Header>American River at Fair Oaks (AFO) Temperature</Header>
+				<Object>
+					<Type>textbox</Type>
+					<Text>These figures represent time series compare simulated and observed temperature from January through December to aid calibration.  Time (date) is represented on the x-axis and temperature (%%degrees%%F) is represented on the y-axis. Four lines are included in the figure: observed (light blue) and simulated (red-dashed) hourly water temperature and observed (dark blue) and simulated (dark red dashed) daily average water temperature.</Text>
+				</Object>
 				<Object>
 					<Type>TimeSeriesPlot</Type>
-					<Title>American at Fair Oaks (AFO) Simulation: %%SimulationName%% %%year%%</Title>
-					<Description>American at Fair Oaks (AFO) Temperature %%year%%</Description>
-					<ylabel>Temperature (%%units%%)</ylabel>
-					<splitbyyear>True</splitbyyear>
-					<includeallyears>True</includeallyears><!--Phase1-->
-					<yearblocks>10</yearblocks>
-					<ylims>
-						<max>24</max>
-						<min>6</min>
-					</ylims>
-					<yticks>
-						<spacing>2</spacing>
-					</yticks>
-					<lines>
-						<line>
-							<label>Observed</label>
-							<Flag>Observed</Flag>
-							<Parameter>Temperature</Parameter>
-							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<lineColor>#5b9bd5</lineColor>
-							<lineWidth>1</lineWidth>
-							<lineStylePattern>solid</lineStylePattern>
-							<zorder>4</zorder>
-							<alpha>0.3</alpha>
-						</line>
-						<line>
-							<label>Observed Daily</label>
-							<Flag>Observed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1DAY</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<lineColor>#5b9bd5</lineColor>
-							<lineWidth>1</lineWidth>
-							<lineStylePattern>solid</lineStylePattern>
-							<zorder>8</zorder>
-						</line>	
-						<line>
-							<label>Computed</label>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-							<lineColor>red</lineColor>
-							<lineStylePattern>dashed</lineStylePattern>
-							<lineWidth>1</lineWidth>
-							<zorder>7</zorder>
-							<alpha>0.4</alpha>
-						</line>
-						<line>
-							<label>Computed Daily</label>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1DAY</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-							<lineColor>red</lineColor>
-							<lineStylePattern>dashed</lineStylePattern>
-							<lineWidth>1</lineWidth>
-							<zorder>9</zorder>
-						</line>
-					</lines>
-				</Object>				
-				<Object>
-					<Type>ErrorStatisticsTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>American at Fair Oaks (AFO) Temperature Error Statistics</Description>
-					<Parameter>Temperature</Parameter>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<tablecolors>
-						<tablecolor>
-							<statistic>meanbias</statistic>
-							<thresholds>
-								<threshold>
-									<value>0.75</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-								<threshold>
-									<value>-0.75</value>
-									<colorwhen>under</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>nse</statistic>
-							<thresholds>
-								<threshold>
-									<value>0.65</value>
-									<colorwhen>under</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>MAE</statistic>
-							<thresholds>
-								<threshold>
-									<value>1.0</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>RMSE</statistic>
-							<thresholds>
-								<threshold>
-									<value>1.5</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-					</tablecolors>					
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-
-				<Object>
-					<Type>SingleStatisticTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>American at Fair Oaks (AFO) Temperature Mean Bias, outside performance metric range when +- .75</Description>
-					<Parameter>Temperature</Parameter>
-					<statistic>meanbias</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>0.75</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-						<threshold>
-							<value>-0.75</value>
-							<colorwhen>under</colorwhen>
-						</threshold>
-					</thresholds>
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-				<Object>
-					<Type>SingleStatisticTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>American at Fair Oaks (AFO) Temperature MAE, outside performance metric range over 1.0</Description>
-					<Parameter>Temperature</Parameter>
-					<statistic>MAE</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>1.0</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-				<Object>
-					<Type>SingleStatisticTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>American at Fair Oaks (AFO) Temperature RMSE, outside performance metric range over 1.5</Description>
-					<Parameter>Temperature</Parameter>
-					<statistic>RMSE</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>1.5</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-
-
-				<Object>
-					<Type>TimeSeriesPlot</Type>
-					<Title>American at Fair Oaks (AFO) Simulation: %%SimulationName%% %%year%%</Title>
-					<Description>American at Fair Oaks (AFO) Flow %%year%%</Description>
-					<ylabel>Flow (%%units%%)</ylabel>
-					<unitsystem>english</unitsystem>
-					<splitbyyear>True</splitbyyear>
-					<includeallyears>True</includeallyears><!--Phase1-->
-					<yearblocks>10</yearblocks>
-					<lines>
-						<line>
-							<label>Observed</label>
-							<Flag>Observed</Flag>
-							<Parameter>Flow</Parameter>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
-							<lineColor>#5b9bd5</lineColor>
-							<lineWidth>1</lineWidth>
-							<lineStylePattern>solid</lineStylePattern>
-							<zorder>4</zorder>
-							<alpha>0.3</alpha>
-						</line>
-						<line>
-							<label>Observed Daily</label>
-							<Flag>Observed</Flag>
-							<Parameter>Flow</Parameter>
-							<Interval>1DAY</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
-							<lineColor>#5b9bd5</lineColor>
-							<lineWidth>1</lineWidth>
-							<lineStylePattern>solid</lineStylePattern>
-							<zorder>8</zorder>
-						</line>	
-						<line>
-							<label>Computed</label>
-							<Flag>Computed</Flag>
-							<Parameter>Flow</Parameter>
-							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-							<lineColor>red</lineColor>
-							<lineStylePattern>dashed</lineStylePattern>
-							<lineWidth>1</lineWidth>
-							<zorder>7</zorder>
-							<alpha>0.4</alpha>
-						</line>
-						<line>
-							<label>Computed Daily</label>
-							<Flag>Computed</Flag>
-							<Parameter>Flow</Parameter>
-							<Interval>1DAY</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-							<lineColor>red</lineColor>
-							<lineStylePattern>dashed</lineStylePattern>
-							<lineWidth>1</lineWidth>
-							<zorder>9</zorder>
-						</line>
-					</lines>
-				</Object>
-				<Object>
-					<Type>ErrorStatisticsTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>American at Fair Oaks (AFO) Flow Error Statistics</Description>
-					<Parameter>Flow</Parameter>
-					<unitsystem>english</unitsystem>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<!--<tablecolors>
-						<tablecolor>
-							<statistic>meanbias</statistic>
-							<thresholds>
-								<threshold>
-									<value>0.75</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-								<threshold>
-									<value>-0.75</value>
-									<colorwhen>under</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>nse</statistic>
-							<thresholds>
-								<threshold>
-									<value>0.65</value>
-									<colorwhen>under</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>MAE</statistic>
-							<thresholds>
-								<threshold>
-									<value>1.0</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>RMSE</statistic>
-							<thresholds>
-								<threshold>
-									<value>1.5</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-					</tablecolors>-->		
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<parameter>flow</parameter>
-							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<parameter>flow</parameter>
-							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-				<Object>
-					<Type>SingleStatisticTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>American at Fair Oaks (AFO) Flow Mean Bias</Description>
-					<Parameter>Flow</Parameter>
-					<statistic>meanbias</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<unitsystem>english</unitsystem>
-					<numberformats>
-						<numberformat>
-							<min>100</min>
-							<decimalplaces>0</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>100</max>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Interval>1DAY</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-				<Object>
-					<Type>SingleStatisticTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>American at Fair Oaks (AFO) Flow MAE</Description>
-					<Parameter>Flow</Parameter>
-					<statistic>MAE</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<unitsystem>english</unitsystem>
-					<numberformats>
-						<numberformat>
-							<min>100</min>
-							<decimalplaces>0</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>100</max>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Interval>1DAY</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-				<Object>
-					<Type>SingleStatisticTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>American at Fair Oaks (AFO) Flow RMSE</Description>
-					<Parameter>Flow</Parameter>
-					<statistic>RMSE</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<unitsystem>english</unitsystem>
-					<numberformats>
-						<numberformat>
-							<min>100</min>
-							<decimalplaces>0</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>100</max>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Interval>1DAY</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-
-			</Section>
-			<Section>
-				<Header>American at William Pond Park</Header>
-				<Object>
-					<Type>TimeSeriesPlot</Type>
-					<Title>American at William Pond Park Simulation: %%SimulationName%% %%year%%</Title>
-					<Description>American at William Pond Park Temperature %%year%%</Description>
+					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>American River at Fair Oaks (AFO) temperature, %%year%%. ResSim.</Description>
+					<Template>format/templates/Plot_Defaults_NAT_TW.xml</Template>
+					<unitsystem>english</unitsystem>					
 					<ylabel>Temperature (%%units%%)</ylabel>
 					<splitbyyear>true</splitbyyear>
-					<includeallyears>True</includeallyears><!--Phase1-->
-					<yearblocks>10</yearblocks>
-					<Ylims>
-						<min>5</min>
-						<max>25</max>
-					</Ylims>
-					<yticks>
-						<spacing>5</spacing>
-					</yticks>
-					<lines>
-						<line>
-							<label>Observed</label>
-							<Flag>Observed</Flag>
-							<Parameter>Temperature</Parameter>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<lineColor>#5b9bd5</lineColor>
-							<lineWidth>1</lineWidth>
-							<lineStylePattern>solid</lineStylePattern>
-							<zorder>4</zorder>
-							<alpha>0.3</alpha>
-						</line>
-						<line>
-							<label>Observed Daily</label>
-							<Flag>Observed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1DAY</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<lineColor>#5b9bd5</lineColor>
-							<lineWidth>1</lineWidth>
-							<lineStylePattern>solid</lineStylePattern>
-							<zorder>8</zorder>
-						</line>	
-						<line>
-							<label>Computed</label>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-							<lineColor>red</lineColor>
-							<lineStylePattern>dashed</lineStylePattern>
-							<lineWidth>1</lineWidth>
-							<zorder>7</zorder>
-							<alpha>0.4</alpha>
-						</line>
-						<line>
-							<label>Computed Daily</label>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1DAY</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-							<lineColor>red</lineColor>
-							<lineStylePattern>dashed</lineStylePattern>
-							<lineWidth>1</lineWidth>
-							<zorder>9</zorder>
-						</line>
-					</lines>
-				</Object>
-				<Object>
-					<Type>ErrorStatisticsTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>American at William Pond Park Temperature Error Statistics</Description>
-					<Parameter>Temperature</Parameter>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<tablecolors>
-						<tablecolor>
-							<statistic>meanbias</statistic>
-							<thresholds>
-								<threshold>
-									<value>0.75</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-								<threshold>
-									<value>-0.75</value>
-									<colorwhen>under</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>nse</statistic>
-							<thresholds>
-								<threshold>
-									<value>0.65</value>
-									<colorwhen>under</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>MAE</statistic>
-							<thresholds>
-								<threshold>
-									<value>1.0</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>RMSE</statistic>
-							<thresholds>
-								<threshold>
-									<value>1.5</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-					</tablecolors>					
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-
-				<Object>
-					<Type>SingleStatisticTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>American at William Pond Park Temperature Mean Bias, outside performance metric range when +- .75</Description>
-					<Parameter>Temperature</Parameter>
-					<statistic>meanbias</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>0.75</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-						<threshold>
-							<value>-0.75</value>
-							<colorwhen>under</colorwhen>
-						</threshold>
-					</thresholds>
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-				<Object>
-					<Type>SingleStatisticTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>American at William Pond Park Temperature MAE, outside performance metric range over 1.0</Description>
-					<Parameter>Temperature</Parameter>
-					<statistic>MAE</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>1.0</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-				<Object>
-					<Type>SingleStatisticTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>American at William Pond Park Temperature RMSE, outside performance metric range over 1.5</Description>
-					<Parameter>Temperature</Parameter>
-					<statistic>RMSE</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>1.5</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-			</Section>
-			<Section>
-				<Header>Watt Bridge near Carmichael</Header>
-				<Object>
-					<Type>TimeSeriesPlot</Type>
-					<Title>Watt Bridge near Carmichael Simulation: %%SimulationName%% %%year%%</Title>
-					<Description>Watt Bridge near Carmichael Temperature %%year%%</Description>
-					<ylabel>Temperature (%%units%%)</ylabel>
-					<splitbyyear>true</splitbyyear>
-					<includeallyears>True</includeallyears><!--Phase1-->
-					<yearblocks>10</yearblocks>
-					<Ylims>
-						<min>5</min>
-						<max>25</max>
-					</Ylims>
-					<yticks>
-						<spacing>5</spacing>
-					</yticks>
-					<lines>
-						<line>
-							<label>Observed</label>
-							<Flag>Observed</Flag>
-							<Parameter>Temperature</Parameter>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<lineColor>#5b9bd5</lineColor>
-							<lineWidth>1</lineWidth>
-							<lineStylePattern>solid</lineStylePattern>
-							<zorder>4</zorder>
-							<alpha>0.3</alpha>
-						</line>
-						<line>
-							<label>Observed Daily</label>
-							<Flag>Observed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1DAY</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<lineColor>#5b9bd5</lineColor>
-							<lineWidth>1</lineWidth>
-							<lineStylePattern>solid</lineStylePattern>
-							<zorder>8</zorder>
-						</line>	
-						<line>
-							<label>Computed</label>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-							<lineColor>red</lineColor>
-							<lineStylePattern>dashed</lineStylePattern>
-							<lineWidth>1</lineWidth>
-							<zorder>7</zorder>
-							<alpha>0.4</alpha>
-						</line>
-						<line>
-							<label>Computed Daily</label>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1DAY</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-							<lineColor>red</lineColor>
-							<lineStylePattern>dashed</lineStylePattern>
-							<lineWidth>1</lineWidth>
-							<zorder>9</zorder>
-						</line>
-					</lines>
-				</Object>				
-				<Object>
-					<Type>ErrorStatisticsTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>Watt Bridge near Carmichael Temperature Error Statistics</Description>
-					<Parameter>Temperature</Parameter>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<tablecolors>
-						<tablecolor>
-							<statistic>meanbias</statistic>
-							<thresholds>
-								<threshold>
-									<value>0.75</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-								<threshold>
-									<value>-0.75</value>
-									<colorwhen>under</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>nse</statistic>
-							<thresholds>
-								<threshold>
-									<value>0.65</value>
-									<colorwhen>under</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>MAE</statistic>
-							<thresholds>
-								<threshold>
-									<value>1.0</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-						<tablecolor>
-							<statistic>RMSE</statistic>
-							<thresholds>
-								<threshold>
-									<value>1.5</value>
-									<colorwhen>over</colorwhen>
-								</threshold>
-							</thresholds>
-						</tablecolor>
-					</tablecolors>					
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-
-				<Object>
-					<Type>SingleStatisticTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>Watt Bridge near Carmichael Temperature Mean Bias, outside performance metric range when +- .75</Description>
-					<Parameter>Temperature</Parameter>
-					<statistic>meanbias</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>0.75</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-						<threshold>
-							<value>-0.75</value>
-							<colorwhen>under</colorwhen>
-						</threshold>
-					</thresholds>
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-				<Object>
-					<Type>SingleStatisticTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>Watt Bridge near Carmichael Temperature MAE, outside performance metric range over 1.0</Description>
-					<Parameter>Temperature</Parameter>
-					<statistic>MAE</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>1.0</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-				<Object>
-					<Type>SingleStatisticTable</Type>
-					<missingmarker>--</missingmarker>
-					<addasterisk>True</addasterisk>
-					<Description>Watt Bridge near Carmichael Temperature RMSE, outside performance metric range over 1.5</Description>
-					<Parameter>Temperature</Parameter>
-					<statistic>RMSE</statistic>
-					<SplitByYear>True</SplitByYear>
-					<includeallyears>True</includeallyears>
-					<numberformats>
-						<numberformat>
-							<min>1</min>
-							<decimalplaces>1</decimalplaces>
-						</numberformat>
-						<numberformat>
-							<max>1</max>
-							<decimalplaces>2</decimalplaces>
-						</numberformat>
-					</numberformats>
-					<thresholds>
-						<threshold>
-							<value>1.5</value>
-							<colorwhen>over</colorwhen>
-						</threshold>
-					</thresholds>
-					<DataPaths>
-						<DataPath>
-							<Flag>Computed</Flag>
-							<Parameter>Temperature</Parameter>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
-							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
-						</DataPath>
-						<DataPath>
-							<Flag>Observed</Flag>
-							<Interval>1HOUR</Interval>
-							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
-							<omitvalue>-901.0</omitvalue>
-						</DataPath>
-					</DataPaths>
-				</Object>
-
-				<Object>
-					<Type>ContourPlot</Type>
-					<xlabel>Date</xlabel>
-					<ylabel>Distance downstream from Lake Natoma (miles)</ylabel>
-					<ylabelsize>10</ylabelsize>
-					<title>%%region%% - Natoma to Sacramento R %%year%%</title>
-					<description>Natoma to Sacramento R Contour %%year%%</description>
-					<unitsystem>metric</unitsystem>
-					<legend>True</legend>
-					<units>c</units>
-					<parameter>temperature</parameter>
-					<y_scalar>0.000189394</y_scalar>
-					<gridlines>false</gridlines>
-					<dateformat>datetime</dateformat>
-					<splitbyyear>False</splitbyyear>
 					<includeallyears>true</includeallyears>
-					<xlims>
-						<min>01 Oct 2006</min>
-						<max>05 Oct 2006</max>
-					</xlims>
-					
-					<transitions>
-						<name>label</name>
-						<linecolor>white</linecolor>
-						<fontsize>6</fontsize>
-						<linestylepattern>dashed</linestylepattern>
-						<horizontalalignment>left</horizontalalignment>
-						<linewidth>1</linewidth>
-						<fontcolor>white</fontcolor>
-					</transitions>
-					<colorbar>
-						<min>15</min>
-						<max>20</max>
-						<bins>31</bins>
-						<skipticks>3</skipticks>
-						<colormap>jet</colormap>
-						<label>Temperature (%%units%%)</label>
-					</colorbar>
-					<reaches>
-						<reach>
-							<parameter>temperature</parameter>
-							<label>Natoma Dam</label>
-							<units>C</units>
-							<ressimresname>Nimbus Dam to AFO</ressimresname>
-							<interval>1HOUR</interval>
-							<type>PER-AVER</type>
-						</reach>
-						<reach>
-							<parameter>temperature</parameter>
-							<units>C</units>
-							<label>Fair Oaks</label>
-							<ressimresname>AFO to Rossmoor Bar</ressimresname>
-							<interval>1HOUR</interval>
-							<type>PER-AVER</type>
-						</reach>
-						<reach>
-							<parameter>temperature</parameter>
-							<units>C</units>
-							<label>Rossmoor Bar</label>
-							<ressimresname>Rossmoor Bar to William Pond Park</ressimresname>
-							<interval>1HOUR</interval>
-							<type>PER-AVER</type>
-						</reach>
-						<reach>
-							<parameter>temperature</parameter>
-							<units>C</units>
-							<label>William Pond Park</label>
-							<ressimresname>William Pond Park to Watt Ave Bridge</ressimresname>
-							<interval>1HOUR</interval>
-							<type>PER-AVER</type>
-						</reach>
-						<reach>
-							<parameter>temperature</parameter>
-							<units>C</units>
-							<label>Watt Ave Bridge</label>
-							<ressimresname>Watt Ave Bridge to H St Bridge</ressimresname>
-							<interval>1HOUR</interval>
-							<type>PER-AVER</type>
-						</reach>
-						<reach>
-							<parameter>temperature</parameter>
-							<units>C</units>
-							<label>H St Bridge</label>
-							<ressimresname>H St Bridge to Sacramento Confluence</ressimresname>
-							<interval>1HOUR</interval>
-							<type>PER-AVER</type>
-						</reach>
-					</reaches>
+					<yearblocks>10</yearblocks>
+					<lines>
+						<line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<alpha>0.3</alpha>
+						</line>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>8</zorder>
+						</line>	
+						<line>
+							<label>Computed</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>7</zorder>
+							<alpha>0.4</alpha>
+						</line>
+						<line>
+							<label>Computed Daily</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>9</zorder>
+						</line>
+					</lines>
 				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<unitsystem>english</unitsystem>
+					<Description>American River at Fair Oaks (AFO) temperature, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). ResSim.</Description>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_TW.xml</Template>					
+					<Parameter>Temperature</Parameter>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object>
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>American River at Fair Oaks (AFO) temperature, monthly means (%%units%%) and counts. ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<SplitByYear>True</SplitByYear>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object> 
+				
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MeanBias.xml</Template>
+					<unitsystem>english</unitsystem>					
+					<Description>American River at Fair Oaks (AFO) temperature, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>				
+					<Parameter>Temperature</Parameter>
+					<statistic>meanbias</statistic>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MAE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<unitsystem>english</unitsystem>
+					<Description>American River at Fair Oaks (AFO) temperature, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<statistic>MAE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_RMSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<unitsystem>english</unitsystem>					
+					<Description>American River at Fair Oaks (AFO) temperature, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<statistic>RMSE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_NSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<unitsystem>english</unitsystem>					
+					<Description>American River at Fair Oaks (AFO) temperature, monthly average NSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/At_Fair_Oaks_American 11446500/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object>
+			</Section>
 
+			<Section>
+				<Header>American River at Fair Oaks (AFO) Flow</Header>
+				<Object>
+					<Type>textbox</Type>
+					<Text>River flow figures compare simulated and observed flow time series from January through December to aid calibration.  Time (date) is represented on the x-axis and flow (cfs) is represented on the y-axis. Four lines are included in the figures: observed (light blue) and simulated (red-dashed) hourly flow and observed (dark blue) and simulated (dark red dashed) daily average flow. In certain instances, time series for multiple years are shown to indicate comparison of observed data and model simulations for longer time periods.</Text>
+				</Object>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>American River at Fair Oaks (AFO) hourly flow, %%year%%. ResSim.</Description>
+					<Template>format/templates/Plot_Defaults_NAT_Q.xml</Template>	
+					<unitsystem>english</unitsystem>
+					<ylabel>Flow (%%units%%)</ylabel>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<lines>
+						<line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<alpha>0.3</alpha>
+						</line>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<Parameter>Flow</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>8</zorder>
+						</line>	
+						<line>
+							<label>Computed</label>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>7</zorder>
+							<alpha>0.4</alpha>
+						</line>
+						<line>
+							<label>Computed Daily</label>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>9</zorder>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_Q.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>American River at Fair Oaks (AFO) hourly flow, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 150 %%units%%, MAE: %%gt%%300 %%units%%, RMSE: %%gt%%500 %%units%%, NSE: %%lt%%0.65). ResSim.</Description>									
+					<Parameter>flow</Parameter>
+					<SplitByYear>True</SplitByYear>
+					<unitsystem>english</unitsystem>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<Parameter>flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<flag>Observed</flag>
+							<Parameter>flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_Q.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>American River at Fair Oaks (AFO) hourly flow, monthly means (%%units%%) and counts. ResSim.</Description>
+					<Parameter>Flow</Parameter>
+					<unitsystem>english</unitsystem>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>true</includeallyears>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<Parameter>flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<flag>Observed</flag>
+							<Parameter>flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_MeanBias.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>American River at Fair Oaks (AFO) hourly flow, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 150 %%units%%). ResSim.</Description>					
+					<Parameter>flow</Parameter>
+					<statistic>meanbias</statistic>
+					<unitsystem>english</unitsystem>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<Parameter>flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<flag>Observed</flag>
+							<Parameter>flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_MAE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>American River at Fair Oaks (AFO) hourly flow, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%300 %%units%%). CE-QUAL-W2.</Description>					
+					<Parameter>flow</Parameter>
+					<statistic>MAE</statistic>
+					<unitsystem>english</unitsystem>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<Parameter>flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<flag>Observed</flag>
+							<Parameter>flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_RMSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>American River at Fair Oaks (AFO) hourly flow, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%500 %%units%%). ResSim.</Description>
+					<Parameter>flow</Parameter>
+					<statistic>RMSE</statistic>
+					<unitsystem>english</unitsystem>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<Parameter>flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<flag>Observed</flag>
+							<Parameter>flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_NSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>American River at Fair Oaks (AFO) hourly flow, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<Parameter>flow</Parameter>
+					<statistic>NSE</statistic>
+					<unitsystem>english</unitsystem>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>True</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<flag>Computed</flag>
+							<Parameter>flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//AFO/Flow//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<flag>Observed</flag>
+							<Parameter>flow</Parameter>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/11446500/AMERICAN FAIROAKS/FLOW//15MIN/USGS-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/American_inflows_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>	
+			</Section>
+
+			<Section>
+				<Header>American River at William Pond Park Temperature</Header>
+				<Object>
+					<Type>textbox</Type>
+					<Text>These figures represent time series compare simulated and observed temperature from January through December to aid calibration.  Time (date) is represented on the x-axis and temperature (%%degrees%%F) is represented on the y-axis. Four lines are included in the figure: observed (light blue) and simulated (red-dashed) hourly water temperature and observed (dark blue) and simulated (dark red dashed) daily average water temperature.</Text>
+				</Object>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>American River at William Pond Park temperature, %%year%%. ResSim.</Description>
+					<Template>format/templates/Plot_Defaults_NAT_TW.xml</Template>
+					<unitsystem>english</unitsystem>					
+					<ylabel>Temperature (%%units%%)</ylabel>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<yearblocks>10</yearblocks>
+					<lines>
+						<line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<alpha>0.3</alpha>
+						</line>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>8</zorder>
+						</line>	
+						<line>
+							<label>Computed</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>7</zorder>
+							<alpha>0.4</alpha>
+						</line>
+						<line>
+							<label>Computed Daily</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>9</zorder>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<unitsystem>english</unitsystem>
+					<Description>American River at William Pond Park temperature, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). ResSim.</Description>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_TW.xml</Template>					
+					<Parameter>Temperature</Parameter>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object>
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>American River at William Pond Park temperature, monthly means (%%units%%) and counts. ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<SplitByYear>True</SplitByYear>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object> 
+				
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MeanBias.xml</Template>
+					<unitsystem>english</unitsystem>					
+					<Description>American River at William Pond Park temperature, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>				
+					<Parameter>Temperature</Parameter>
+					<statistic>meanbias</statistic>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MAE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<unitsystem>english</unitsystem>
+					<Description>American River at William Pond Park temperature, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<statistic>MAE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_RMSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<unitsystem>english</unitsystem>					
+					<Description>American River at William Pond Park temperature, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<statistic>RMSE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_NSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<unitsystem>english</unitsystem>					
+					<Description>American River at William Pond Park temperature, monthly average NSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object>
+			</Section>
+
+			<Section>
+				<Header>American River at Watt Bridge near Carmichael Temperature</Header>
+				<Object>
+					<Type>textbox</Type>
+					<Text>These figures represent time series compare simulated and observed temperature from January through December to aid calibration.  Time (date) is represented on the x-axis and temperature (%%degrees%%F) is represented on the y-axis. Four lines are included in the figure: observed (light blue) and simulated (red-dashed) hourly water temperature and observed (dark blue) and simulated (dark red dashed) daily average water temperature.</Text>
+				</Object>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>American River at Watt Bridge near Carmichael temperature, %%year%%. ResSim.</Description>
+					<Template>format/templates/Plot_Defaults_NAT_TW.xml</Template>
+					<unitsystem>english</unitsystem>					
+					<ylabel>Temperature (%%units%%)</ylabel>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<yearblocks>10</yearblocks>
+					<lines>
+						<line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<alpha>0.3</alpha>
+						</line>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>8</zorder>
+						</line>	
+						<line>
+							<label>Computed</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>7</zorder>
+							<alpha>0.4</alpha>
+						</line>
+						<line>
+							<label>Computed Daily</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>red</lineColor>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>9</zorder>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<unitsystem>english</unitsystem>
+					<Description>American River at Watt Bridge near Carmichael temperature, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). ResSim.</Description>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_TW.xml</Template>					
+					<Parameter>Temperature</Parameter>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object>
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>American River at Watt Bridge near Carmichael temperature, monthly means (%%units%%) and counts. ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<SplitByYear>True</SplitByYear>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object> 
+				
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MeanBias.xml</Template>
+					<unitsystem>english</unitsystem>					
+					<Description>American River at Watt Bridge near Carmichael temperature, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>				
+					<Parameter>Temperature</Parameter>
+					<statistic>meanbias</statistic>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MAE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<unitsystem>english</unitsystem>
+					<Description>American River at Watt Bridge near Carmichael temperature, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<statistic>MAE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_RMSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<unitsystem>english</unitsystem>					
+					<Description>American River at Watt Bridge near Carmichael temperature, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<statistic>RMSE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_NSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<unitsystem>english</unitsystem>					
+					<Description>American River at Watt Bridge near Carmichael temperature, monthly average NSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). ResSim.</Description>
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Interval>1HOUR</Interval>
+							<Parameter>Temperature</Parameter>
+							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%Fpart%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>						
+				</Object>
 			</Section>
 		</Sections>
 	</Chapter>
