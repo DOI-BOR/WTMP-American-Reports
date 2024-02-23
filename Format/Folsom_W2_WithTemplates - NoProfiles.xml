@@ -1,0 +1,780 @@
+<!--Assume that ReportGenerator uses DSS info to determine units, so no units need to be explicitly stated-->
+<!--All W2 simulation results are assumed to be in SI units-->
+<!--Units should be specified for text file input files-->
+<Chapters>
+	<Chapter>
+		<Name>Folsom Lake</Name>
+		<Region>Folsom Lake</Region>
+		<debug>False</debug>
+		<Sections>
+			<Section>
+				<Header>Folsom Lake Elevation</Header>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
+					<Template>format/templates/Plot_Defaults_FOL_EL.xml</Template>
+					<unitsystem>english</unitsystem>
+					<Description>Folsom Lake hourly elevation, %%year%%. CE-QUAL-W2.</Description>
+					<ylabel>Elevation (%%units%%)</ylabel>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>					
+					<lines>
+						<line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<parameter>elevation</parameter>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							<linecolor>#5b9bd5</linecolor>
+							<alpha>0.4</alpha>
+							<zorder>3</zorder>
+							<omitvalue>-901.0</omitvalue>
+						</line>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<interval>1DAY</interval>
+							<type>PER-AVER</type>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							<linecolor>#5b9bd5</linecolor>
+							<omitvalue>-901.0</omitvalue>
+							<zorder>5</zorder>
+						</line>						
+						<line>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<parameter>elevation</parameter>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<lineColors>
+								<linecolor>red</linecolor>
+							</lineColors>
+							<alpha>0.4</alpha>
+							<zorder>4</zorder>
+							<lineStylePattern>dashed</lineStylePattern>
+						</line>
+						<line>
+							<label>Simulated Daily</label>
+							<Flag>Computed</Flag>
+							<parameter>elevation</parameter>
+							<interval>1DAY</interval>
+							<type>PER-AVER</type>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<zorder>6</zorder>
+							<lineColors>
+								<linecolor>darkred</linecolor>
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_Elev.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>Folsom Lake hourly elevation, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 0.50 %%units%%, MAE: %%gt%%1.0 %%units%%, RMSE: %%gt%%1.5 %%units%%, NSE: %%lt%%0.65). CE-QUAL-W2.</Description>
+					<Parameter>elevation</Parameter>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>					
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>		
+					<Template>format/templates/MonthlyStatisticsTable_EL.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>Folsom Lake hourly elevation, monthly means (%%units%%) and counts. CE-QUAL-W2.</Description>
+					<Parameter>elevation</Parameter>					
+					<numberformats>
+						<numberformat>
+							<decimalplaces>1</decimalplaces>
+						</numberformat>
+						<numberformat>
+							<stat>count</stat>
+							<decimalplaces>0</decimalplaces>
+						</numberformat>
+					</numberformats>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+							<units>m</units>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_MeanBias.xml</Template>	
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>				
+					<Description>Folsom Lake hourly elevation, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 0.5 %%units%%). CE-QUAL-W2.</Description>
+					<Parameter>elevation</Parameter>
+					<statistic>meanbias</statistic>					
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>				
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_MAE.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>									
+					<Description>Folsom Lake hourly elevation, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.0 %%units%%). CE-QUAL-W2.</Description>
+					<Parameter>elevation</Parameter>
+					<statistic>MAE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>					
+					<DataPaths>
+						<DataPath>							
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<omitvalue>0</omitvalue>
+							<units>m</units>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_RMSE.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>										
+					<Description>Folsom Lake hourly elevation, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.5 %%units%%). CE-QUAL-W2.</Description>
+					<Parameter>elevation</Parameter>
+					<statistic>RMSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_NSE.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>										
+					<Description>Folsom Lake hourly elevation, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<Parameter>elevation</Parameter>
+					<statistic>NSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>				
+			</Section>
+			
+			<Section>
+				<Header>Folsom Lake Dam Flow-Weighted Outflow Temperature</Header>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>Folsom Lake dam hourly flow-weighted outflow temperature, %%year%%. CE-QUAL-W2.</Description>
+					<Template>format/templates/Plot_Defaults_FOL_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<ylabel>Temperature (%%units%%)</ylabel>
+					<includeallyears>True</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<Lines>
+						<line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/USBR/USGS 11446220 BLW FOLSOM DAM/TEMP-WATER//1HOUR/GRAB2/</DSS_Path>
+							<linecolor>#5b9bd5</linecolor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<omitvalue>-901.0</omitvalue>
+							<alpha>0.3</alpha>
+						</line>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/USBR/USGS 11446220 BLW FOLSOM DAM/TEMP-WATER//1HOUR/GRAB2/</DSS_Path>
+							<linecolor>#5b9bd5</linecolor>
+							<lineWidth>2</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>8</zorder>
+							<omitvalue>-901.0</omitvalue>
+						</line>	
+						<line>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>//FOLSOM_FWA/TEMP/*/1HOUR/POSTPROCESSED/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<lineColors>
+								<linecolor>red</linecolor>
+							</lineColors>
+							<lineStylePattern>dash</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>7</zorder>
+							<alpha>0.4</alpha>
+							<omitvalue>-901</omitvalue>
+						</line>
+						<line>
+							<label>Simulated Daily</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<dss_path>//FOLSOM_FWA/TEMP/*/1HOUR/POSTPROCESSED/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<lineColors>
+								<linecolor>darkred</linecolor>
+							</lineColors>
+							<lineStylePattern>dash</lineStylePattern>
+							<lineWidth>2</lineWidth>
+							<zorder>9</zorder>
+							<omitvalue>-901</omitvalue>
+						</line>				
+					</Lines>
+				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake dam hourly flow-weighted outflow temperature, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). CE-QUAL-W2.</Description>
+					<Parameter>Temperature</Parameter>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>//FOLSOM_FWA/TEMP/*/1HOUR/POSTPROCESSED/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<omitvalue>-901</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/USBR/USGS 11446220 BLW FOLSOM DAM/TEMP-WATER//1HOUR/GRAB2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake dam hourly flow-weighted outflow temperature, monthly means (%%units%%) and counts. CE-QUAL-W2.</Description>
+					<Parameter>Temperature</Parameter>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>//FOLSOM_FWA/TEMP/*/1HOUR/POSTPROCESSED/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<omitvalue>-901</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/USBR/USGS 11446220 BLW FOLSOM DAM/TEMP-WATER//1HOUR/GRAB2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MeanBias.xml</Template>
+					<unitsystem>english</unitsystem>					
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake hourly flow-weighted outflow temperature, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>					
+					<Parameter>Temperature</Parameter>
+					<statistic>meanbias</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>//FOLSOM_FWA/TEMP/*/1HOUR/POSTPROCESSED/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/USBR/USGS 11446220 BLW FOLSOM DAM/TEMP-WATER//1HOUR/GRAB2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MAE.xml</Template>
+					<unitsystem>english</unitsystem>									
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake dam hourly flow-weighted outflow temperature, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). CE-QUAL-W2.</Description>					
+					<Parameter>Temperature</Parameter>
+					<statistic>MAE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>					
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>//FOLSOM_FWA/TEMP/*/1HOUR/POSTPROCESSED/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<omitvalue>-901</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/USBR/USGS 11446220 BLW FOLSOM DAM/TEMP-WATER//1HOUR/GRAB2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_RMSE.xml</Template>
+					<unitsystem>english</unitsystem>			
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake dam hourly flow-weighted outflow temperature, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). CE-QUAL-W2.</Description>					
+					<Parameter>Temperature</Parameter>
+					<statistic>RMSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>//FOLSOM_FWA/TEMP/*/1HOUR/POSTPROCESSED/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<omitvalue>-901</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/USBR/USGS 11446220 BLW FOLSOM DAM/TEMP-WATER//1HOUR/GRAB2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_NSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake dam hourly flow-weighted outflow temperature, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>			
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>//FOLSOM_FWA/TEMP/*/1HOUR/POSTPROCESSED/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<omitvalue>-901</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/USBR/USGS 11446220 BLW FOLSOM DAM/TEMP-WATER//1HOUR/GRAB2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>					
+				</Object>
+			</Section>
+			
+			
+			<Section>
+				<Header>Folsom Lake Dam Outflow</Header>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>Folsom Lake dam hourly outflow, %%year%%. CE-QUAL-W2.</Description>
+					<Template>format/templates/Plot_Defaults_FOL_Q.xml</Template>
+					<unitsystem>english</unitsystem>
+					<ylabel>Flow (%%units%%)</ylabel>				
+					<includeallyears>True</includeallyears>
+					<splitbyyear>True</splitbyyear>
+					<Lines>
+						<line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<DSS_Path>/FOLSOM/FLOW 1 TOTAL RELEASE/FLOW/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Folsom_releases_6.dss</DSS_Filename>
+							<linecolor>#5b9bd5</linecolor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<omitvalue>-901.0</omitvalue>
+							<alpha>0.3</alpha>
+						</line>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Path>/FOLSOM/FLOW 1 TOTAL RELEASE/FLOW/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Folsom_releases_6.dss</DSS_Filename>
+							<linecolor>#5b9bd5</linecolor>
+							<lineWidth>2</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>8</zorder>
+							<omitvalue>-901.0</omitvalue>
+						</line>							
+						<line>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>flow</Parameter>
+							<units>cms</units>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_105.OPT/SEG 105 WITHDRAWAL/FLOW-QWD/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<lineColors>
+								<linecolor>red</linecolor>
+							</lineColors>
+							<lineStylePattern>dash</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>7</zorder>
+							<alpha>0.4</alpha>
+							<omitvalue>0.0</omitvalue>
+						</line>
+						<line>
+							<label>Simulated Daily</label>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<units>cms</units>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_105.OPT/SEG 105 WITHDRAWAL/FLOW-QWD/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<lineColors>
+								<linecolor>red</linecolor>
+							</lineColors>
+							<lineStylePattern>dash</lineStylePattern>
+							<lineWidth>2</lineWidth>
+							<zorder>9</zorder>
+							<omitvalue>0.0</omitvalue>
+						</line>	
+					</Lines>
+				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_Q.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>Folsom Lake dam hourly outflow, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 50 %%units%%, MAE: %%gt%%150 %%units%%, RMSE: %%gt%%500 %%units%%, NSE: %%lt%%0.65). CE-QUAL-W2.</Description>
+					<Parameter>flow</Parameter>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<unitsystem>english</unitsystem>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<units>cms</units>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_105.OPT/SEG 105 WITHDRAWAL/FLOW-QWD/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/FOLSOM/FLOW 1 TOTAL RELEASE/FLOW/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Folsom_releases_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_Q.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>									
+					<Description>Folsom Lake dam hourly outflow, monthly means (%%units%%) and counts. CE-QUAL-W2.</Description>
+					<Parameter>Flow</Parameter>					
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<units>cms</units>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_105.OPT/SEG 105 WITHDRAWAL/FLOW-QWD/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/FOLSOM/FLOW 1 TOTAL RELEASE/FLOW/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Folsom_releases_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_MeanBias.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>Folsom Lake dam hourly outflow, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 50 %%units%%). CE-QUAL-W2.</Description>					
+					<Parameter>flow</Parameter>
+					<statistic>meanbias</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<units>cms</units>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_105.OPT/SEG 105 WITHDRAWAL/FLOW-QWD/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/FOLSOM/FLOW 1 TOTAL RELEASE/FLOW/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Folsom_releases_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_MAE.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake dam hourly outflow, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%150 %%units%%). CE-QUAL-W2.</Description>
+					<Parameter>flow</Parameter>
+					<statistic>MAE</statistic>
+					<includeallyears>true</includeallyears>					
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<units>cms</units>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_105.OPT/SEG 105 WITHDRAWAL/FLOW-QWD/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/FOLSOM/FLOW 1 TOTAL RELEASE/FLOW/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Folsom_releases_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_RMSE.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake dam hourly outflow, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%500 %%units%%). CE-QUAL-W2.</Description>									
+					<Parameter>flow</Parameter>
+					<statistic>RMSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<units>cms</units>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_105.OPT/SEG 105 WITHDRAWAL/FLOW-QWD/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/FOLSOM/FLOW 1 TOTAL RELEASE/FLOW/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Folsom_releases_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_NSE.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake dam hourly outflow, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>									
+					<Parameter>flow</Parameter>
+					<statistic>NSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<units>cms</units>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_105.OPT/SEG 105 WITHDRAWAL/FLOW-QWD/*/1HOUR/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/FOLSOM/FLOW 1 TOTAL RELEASE/FLOW/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Folsom_releases_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>				
+			</Section>
+		</Sections>
+	</Chapter>
+</Chapters>

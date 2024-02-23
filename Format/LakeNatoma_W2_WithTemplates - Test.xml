@@ -1,0 +1,1055 @@
+<!--Assume that ReportGenerator uses DSS info to determine units, so no units need to be explicitly stated-->
+<!--All W2 simulation results are assumed to be in SI units-->
+<!--Units should be specified for text file input files-->
+<Chapters>
+	<Chapter>
+		<Name>Lake Natoma</Name>
+		<Region>Lake Natoma</Region>
+		<debug>False</debug>
+		<Sections>
+			<Section>
+				<Header>Lake Natoma Near Dam Temperature Profiles</Header>
+				<Object>
+					<Type>ProfilePlot</Type>
+					<Description>Lake Natoma near dam temperature profiles, %%year%%. CE-QUAL-W2.</Description>
+					<Template>format/templates/Plot_Defaults_NAT_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<XLabel>Temperature (%%units%%)</XLabel>
+					<SplitByYear>True</SplitByYear>										
+					<profilesperrow>4</profilesperrow>
+					<Lines>
+						<Line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<lineColor>#5b9bd5</lineColor>			<!--medium blue-->
+							<lineWidth>2</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_ft.txt</FileName>
+							<y_convention>depth</y_convention>
+							<units>C</units>						<!--Text file input, so specify units-->							
+							<wse>
+								<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							</wse>
+						</Line>					
+						<Line>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<linecolor>red</linecolor>								
+							<lineWidth>2</lineWidth>
+							<lineStylePattern>dashed</lineStylePattern>
+							<zorder>3</zorder>							
+							<w2_segment>34</w2_segment>						
+							<omitvalue>-146.2</omitvalue>		<!--Because simulated may have null values, F equivaluent of -99C-->
+						</Line>
+					</Lines>
+					<hlines>
+						<hline>
+							<label>Observed WSE</label>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>										
+							<omitvalue>-901.0</omitvalue>
+						</hline>
+						<hline>
+							<label>Simulated WSE</label>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/W2:TSR_1_SEG34.CSV/TSR SEG 34 DEPTH 0.00/ELEV/*/1HOUR/W2:POR:CEQUALW2-LAKENATOMA_W2/</DSS_Path>
+							<lineColors>
+								<linecolor>darkred</linecolor>								
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+						</hline>
+					</hlines>
+				</Object>
+				<Object>
+					<Type>ProfileStatisticsTable</Type>
+					<Template>format/templates/ProfileStatisticsTable_Defaults_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma near dam temperature profiles, performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). CE-QUAL-W2.</Description>					
+					<Parameter>Temperature</Parameter>					
+					<includeallyears>true</includeallyears>
+					<DatesSource>Observed</DatesSource>
+					<InterpolationSource>Observed</InterpolationSource>	
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>34</w2_segment>		
+							<omitvalue>-146.2</omitvalue>					
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>							
+							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_ft.txt</FileName>
+							<y_convention>depth</y_convention>
+							<units>C</units>						<!--Text file input, so specify units-->							
+							<wse>
+								<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>		
+							</wse>
+						</DataPath>
+					</DataPaths>								
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MeanBias.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma near dam temperature profiles, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>					
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>meanbias</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>34</w2_segment>		
+							<omitvalue>-146.2</omitvalue>					
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>							
+							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_ft.txt</FileName>
+							<y_convention>depth</y_convention>
+							<units>C</units>						<!--Text file input, so specify units-->							
+							<wse>
+								<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>		
+							</wse>
+						</DataPath>
+					</DataPaths>	
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MAE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma near dam temperature profiles, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>MAE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>34</w2_segment>		
+							<omitvalue>-146.2</omitvalue>					
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>							
+							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_ft.txt</FileName>
+							<y_convention>depth</y_convention>
+							<units>C</units>						<!--Text file input, so specify units-->							
+							<wse>
+								<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>		
+							</wse>
+						</DataPath>
+					</DataPaths>	
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_RMSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma near dam temperature profiles, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>					
+					<Parameter>Temperature</Parameter>
+					<statistic>RMSE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>34</w2_segment>		
+							<omitvalue>-146.2</omitvalue>					
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>							
+							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_ft.txt</FileName>
+							<y_convention>depth</y_convention>
+							<units>C</units>						<!--Text file input, so specify units-->							
+							<wse>
+								<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>		
+							</wse>
+						</DataPath>
+					</DataPaths>	
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_NSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma near dam temperature profiles, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<SplitByYear>True</SplitByYear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>34</w2_segment>		
+							<omitvalue>-146.2</omitvalue>					
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>							
+							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_ft.txt</FileName>
+							<y_convention>depth</y_convention>
+							<units>C</units>						<!--Text file input, so specify units-->							
+							<wse>
+								<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>		
+							</wse>
+						</DataPath>
+					</DataPaths>	
+				</Object>
+			</Section>
+			
+			<Section>
+				<Header>Lake Natoma Dam Outflow Temperature</Header>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>Lake Natoma dam 15min outflow temperature, %%year%%. CE-QUAL-W2.</Description>
+					<Template>format/templates/Plot_Defaults_NAT_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<ylabel>Temperature (%%units%%)</ylabel>
+					<includeallyears>True</includeallyears>
+					<splitbyyear>true</splitbyyear>	
+					<Lines>
+						<line>
+							<label>Observed 15min</label>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE TW/TEMP/*/15MIN/GRABDATA2/</DSS_Path>
+							<linecolor>#5b9bd5</linecolor>
+							<lineWidth>1</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<omitvalue>-901.0</omitvalue>
+							<alpha>0.3</alpha>
+						</line>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE TW/TEMP/*/15MIN/GRABDATA2/</DSS_Path>
+							<linecolor>#5b9bd5</linecolor>
+							<lineWidth>2</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>8</zorder>
+							<omitvalue>-901.0</omitvalue>
+						</line>	
+						<line>
+							<label>Simulated 15min</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>/W2:TWO_34.CSV/SEG 34 WITHDRAWAL/TEMP-TWO/*/15MIN/W2:POR:CEQUALW2-LAKENATOMA_W2/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<lineColors>
+								<linecolor>red</linecolor>
+							</lineColors>
+							<lineStylePattern>dash</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>7</zorder>
+							<alpha>0.4</alpha>
+							<omitvalue>-901</omitvalue>
+						</line>
+						<line>
+							<label>Simulated Daily</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<dss_path>/W2:TWO_34.CSV/SEG 34 WITHDRAWAL/TEMP-TWO/*/15MIN/W2:POR:CEQUALW2-LAKENATOMA_W2/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<lineColors>
+								<linecolor>darkred</linecolor>
+							</lineColors>
+							<lineStylePattern>dash</lineStylePattern>
+							<lineWidth>2</lineWidth>
+							<zorder>9</zorder>
+							<omitvalue>-901</omitvalue>
+						</line>				
+					</Lines>
+				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma dam 15min outflow temperature, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). CE-QUAL-W2.</Description>
+					<Parameter>Temperature</Parameter>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>/W2:TWO_34.CSV/SEG 34 WITHDRAWAL/TEMP-TWO/*/15MIN/W2:POR:CEQUALW2-LAKENATOMA_W2/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<omitvalue>-901</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE TW/TEMP/*/15MIN/GRABDATA2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma dam 15min outflow temperature, monthly means (%%units%%) and counts. CE-QUAL-W2.</Description>
+					<Parameter>Temperature</Parameter>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>/W2:TWO_34.CSV/SEG 34 WITHDRAWAL/TEMP-TWO/*/15MIN/W2:POR:CEQUALW2-LAKENATOMA_W2/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<omitvalue>-901</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE TW/TEMP/*/15MIN/GRABDATA2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MeanBias.xml</Template>
+					<unitsystem>english</unitsystem>					
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma dam 15min outflow temperature, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>					
+					<Parameter>Temperature</Parameter>
+					<statistic>meanbias</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>/W2:TWO_34.CSV/SEG 34 WITHDRAWAL/TEMP-TWO/*/15MIN/W2:POR:CEQUALW2-LAKENATOMA_W2/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE TW/TEMP/*/15MIN/GRABDATA2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MeanBias.xml</Template>
+					<unitsystem>english</unitsystem>					
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma dam 15min outflow temperature, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>					
+					<Parameter>Temperature</Parameter>
+					<statistic>meanbias</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>/W2:TWO_34.CSV/SEG 34 WITHDRAWAL/TEMP-TWO/*/15MIN/W2:POR:CEQUALW2-LAKENATOMA_W2/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<omitvalue>-901</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE TW/TEMP/*/15MIN/GRABDATA2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_MAE.xml</Template>
+					<unitsystem>english</unitsystem>									
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma dam 15min outflow temperature, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). CE-QUAL-W2.</Description>					
+					<Parameter>Temperature</Parameter>
+					<statistic>MAE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>					
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>/W2:TWO_34.CSV/SEG 34 WITHDRAWAL/TEMP-TWO/*/15MIN/W2:POR:CEQUALW2-LAKENATOMA_W2/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<omitvalue>-901</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE TW/TEMP/*/15MIN/GRABDATA2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_RMSE.xml</Template>
+					<unitsystem>english</unitsystem>			
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma dam 15min outflow temperature, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). CE-QUAL-W2.</Description>					
+					<Parameter>Temperature</Parameter>
+					<statistic>RMSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>/W2:TWO_34.CSV/SEG 34 WITHDRAWAL/TEMP-TWO/*/15MIN/W2:POR:CEQUALW2-LAKENATOMA_W2/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<omitvalue>-901</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE TW/TEMP/*/15MIN/GRABDATA2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_TW_NSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma dam 15min outflow temperature, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>			
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<dss_path>/W2:TWO_34.CSV/SEG 34 WITHDRAWAL/TEMP-TWO/*/15MIN/W2:POR:CEQUALW2-LAKENATOMA_W2/</dss_path>
+							<DSS_Filename>%%modeldss%%</DSS_Filename>
+							<omitvalue>-901</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE TW/TEMP/*/15MIN/GRABDATA2/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>					
+				</Object>
+			</Section>
+			
+			<Section>
+				<Header>Lake Natoma Dam Outflow</Header>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
+					<Description>Lake Natoma dam daily outflow, %%year%%. CE-QUAL-W2.</Description>
+					<Template>format/templates/Plot_Defaults_NAT_Q.xml</Template>
+					<unitsystem>english</unitsystem>
+					<ylabel>Flow (%%units%%)</ylabel>				
+					<includeallyears>True</includeallyears>
+					<splitbyyear>true</splitbyyear>	
+					<Lines>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE FLOW/FLOW/*/1DAY/W2/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<linecolor>#5b9bd5</linecolor>
+							<lineWidth>2</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>8</zorder>
+							<omitvalue>-901.0</omitvalue>
+						</line>							
+						<line>
+							<label>Simulated 15min</label>
+							<Flag>Computed</Flag>
+							<Parameter>flow</Parameter>
+							<units>cms</units>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_34.CSV/SEG 34 WITHDRAWAL/FLOW-QWD/*/15MIN/%%Fpart%%/</DSS_Path>
+							<lineColors>
+								<linecolor>red</linecolor>
+							</lineColors>
+							<lineStylePattern>dash</lineStylePattern>
+							<lineWidth>1</lineWidth>
+							<zorder>7</zorder>
+							<alpha>0.4</alpha>
+							<omitvalue>0.0</omitvalue>
+						</line>
+						<line>
+							<label>Simulated Daily</label>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<units>cms</units>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_34.CSV/SEG 34 WITHDRAWAL/FLOW-QWD/*/15MIN/%%Fpart%%/</DSS_Path>
+							<lineColors>
+								<linecolor>red</linecolor>
+							</lineColors>
+							<lineStylePattern>dash</lineStylePattern>
+							<lineWidth>2</lineWidth>
+							<zorder>9</zorder>
+							<omitvalue>0.0</omitvalue>
+						</line>	
+					</Lines>
+				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_Q.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>Lake Natoma dam daily outflow, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 50 %%units%%, MAE: %%gt%%150 %%units%%, RMSE: %%gt%%500 %%units%%, NSE: %%lt%%0.65). CE-QUAL-W2.</Description>
+					<Parameter>flow</Parameter>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<unitsystem>english</unitsystem>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<units>cms</units>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_34.CSV/SEG 34 WITHDRAWAL/FLOW-QWD/*/15MIN/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE FLOW/FLOW/*/1DAY/W2/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>
+					<Template>format/templates/MonthlyStatisticsTable_Q.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>									
+					<Description>Lake Natoma dam daily outflow, monthly means (%%units%%) and counts. CE-QUAL-W2.</Description>
+					<Parameter>Flow</Parameter>					
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<units>cms</units>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_34.CSV/SEG 34 WITHDRAWAL/FLOW-QWD/*/15MIN/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE FLOW/FLOW/*/1DAY/W2/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_MeanBias.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>Lake Natoma dam daily outflow, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 50 %%units%%). CE-QUAL-W2.</Description>					
+					<Parameter>flow</Parameter>
+					<statistic>meanbias</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<units>cms</units>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_34.CSV/SEG 34 WITHDRAWAL/FLOW-QWD/*/15MIN/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE FLOW/FLOW/*/1DAY/W2/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_MAE.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma dam daily outflow, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%150 %%units%%). CE-QUAL-W2.</Description>
+					<Parameter>flow</Parameter>
+					<statistic>MAE</statistic>
+					<includeallyears>true</includeallyears>					
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<units>cms</units>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_34.CSV/SEG 34 WITHDRAWAL/FLOW-QWD/*/15MIN/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE FLOW/FLOW/*/1DAY/W2/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_RMSE.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma dam daily outflow, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%500 %%units%%). CE-QUAL-W2.</Description>									
+					<Parameter>flow</Parameter>
+					<statistic>RMSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<units>cms</units>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_34.CSV/SEG 34 WITHDRAWAL/FLOW-QWD/*/15MIN/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE FLOW/FLOW/*/1DAY/W2/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_Q_NSE.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Lake Natoma dam daily outflow, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>									
+					<Parameter>flow</Parameter>
+					<statistic>NSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<Parameter>Flow</Parameter>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<units>cms</units>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:QWO_34.CSV/SEG 34 WITHDRAWAL/FLOW-QWD/*/15MIN/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Path>/NATOMA/NATOMA DAM RELEASE FLOW/FLOW/*/1DAY/W2/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>				
+			</Section>
+			
+			
+			<Section>
+				<Header>Lake Natoma Elevation</Header>
+				<Object>
+					<Type>TimeSeriesPlot</Type>
+					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
+					<Template>format/templates/Plot_Defaults_NAT_EL.xml</Template>
+					<unitsystem>english</unitsystem>
+					<Description>Lake Natoma hourly elevation, %%year%%. CE-QUAL-W2.</Description>
+					<ylabel>Elevation (%%units%%)</ylabel>
+					<includeallyears>True</includeallyears>	
+					<splitbyyear>true</splitbyyear>						
+					<lines>
+						<line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<parameter>elevation</parameter>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<linecolor>#5b9bd5</linecolor>
+							<alpha>0.4</alpha>
+							<zorder>3</zorder>
+							<omitvalue>-901.0</omitvalue>
+						</line>
+						<line>
+							<label>Observed Daily</label>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<interval>1DAY</interval>
+							<type>PER-AVER</type>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<linecolor>#5b9bd5</linecolor>
+							<omitvalue>-901.0</omitvalue>
+							<zorder>5</zorder>
+						</line>						
+						<line>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<parameter>elevation</parameter>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG34.CSV/TSR SEG 34 DEPTH 0.00/ELEV/*/15MIN/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<lineColors>
+								<linecolor>red</linecolor>
+							</lineColors>
+							<alpha>0.4</alpha>
+							<zorder>4</zorder>
+							<lineStylePattern>dashed</lineStylePattern>
+						</line>
+						<line>
+							<label>Simulated Daily</label>
+							<Flag>Computed</Flag>
+							<parameter>elevation</parameter>
+							<interval>1DAY</interval>
+							<type>PER-AVER</type>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG34.CSV/TSR SEG 34 DEPTH 0.00/ELEV/*/15MIN/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<zorder>6</zorder>
+							<lineColors>
+								<linecolor>darkred</linecolor>
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<Type>ErrorStatisticsTable</Type>
+					<Template>format/templates/ErrorStatisticsTable_Defaults_Elev.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>Lake Natoma hourly elevation, annual performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 0.50 %%units%%, MAE: %%gt%%1.0 %%units%%, RMSE: %%gt%%1.5 %%units%%, NSE: %%lt%%0.65). CE-QUAL-W2.</Description>
+					<Parameter>elevation</Parameter>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>					
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG34.CSV/TSR SEG 34 DEPTH 0.00/ELEV/*/15MIN/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<omitvalue>0</omitvalue>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>MonthlyStatisticsTable</Type>		
+					<Template>format/templates/MonthlyStatisticsTable_EL.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>					
+					<Description>Lake Natoma hourly elevation, monthly means (%%units%%) and counts. CE-QUAL-W2.</Description>
+					<Parameter>elevation</Parameter>					
+					<numberformats>
+						<numberformat>
+							<decimalplaces>1</decimalplaces>
+						</numberformat>
+						<numberformat>
+							<stat>count</stat>
+							<decimalplaces>0</decimalplaces>
+						</numberformat>
+					</numberformats>
+					<Rows>
+						<Row>Jan|%%MEAN.Observed.MONTH=JAN%%|%%MEAN.Computed.MONTH=JAN%%|%%COUNT.Observed.MONTH=JAN%%|%%COUNT.Computed.MONTH=JAN%%</Row>
+						<Row>Feb|%%MEAN.Observed.MONTH=FEB%%|%%MEAN.Computed.MONTH=FEB%%|%%COUNT.Observed.MONTH=FEB%%|%%COUNT.Computed.MONTH=FEB%%</Row>
+						<Row>Mar|%%MEAN.Observed.MONTH=MAR%%|%%MEAN.Computed.MONTH=MAR%%|%%COUNT.Observed.MONTH=MAR%%|%%COUNT.Computed.MONTH=MAR%%</Row>
+						<Row>Apr|%%MEAN.Observed.MONTH=APR%%|%%MEAN.Computed.MONTH=APR%%|%%COUNT.Observed.MONTH=APR%%|%%COUNT.Computed.MONTH=APR%%</Row>
+						<Row>May|%%MEAN.Observed.MONTH=MAY%%|%%MEAN.Computed.MONTH=MAY%%|%%COUNT.Observed.MONTH=MAY%%|%%COUNT.Computed.MONTH=MAY%%</Row>
+						<Row>Jun|%%MEAN.Observed.MONTH=JUN%%|%%MEAN.Computed.MONTH=JUN%%|%%COUNT.Observed.MONTH=JUN%%|%%COUNT.Computed.MONTH=JUN%%</Row>
+						<Row>Jul|%%MEAN.Observed.MONTH=JUL%%|%%MEAN.Computed.MONTH=JUL%%|%%COUNT.Observed.MONTH=JUL%%|%%COUNT.Computed.MONTH=JUL%%</Row>
+						<Row>Aug|%%MEAN.Observed.MONTH=AUG%%|%%MEAN.Computed.MONTH=AUG%%|%%COUNT.Observed.MONTH=AUG%%|%%COUNT.Computed.MONTH=AUG%%</Row>
+						<Row>Sep|%%MEAN.Observed.MONTH=SEP%%|%%MEAN.Computed.MONTH=SEP%%|%%COUNT.Observed.MONTH=SEP%%|%%COUNT.Computed.MONTH=SEP%%</Row>
+						<Row>Oct|%%MEAN.Observed.MONTH=OCT%%|%%MEAN.Computed.MONTH=OCT%%|%%COUNT.Observed.MONTH=OCT%%|%%COUNT.Computed.MONTH=OCT%%</Row>
+						<Row>Nov|%%MEAN.Observed.MONTH=NOV%%|%%MEAN.Computed.MONTH=NOV%%|%%COUNT.Observed.MONTH=NOV%%|%%COUNT.Computed.MONTH=NOV%%</Row>
+						<Row>Dec|%%MEAN.Observed.MONTH=DEC%%|%%MEAN.Computed.MONTH=DEC%%|%%COUNT.Observed.MONTH=DEC%%|%%COUNT.Computed.MONTH=DEC%%</Row>
+					</Rows>
+					<Headers>
+						<Header>Obs. Mean %%year%%</Header>
+						<Header>Sim. Mean %%year%%</Header>
+						<Header>Obs. Count %%year%%</Header>
+						<Header>Sim. Count %%year%%</Header>
+					</Headers>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG34.CSV/TSR SEG 34 DEPTH 0.00/ELEV/*/15MIN/%%Fpart%%/</DSS_Path>
+							<omitvalue>0.0</omitvalue>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+							<units>m</units>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_MeanBias.xml</Template>	
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>				
+					<Description>Lake Natoma hourly elevation, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 0.5 %%units%%). CE-QUAL-W2.</Description>
+					<Parameter>elevation</Parameter>
+					<statistic>meanbias</statistic>					
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>				
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG34.CSV/TSR SEG 34 DEPTH 0.00/ELEV/*/15MIN/%%Fpart%%/</DSS_Path>
+							<omitvalue>0</omitvalue>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_MAE.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>									
+					<Description>Lake Natoma hourly elevation, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.0 %%units%%). CE-QUAL-W2.</Description>
+					<Parameter>elevation</Parameter>
+					<statistic>MAE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>					
+					<DataPaths>
+						<DataPath>							
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG34.CSV/TSR SEG 34 DEPTH 0.00/ELEV/*/15MIN/%%Fpart%%/</DSS_Path>
+							<omitvalue>0</omitvalue>
+							<units>m</units>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_RMSE.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>										
+					<Description>Lake Natoma hourly elevation, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.5 %%units%%). CE-QUAL-W2.</Description>
+					<Parameter>elevation</Parameter>
+					<statistic>RMSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG34.CSV/TSR SEG 34 DEPTH 0.00/ELEV/*/15MIN/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<omitvalue>0</omitvalue>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticTable</Type>
+					<Template>format/templates/SingleStatisticTable_Defaults_EL_NSE.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>										
+					<Description>Lake Natoma hourly elevation, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<Parameter>elevation</Parameter>
+					<statistic>NSE</statistic>
+					<includeallyears>true</includeallyears>
+					<splitbyyear>true</splitbyyear>
+					<DataPaths>
+						<DataPath>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<DSS_Path>/W2:TSR_1_SEG34.CSV/TSR SEG 34 DEPTH 0.00/ELEV/*/15MIN/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<omitvalue>0</omitvalue>
+							<Interval>1HOUR</Interval>
+							<Type>PER-AVER</Type>
+						</DataPath>
+						<DataPath>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
+							<DSS_Path>/NATOMA/NATOMA POOL/ELEV/*/1HOUR/CDEC-CARDNO/</DSS_Path>
+							<omitvalue>-901.0</omitvalue>
+						</DataPath>
+					</DataPaths>
+				</Object>				
+			</Section>
+		</Sections>
+	</Chapter>
+</Chapters>

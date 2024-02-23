@@ -1,0 +1,1449 @@
+<!--Assume that ReportGenerator uses DSS info to determine units, so no units need to be explicitly stated-->
+<!--All W2 simulation results are assumed to be in SI units-->
+<!--Units should be specified for text file input files-->
+<Chapters>
+	<Chapter>
+		<Name>Folsom Lake</Name>
+		<Region>Folsom Lake</Region>
+		<debug>False</debug>
+		<Sections>
+			<Section>
+				<Header>Folsom Lake Near Dam Temperature Profiles</Header>
+				<Object>
+					<Type>ProfilePlot</Type>
+					<Description>Folsom Lake near dam temperature profiles, %%year%%. CE-QUAL-W2.</Description>
+					<Template>format/templates/Plot_Defaults_FOL_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<XLabel>Temperature (%%units%%)</XLabel>
+					<SplitByYear>True</SplitByYear>										
+					<profilesperrow>4</profilesperrow>
+					<Lines>
+						<Line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<lineColor>#5b9bd5</lineColor>			<!--medium blue-->
+							<lineWidth>2</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>	<!--Already in English units-->		
+							<units>F</units>						<!--Text file input, so specify units-->							
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</Line>					
+						<Line>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<linecolor>red</linecolor>								
+							<lineWidth>2</lineWidth>
+							<lineStylePattern>dashed</lineStylePattern>
+							<zorder>3</zorder>							
+							<w2_segment>105</w2_segment>						
+							<omitvalue>-146.2</omitvalue>		<!--Because simulated may have null values, F equivaluent of -99C-->
+						</Line>
+					</Lines>
+					<hlines>
+						<hline>
+							<label>Observed WSE</label>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>										
+							<omitvalue>-901.0</omitvalue>
+						</hline>
+						<hline>
+							<label>Simulated WSE</label>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV//1HOUR/%%Fpart%%/</DSS_Path>
+							<lineColors>
+								<linecolor>darkred</linecolor>								
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+						</hline>
+					</hlines>
+				</Object>
+				<Object>
+					<Type>ProfileStatisticsTable</Type>
+					<Template>format/templates/ProfileStatisticsTable_Defaults_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near dam temperature profiles, performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). CE-QUAL-W2.</Description>					
+					<Parameter>Temperature</Parameter>					
+					<includeallyears>true</includeallyears>
+					<DatesSource>Observed</DatesSource>
+					<InterpolationSource>Observed</InterpolationSource>	
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>105</w2_segment>		
+							<omitvalue>-146.2</omitvalue>					
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>							
+							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->							
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>		
+							</wse>
+						</DataPath>
+					</DataPaths>								
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MeanBias.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near dam temperature profiles, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>					
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>meanbias</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>105</w2_segment>		
+							<omitvalue>-146.2</omitvalue>					
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>							
+							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->							
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>		
+							</wse>
+						</DataPath>
+					</DataPaths>	
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MAE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near dam temperature profiles, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>MAE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>105</w2_segment>		
+							<omitvalue>-146.2</omitvalue>					
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>							
+							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->							
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>		
+							</wse>
+						</DataPath>
+					</DataPaths>	
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_RMSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near dam temperature profiles, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>					
+					<Parameter>Temperature</Parameter>
+					<statistic>RMSE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>105</w2_segment>		
+							<omitvalue>-146.2</omitvalue>					
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>							
+							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->							
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>		
+							</wse>
+						</DataPath>
+					</DataPaths>	
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_NSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near dam temperature profiles, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<SplitByYear>True</SplitByYear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>105</w2_segment>		
+							<omitvalue>-146.2</omitvalue>					
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>							
+							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->							
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>		
+							</wse>
+						</DataPath>
+					</DataPaths>	
+				</Object>
+			</Section>
+			
+			<Section>
+				<Header>Folsom Lake Near Site A Temperature Profiles</Header>
+				<Object>
+					<Type>ProfilePlot</Type>					
+					<Description>Folsom Lake near site A temperature profiles, %%year%%. CE-QUAL-W2.</Description>				
+					<Template>format/templates/Plot_Defaults_FOL_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<XLabel>Temperature (%%units%%)</XLabel>
+					<SplitByYear>True</SplitByYear>					
+					<profilesperrow>4</profilesperrow>			
+					<Lines>
+						<Line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<units>f</units>
+							<Parameter>Temperature</Parameter>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>2</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<FileName>%%observedDir%%\American_profiles_Site A.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</Line>
+						<Line>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>63</w2_segment>
+							<lineColors>
+								<linecolor>red</linecolor>								
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>2</lineWidth>
+							<zorder>8</zorder>
+							<omitvalue>-146.2</omitvalue>
+						</Line>
+					</Lines>
+					<hlines>
+						<hline>
+							<label>Observed WSE</label>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							<linecolor>darkblue</linecolor>
+							<omitvalue>-901.0</omitvalue>
+						</hline>
+						<hline>
+							<label>Simulated WSE</label>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV//1HOUR/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<lineColors>
+								<linecolor>darkred</linecolor>								
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+						</hline>
+					</hlines>
+				</Object>
+				<Object>
+					<Type>ProfileStatisticsTable</Type>
+					<Template>format/templates/ProfileStatisticsTable_Defaults_TW.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site A temperature profiles, performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>										
+					<Parameter>Temperature</Parameter>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<InterpolationSource>Observed</InterpolationSource>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>63</w2_segment>
+							<w2_file>spr_1.opt</w2_file>		
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site A.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>								
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MeanBias.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site A temperature profiles, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>					
+					<unitsystem>english</unitsystem>					
+					<Parameter>Temperature</Parameter>
+					<statistic>meanbias</statistic>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<InterpolationSource>Observed</InterpolationSource>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>63</w2_segment>
+							<w2_file>spr_1.opt</w2_file>
+							<snapto0depth>True</snapto0depth>
+							<omitvalue>-146.2</omitvalue>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site A.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>				
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MAE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site A temperature profiles, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>					
+					<Parameter>Temperature</Parameter>
+					<statistic>MAE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<InterpolationSource>Observed</InterpolationSource>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>63</w2_segment>
+							<w2_file>spr_1.opt</w2_file>
+							<snapto0depth>True</snapto0depth>
+							<omitvalue>-146.2</omitvalue>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site A.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_RMSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site A temperature profiles, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>RMSE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>63</w2_segment>
+							<w2_file>spr_1.opt</w2_file>
+							<snapto0depth>True</snapto0depth>
+							<omitvalue>-146.2</omitvalue>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site A.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>				
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_NSE.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site A temperature profiles, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>										
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<SplitByYear>True</SplitByYear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>63</w2_segment>
+							<w2_file>spr_1.opt</w2_file>
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site A.txt</FileName>
+							<units>f</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+			</Section>
+			
+			<Section>
+				<header>Folsom Lake Near Site B Temperature Profiles</header>
+				<Object>
+					<Type>ProfilePlot</Type>
+					<Description>Folsom Lake near site B temperature profiles, %%year%%. CE-QUAL-W2.</Description>
+					<Template>format/templates/Plot_Defaults_FOL_TW.xml</Template>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<XLabel>Temperature (%%units%%)</XLabel>
+					<SplitByYear>True</SplitByYear>					
+					<profilesperrow>4</profilesperrow>
+					<Lines>
+						<Line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>2</lineWidth>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<FileName>%%observedDir%%\American_profiles_Site B.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</Line>
+						<Line>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>151</w2_segment>
+							<lineColors>
+								<linecolor>red</linecolor>
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>2</lineWidth>
+							<omitvalue>-146.2</omitvalue>
+							<zorder>8</zorder>
+						</Line>
+					</Lines>
+					<hlines>
+						<hline>
+							<label>Observed WSE</label>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							<linecolor>darkblue</linecolor>
+							<omitvalue>-901.0</omitvalue>
+						</hline>
+						<hline>
+							<label>Simulated WSE</label>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV//1HOUR/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<lineColors>
+								<linecolor>darkred</linecolor>
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+						</hline>
+					</hlines>
+				</Object>
+				<Object>
+					<Type>ProfileStatisticsTable</Type>
+					<Template>format/templates/ProfileStatisticsTable_Defaults_TW.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site B profiles, performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<InterpolationSource>Observed</InterpolationSource>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>151</w2_segment>		
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site B.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>								
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MeanBias.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site B temperature profiles, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>				
+					<Parameter>Temperature</Parameter>
+					<statistic>meanbias</statistic>
+					<InterpolationSource>Observed</InterpolationSource>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>151</w2_segment>
+							<snapto0depth>True</snapto0depth>
+							<omitvalue>-146.2</omitvalue>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site B.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MAE.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site B temperature profiles, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>					
+					<Parameter>Temperature</Parameter>
+					<statistic>MAE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<InterpolationSource>Observed</InterpolationSource>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>151</w2_segment>
+							<snapto0depth>True</snapto0depth>
+							<omitvalue>-146.2</omitvalue>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site B.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_RMSE.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site B temperature profiles, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>RMSE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>151</w2_segment>
+							<snapto0depth>True</snapto0depth>
+							<omitvalue>-146.2</omitvalue>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site B.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_NSE.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site B temperature profiles, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>		
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<InterpolationSource>Observed</InterpolationSource>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>151</w2_segment>
+							<snapto0depth>True</snapto0depth>
+							<omitvalue>-146.2</omitvalue>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site B.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+			</Section>
+			
+			<Section>
+				<header>Folsom Lake Near Site C Temperature Profiles</header>
+				<Object>
+					<Type>ProfilePlot</Type>
+					<Description>Folsom Lake near site C temperature profiles, %%year%%. CE-QUAL-W2.</Description>
+					<Template>format/templates/Plot_Defaults_FOL_TW.xml</Template>
+					<Parameter>Temperature</Parameter>
+					<unitsystem>english</unitsystem>
+					<XLabel>Temperature (%%units%%)</XLabel>
+					<SplitByYear>True</SplitByYear>					
+					<profilesperrow>4</profilesperrow>
+					<Lines>			
+						<Line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<units>f</units>
+							<Parameter>Temperature</Parameter>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>2</lineWidth>
+							<zorder>5</zorder>
+							<FileName>%%observedDir%%\American_profiles_Site C.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</Line>
+						<Line>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>91</w2_segment>
+							<lineColors>
+								<linecolor>red</linecolor>
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>2</lineWidth>
+							<omitvalue>-146.2</omitvalue>
+							<zorder>8</zorder>
+						</Line>
+					</Lines>
+					<hlines>
+						<hline>
+							<label>Observed WSE</label>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							<linecolor>darkblue</linecolor>
+							<omitvalue>-901.0</omitvalue>
+						</hline>
+						<hline>
+							<label>Simulated WSE</label>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV//1HOUR/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<lineColors>
+								<linecolor>darkred</linecolor>
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+						</hline>
+					</hlines>
+				</Object>
+				<Object>
+					<Type>ProfileStatisticsTable</Type>
+					<Template>format/templates/ProfileStatisticsTable_Defaults_TW.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site C temperature profiles, performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>				
+					<Parameter>Temperature</Parameter>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<InterpolationSource>Observed</InterpolationSource>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>91</w2_segment>		
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+							<FileName>%%observedDir%%\American_profiles_Site C.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->							
+						</DataPath>
+					</DataPaths>								
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MeanBias.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site C temperature profiles, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>					
+					<Parameter>Temperature</Parameter>
+					<statistic>meanbias</statistic>
+					<InterpolationSource>Observed</InterpolationSource>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>91</w2_segment>
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site C.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MAE.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site C temperature profiles, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>MAE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>91</w2_segment>
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site C.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_RMSE.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site C temperature profiles, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>					
+					<Parameter>Temperature</Parameter>
+					<statistic>RMSE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>91</w2_segment>
+							<snapto0depth>True</snapto0depth>
+							<omitvalue>-146.2</omitvalue>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site C.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_NSE.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site C temperature profiles, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<InterpolationSource>Observed</InterpolationSource>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>true</includeallyears>				
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>91</w2_segment>
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site C.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+			</Section>
+			
+			<Section>
+				<header>Folsom Lake Near Site D Temperature Profiles</header>
+				<Object>
+					<Type>ProfilePlot</Type>
+					<Description>Folsom Lake near site D temperature profiles, %%year%%. CE-QUAL-W2.</Description>
+					<Template>format/templates/Plot_Defaults_FOL_TW.xml</Template>
+					<Parameter>Temperature</Parameter>
+					<unitsystem>english</unitsystem>
+					<XLabel>Temperature (%%units%%)</XLabel>
+					<SplitByYear>True</SplitByYear>					
+					<profilesperrow>4</profilesperrow>
+					<Lines>			
+						<Line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<units>f</units>
+							<Parameter>Temperature</Parameter>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>2</lineWidth>
+							<zorder>5</zorder>
+							<FileName>%%observedDir%%\American_profiles_Site D.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</Line>
+						<Line>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>169</w2_segment>
+							<lineColors>
+								<linecolor>red</linecolor>
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>2</lineWidth>
+							<omitvalue>-146.2</omitvalue>
+							<zorder>8</zorder>
+						</Line>
+					</Lines>
+					<hlines>
+						<hline>
+							<label>Observed WSE</label>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							<linecolor>darkblue</linecolor>
+							<omitvalue>-901.0</omitvalue>
+						</hline>
+						<hline>
+							<label>Simulated WSE</label>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV//1HOUR/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<lineColors>
+								<linecolor>darkred</linecolor>
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+						</hline>
+					</hlines>
+				</Object>
+				<Object>
+					<Type>ProfileStatisticsTable</Type>
+					<Template>format/templates/ProfileStatisticsTable_Defaults_TW.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site D temperature profiles, performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>				
+					<Parameter>Temperature</Parameter>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<InterpolationSource>Observed</InterpolationSource>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>169</w2_segment>		
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+							<FileName>%%observedDir%%\American_profiles_Site D.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->							
+						</DataPath>
+					</DataPaths>								
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MeanBias.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site D temperature profiles, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>					
+					<Parameter>Temperature</Parameter>
+					<statistic>meanbias</statistic>
+					<InterpolationSource>Observed</InterpolationSource>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>169</w2_segment>
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site D.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MAE.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site D temperature profiles, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>MAE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>169</w2_segment>
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site D.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_RMSE.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site D temperature profiles, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>					
+					<Parameter>Temperature</Parameter>
+					<statistic>RMSE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>169</w2_segment>
+							<snapto0depth>True</snapto0depth>
+							<omitvalue>-146.2</omitvalue>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site D.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_NSE.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site D temperature profiles, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<InterpolationSource>Observed</InterpolationSource>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>true</includeallyears>				
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>169</w2_segment>
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site D.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+			</Section>
+			<Section>
+				<header>Folsom Lake Near Site E Temperature Profiles</header>
+				<Object>
+					<Type>ProfilePlot</Type>
+					<Description>Folsom Lake near site E temperature profiles, %%year%%. CE-QUAL-W2.</Description>
+					<Template>format/templates/Plot_Defaults_FOL_TW.xml</Template>
+					<Parameter>Temperature</Parameter>
+					<unitsystem>english</unitsystem>
+					<XLabel>Temperature (%%units%%)</XLabel>
+					<SplitByYear>True</SplitByYear>					
+					<profilesperrow>4</profilesperrow>
+					<Lines>			
+						<Line>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<units>f</units>
+							<Parameter>Temperature</Parameter>
+							<lineColor>#5b9bd5</lineColor>
+							<lineWidth>2</lineWidth>
+							<zorder>5</zorder>
+							<FileName>%%observedDir%%\American_profiles_Site E.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<parameter>elevation</parameter>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</Line>
+						<Line>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>72</w2_segment>
+							<lineColors>
+								<linecolor>red</linecolor>
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+							<lineWidth>2</lineWidth>
+							<omitvalue>-146.2</omitvalue>
+							<zorder>8</zorder>
+						</Line>
+					</Lines>
+					<hlines>
+						<hline>
+							<label>Observed WSE</label>
+							<Flag>Observed</Flag>
+							<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							<linecolor>darkblue</linecolor>
+							<omitvalue>-901.0</omitvalue>
+						</hline>
+						<hline>
+							<label>Simulated WSE</label>
+							<Flag>Computed</Flag>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<parameter>elevation</parameter>
+							<DSS_Path>/W2:TSR_1_SEG105.OPT/TSR SEG 105 DEPTH 0.00/ELEV//1HOUR/%%Fpart%%/</DSS_Path>
+							<units>m</units>
+							<lineColors>
+								<linecolor>darkred</linecolor>
+							</lineColors>
+							<lineStylePattern>dashed</lineStylePattern>
+						</hline>
+					</hlines>
+				</Object>
+				<Object>
+					<Type>ProfileStatisticsTable</Type>
+					<Template>format/templates/ProfileStatisticsTable_Defaults_TW.xml</Template>
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site E temperature profiles, performance statistics, shaded gray cells with an asterisk are outside the model performance metric range (mean bias: +/- 1.35%%units%%, MAE: %%gt%%1.80%%units%%, RMSE: %%gt%%2.70%%units%%, NSE: %%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>				
+					<Parameter>Temperature</Parameter>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<InterpolationSource>Observed</InterpolationSource>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>72</w2_segment>		
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+							<FileName>%%observedDir%%\American_profiles_Site E.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->							
+						</DataPath>
+					</DataPaths>								
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MeanBias.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site E temperature profiles, monthly average mean bias (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (+/- 1.35%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>					
+					<Parameter>Temperature</Parameter>
+					<statistic>meanbias</statistic>
+					<InterpolationSource>Observed</InterpolationSource>
+					<splitbyyear>true</splitbyyear>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>72</w2_segment>
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site E.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_MAE.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site E temperature profiles, monthly average MAE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%1.80%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>MAE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>72</w2_segment>
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site E.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_RMSE.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site E temperature profiles, monthly average RMSE (%%units%%), shaded gray cells with an asterisk are outside the model performance metric range (%%gt%%2.70%%units%%). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>					
+					<Parameter>Temperature</Parameter>
+					<statistic>RMSE</statistic>
+					<splitbyyear>true</splitbyyear>
+					<InterpolationSource>Observed</InterpolationSource>
+					<includeallyears>true</includeallyears>
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>72</w2_segment>
+							<snapto0depth>True</snapto0depth>
+							<omitvalue>-146.2</omitvalue>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site E.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+				<Object>
+					<Type>SingleStatisticProfileTable</Type>
+					<Template>format/templates/SingleStatisticProfileTable_Defaults_TW_NSE.xml</Template>	
+					<missingmarker>--</missingmarker>
+					<addasterisk>True</addasterisk>
+					<Description>Folsom Lake near site E temperature profiles, monthly average NSE, shaded gray cells with an asterisk are outside the model performance metric range (%%lt%%0.65). CE-QUAL-W2.</Description>
+					<unitsystem>english</unitsystem>
+					<Parameter>Temperature</Parameter>
+					<statistic>NSE</statistic>
+					<InterpolationSource>Observed</InterpolationSource>
+					<SplitByYear>True</SplitByYear>
+					<includeallyears>true</includeallyears>				
+					<DataPaths>
+						<DataPath>
+							<label>Simulated</label>
+							<Flag>Computed</Flag>
+							<Parameter>Temperature</Parameter>
+							<w2_segment>72</w2_segment>
+							<omitvalue>-146.2</omitvalue>
+							<snapto0depth>True</snapto0depth>
+						</DataPath>
+						<DataPath>
+							<label>Observed</label>
+							<Flag>Observed</Flag>
+							<Parameter>Temperature</Parameter>
+							<FileName>%%observedDir%%\American_profiles_Site E.txt</FileName>
+							<units>F</units>						<!--Text file input, so specify units-->
+							<wse>
+								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Path>/FOLSOM/ELEVATION/ELE/*/1HOUR/GRABDATA2/</DSS_Path>
+							</wse>
+						</DataPath>
+					</DataPaths>
+				</Object>
+			</Section>
+		</Sections>
+	</Chapter>
+</Chapters>

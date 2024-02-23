@@ -1,0 +1,521 @@
+<Chapters>
+	<Chapter>
+		<Name>Iterations</Name>
+		<debug>true</debug>
+		<memberiteration>true</memberiteration>
+		<Sections>
+			<Section>
+				<header>Outflow Iteration %%member%%</header>
+				<Object>
+					<type>timeseriesplot</type>
+					<title>Sacramento Modeled Outflow: Iteration %%member%%</title>
+					<Description>Sacramento Modeled Outflow %%year%% Iteration %%member%%</Description>
+					<ylabel>Flow (%%units%%)</ylabel>
+					<unitsystem>english</unitsystem>
+					<legend_outside>True</legend_outside>
+					<lines>
+						<line>
+							<flag>Shasta</flag>
+							<label>Shasta</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>/W2:QWO_77.OPT/SEG 77 WITHDRAWAL/FLOW-QWD//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</line>
+						<!-- <line> -->
+							<!-- <flag>Keswick</flag> -->
+							<!-- <label>Keswick</label> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Keswick Dam/Flow//1HOUR/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </line> -->
+						<!-- <line> -->
+							<!-- <flag>CCR</flag> -->
+							<!-- <label>CCR</label> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Sacramento R + Clear CR/Flow//1HOUR/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </line> -->
+					</lines>
+				</Object>
+				<Object>
+					<type>ErrorStatisticsTable</type>
+					<primarykeyheader>Location</primarykeyheader>
+					<unitsystem>english</unitsystem>
+					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
+					<xlims>
+						<min>01 May %%year%%</min>
+						<max>01 Sep %%year%%</max>
+					</xlims>
+					<Datapaths>
+						<Datapath>
+							<flag>Shasta</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>/W2:QWO_77.OPT/SEG 77 WITHDRAWAL/FLOW-QWD//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+						<!-- <Datapath> -->
+							<!-- <flag>Keswick</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Keswick Dam/Flow//1HOUR/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>CCR</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//SACRAMENTO R + CLEAR CR/Flow//1HOUR/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+					</Datapaths>
+					<rows>
+						<row>Shasta|%%maximum.Shasta%%|%%mean.Shasta%%|%%minimum.Shasta%%</row>
+						<!-- <row>Keswick|%%maximum.Keswick%%|%%mean.Keswick%%|%%minimum.Keswick%%</row> -->
+						<!-- <row>CCR|%%maximum.CCR%%|%%mean.CCR%%|%%minimum.CCR%%</row> -->
+					</rows>
+					<headers>
+						<header>Maximum</header>
+						<header>Mean</header>
+						<header>Minimum</header>
+					</headers>
+				</Object>
+				<Object>
+					<type>ErrorStatisticsTable</type>
+					<primarykeyheader>Month</primarykeyheader>
+					<unitsystem>english</unitsystem>
+					<description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description>
+					<Datapaths>
+						<Datapath>
+							<flag>Shasta</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>/W2:QWO_77.OPT/SEG 77 WITHDRAWAL/FLOW-QWD//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+						<!-- <Datapath> -->
+							<!-- <flag>Keswick</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Keswick Dam/Flow//1HOUR/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>CCR</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//SACRAMENTO R + CLEAR CR/Flow//1HOUR/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+					</Datapaths>
+					<!-- <rows> -->
+						<!-- <row>Apr|%%MEAN.Shasta.MONTH=Apr%%|%%MEAN.Keswick.MONTH=Apr%%|%%MEAN.CCR.MONTH=Apr%%</row> -->
+						<!-- <row>May|%%MEAN.Shasta.MONTH=MAY%%|%%MEAN.Keswick.MONTH=MAY%%|%%MEAN.CCR.MONTH=MAY%%</row> -->
+						<!-- <row>Jun|%%MEAN.Shasta.MONTH=Jun%%|%%MEAN.Keswick.MONTH=Jun%%|%%MEAN.CCR.MONTH=Jun%%</row> -->
+						<!-- <row>Jul|%%MEAN.Shasta.MONTH=Jul%%|%%MEAN.Keswick.MONTH=Jul%%|%%MEAN.CCR.MONTH=Jul%%</row> -->
+						<!-- <row>Aug|%%MEAN.Shasta.MONTH=Aug%%|%%MEAN.Keswick.MONTH=Aug%%|%%MEAN.CCR.MONTH=Aug%%</row> -->
+						<!-- <row>Sep|%%MEAN.Shasta.MONTH=Sep%%|%%MEAN.Keswick.MONTH=Sep%%|%%MEAN.CCR.MONTH=Sep%%</row> -->
+						<!-- <row>Oct|%%MEAN.Shasta.MONTH=Oct%%|%%MEAN.Keswick.MONTH=Oct%%|%%MEAN.CCR.MONTH=Oct%%</row> -->
+					<!-- </rows> -->
+					<rows>
+						<row>Apr|%%MEAN.Shasta.MONTH=Apr%%</row>
+						<row>May|%%MEAN.Shasta.MONTH=MAY%%</row>
+						<row>Jun|%%MEAN.Shasta.MONTH=Jun%%</row>
+						<row>Jul|%%MEAN.Shasta.MONTH=Jul%%</row>
+						<row>Aug|%%MEAN.Shasta.MONTH=Aug%%</row>
+						<row>Sep|%%MEAN.Shasta.MONTH=Sep%%</row>
+						<row>Oct|%%MEAN.Shasta.MONTH=Oct%%</row>
+					</rows>
+					<headers>
+						<header>Shasta (%%units%%)</header>
+						<!-- <header>Keswick (%%units%%)</header> -->
+						<!-- <header>CCR (%%units%%)</header> -->
+					</headers>
+				</Object>
+				<!-- <Object> -->
+					<!-- <type>timeseriesplot</type> -->
+					<!-- <title>Trinity Modeled Outflow: Iteration %%member%%</title> -->
+					<!-- <Description>Trinity Modeled Outflow %%year%% Iteration %%member%%</Description> -->
+					<!-- <ylabel>Flow (%%units%%)</ylabel> -->
+					<!-- <unitsystem>english</unitsystem> -->
+					<!-- <legend_outside>True</legend_outside> -->
+					<!-- <lines> -->
+		
+						<!-- <line> -->
+							<!-- <flag>Lewiston</flag> -->
+							<!-- <label>Lewiston Dam</label> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Lewiston Dam/Flow//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </line> -->
+						<!-- <line> -->
+							<!-- <flag>Helena</flag> -->
+							<!-- <label>Helena</label> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Helena/Flow//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </line> -->
+						<!-- <line> -->
+							<!-- <flag>Douglas</flag> -->
+							<!-- <label>Douglas City</label> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Douglas City/Flow//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </line> -->
+						<!-- <line> -->
+							<!-- <flag>Limekiln</flag> -->
+							<!-- <label>Limekiln Gulch</label> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Limekiln Gulch/Flow//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </line> -->
+					<!-- </lines> -->
+				<!-- </Object> -->
+				<!-- <Object> -->
+					<!-- <type>ErrorStatisticsTable</type> -->
+					<!-- <primarykeyheader>Location</primarykeyheader> -->
+					<!-- <unitsystem>english</unitsystem> -->
+					<!-- <description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description> -->
+					<!-- <xlims> -->
+						<!-- <min>01 May %%year%%</min> -->
+						<!-- <max>01 Sep %%year%%</max> -->
+					<!-- </xlims> -->
+					<!-- <Datapaths> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Lewiston</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Lewiston Dam/Flow//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Helena</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Helena/Flow//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Douglas</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Douglas City/Flow//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Limekiln</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Limekiln Gulch/Flow//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+					<!-- </Datapaths> -->
+					<!-- <rows> -->
+						<!-- <row>Lewiston|%%maximum.Lewiston%%|%%mean.Lewiston%%|%%minimum.Lewiston%%</row> -->
+						<!-- <row>Helena|%%maximum.Helena%%|%%mean.Helena%%|%%minimum.Helena%%</row> -->
+						<!-- <row>Douglas City|%%maximum.Douglas%%|%%mean.Douglas%%|%%minimum.Douglas%%</row> -->
+						<!-- <row>Limekiln Gulch|%%maximum.Limekiln%%|%%mean.Limekiln%%|%%minimum.Limekiln%%</row> -->
+					<!-- </rows> -->
+					<!-- <headers> -->
+						<!-- <header>Maximum</header> -->
+						<!-- <header>Mean</header> -->
+						<!-- <header>Minimum</header> -->
+					<!-- </headers> -->
+				<!-- </Object> -->
+				<!-- <Object> -->
+					<!-- <type>ErrorStatisticsTable</type> -->
+					<!-- <primarykeyheader>Month</primarykeyheader> -->
+					<!-- <unitsystem>english</unitsystem> -->
+					<!-- <description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description> -->
+					<!-- <Datapaths> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Lewiston</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Lewiston Dam/Flow//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Helena</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Helena/Flow//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Douglas</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Douglas City/Flow//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Limekiln</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Limekiln Gulch/Flow//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+					<!-- </Datapaths> -->
+					<!-- <rows> -->
+						<!-- <row>Apr|%%MEAN.Lewiston.MONTH=Apr%%|%%MEAN.Helena.MONTH=Apr%%|%%MEAN.Douglas.MONTH=Apr%%|%%MEAN.Limekiln.MONTH=Apr%%</row> -->
+						<!-- <row>May|%%MEAN.Lewiston.MONTH=MAY%%|%%MEAN.Helena.MONTH=MAY%%|%%MEAN.Douglas.MONTH=MAY%%|%%MEAN.Limekiln.MONTH=MAY%%</row> -->
+						<!-- <row>Jun|%%MEAN.Lewiston.MONTH=Jun%%|%%MEAN.Helena.MONTH=Jun%%|%%MEAN.Douglas.MONTH=Jun%%|%%MEAN.Limekiln.MONTH=Jun%%</row> -->
+						<!-- <row>Jul|%%MEAN.Lewiston.MONTH=Jul%%|%%MEAN.Helena.MONTH=Jul%%|%%MEAN.Douglas.MONTH=Jul%%|%%MEAN.Limekiln.MONTH=Jul%%</row> -->
+						<!-- <row>Aug|%%MEAN.Lewiston.MONTH=Aug%%|%%MEAN.Helena.MONTH=Aug%%|%%MEAN.Douglas.MONTH=Aug%%|%%MEAN.Limekiln.MONTH=Aug%%</row> -->
+						<!-- <row>Sep|%%MEAN.Lewiston.MONTH=Sep%%|%%MEAN.Helena.MONTH=Sep%%|%%MEAN.Douglas.MONTH=Sep%%|%%MEAN.Limekiln.MONTH=Sep%%</row> -->
+						<!-- <row>Oct|%%MEAN.Lewiston.MONTH=Oct%%|%%MEAN.Helena.MONTH=Oct%%|%%MEAN.Douglas.MONTH=Oct%%|%%MEAN.Limekiln.MONTH=Oct%%</row> -->
+					<!-- </rows> -->
+					<!-- <headers> -->
+						<!-- <header>Lewiston Dam (%%units%%)</header> -->
+						<!-- <header>Helena (%%units%%)</header> -->
+						<!-- <header>Douglas City (%%units%%)</header> -->
+						<!-- <header>Limekiln Gulch (%%units%%)</header> -->
+					<!-- </headers> -->
+				<!-- </Object> -->
+			</Section>
+			<Section>
+				<header>Outflow Water Temperature Iteration %%member%%</header>
+				<Object>
+					<type>timeseriesplot</type>
+					<title>Sacramento Modeled Outflow Water Temperature: Iteration %%member%%</title>
+					<Description>Sacramento Modeled Outflow Water Temperature %%year%% Iteration %%member%%</Description>
+					<ylabel>Water Temperature (%%units%%)</ylabel>
+					<unitsystem>english</unitsystem>
+					<legend_outside>True</legend_outside>
+					<lines>
+						<line>
+							<flag>Shasta</flag>
+							<label>Shasta</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>/W2:TWO_77.OPT/SEG 77 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</line>
+						<!-- <line> -->
+							<!-- <flag>Keswick</flag> -->
+							<!-- <label>Keswick</label> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Keswick Dam/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </line> -->
+						<!-- <line> -->
+							<!-- <flag>CCR</flag> -->
+							<!-- <label>CCR</label> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Sacramento R + Clear CR/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </line> -->
+					</lines>
+				</Object>
+				<Object>
+					<type>ErrorStatisticsTable</type>
+					<primarykeyheader>Location</primarykeyheader>
+					<unitsystem>english</unitsystem>
+					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
+					<xlims>
+						<min>01 May %%year%%</min>
+						<max>01 Sep %%year%%</max>
+					</xlims>
+					<Datapaths>
+						<Datapath>
+							<flag>Shasta</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>/W2:TWO_77.OPT/SEG 77 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+						<!-- <Datapath> -->
+							<!-- <flag>Keswick</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Keswick Dam/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>CCR</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//SACRAMENTO R + CLEAR CR/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+					</Datapaths>
+					<rows>
+						<row>Shasta|%%maximum.Shasta%%|%%mean.Shasta%%|%%minimum.Shasta%%</row>
+						<!-- <row>Keswick|%%maximum.Keswick%%|%%mean.Keswick%%|%%minimum.Keswick%%</row> -->
+						<!-- <row>CCR|%%maximum.CCR%%|%%mean.CCR%%|%%minimum.CCR%%</row> -->
+					</rows>
+					<headers>
+						<header>Maximum</header>
+						<header>Mean</header>
+						<header>Minimum</header>
+					</headers>
+				</Object>
+				<Object>
+					<type>ErrorStatisticsTable</type>
+					<primarykeyheader>Month</primarykeyheader>
+					<unitsystem>english</unitsystem>
+					<description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description>
+					<Datapaths>
+						<Datapath>
+							<flag>Shasta</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>/W2:TWO_77.OPT/SEG 77 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+						<!-- <Datapath> -->
+							<!-- <flag>Keswick</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Keswick Dam/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>CCR</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//SACRAMENTO R + CLEAR CR/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+					</Datapaths>
+					<!-- <rows> -->
+						<!-- <row>Apr|%%MEAN.Shasta.MONTH=Apr%%|%%MEAN.Keswick.MONTH=Apr%%|%%MEAN.CCR.MONTH=Apr%%</row> -->
+						<!-- <row>May|%%MEAN.Shasta.MONTH=MAY%%|%%MEAN.Keswick.MONTH=MAY%%|%%MEAN.CCR.MONTH=MAY%%</row> -->
+						<!-- <row>Jun|%%MEAN.Shasta.MONTH=Jun%%|%%MEAN.Keswick.MONTH=Jun%%|%%MEAN.CCR.MONTH=Jun%%</row> -->
+						<!-- <row>Jul|%%MEAN.Shasta.MONTH=Jul%%|%%MEAN.Keswick.MONTH=Jul%%|%%MEAN.CCR.MONTH=Jul%%</row> -->
+						<!-- <row>Aug|%%MEAN.Shasta.MONTH=Aug%%|%%MEAN.Keswick.MONTH=Aug%%|%%MEAN.CCR.MONTH=Aug%%</row> -->
+						<!-- <row>Sep|%%MEAN.Shasta.MONTH=Sep%%|%%MEAN.Keswick.MONTH=Sep%%|%%MEAN.CCR.MONTH=Sep%%</row> -->
+						<!-- <row>Oct|%%MEAN.Shasta.MONTH=Oct%%|%%MEAN.Keswick.MONTH=Oct%%|%%MEAN.CCR.MONTH=Oct%%</row> -->
+					<!-- </rows> -->
+					<rows>
+						<row>Apr|%%MEAN.Shasta.MONTH=Apr%%</row>
+						<row>May|%%MEAN.Shasta.MONTH=MAY%%</row>
+						<row>Jun|%%MEAN.Shasta.MONTH=Jun%%</row>
+						<row>Jul|%%MEAN.Shasta.MONTH=Jul%%</row>
+						<row>Aug|%%MEAN.Shasta.MONTH=Aug%%</row>
+						<row>Sep|%%MEAN.Shasta.MONTH=Sep%%</row>
+						<row>Oct|%%MEAN.Shasta.MONTH=Oct%%</row>
+					</rows>
+					<headers>
+						<header>Shasta (%%units%%)</header>
+						<!-- <header>Keswick (%%units%%)</header> -->
+						<!-- <header>CCR (%%units%%)</header> -->
+					</headers>
+				</Object>
+				<!-- <Object> -->
+					<!-- <type>timeseriesplot</type> -->
+					<!-- <title>Trinity Modeled Outflow Water Temperature: Iteration %%member%%</title> -->
+					<!-- <Description>Trinity Modeled Outflow Water Temperature %%year%% Iteration %%member%%</Description> -->
+					<!-- <ylabel>Flow (%%units%%)</ylabel> -->
+					<!-- <unitsystem>english</unitsystem> -->
+					<!-- <legend_outside>True</legend_outside> -->
+					<!-- <lines> -->
+		
+						<!-- <line> -->
+							<!-- <flag>Lewiston</flag> -->
+							<!-- <label>Lewiston Dam</label> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Lewiston Dam/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </line> -->
+						<!-- <line> -->
+							<!-- <flag>Helena</flag> -->
+							<!-- <label>Helena</label> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Helena/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </line> -->
+						<!-- <line> -->
+							<!-- <flag>Douglas</flag> -->
+							<!-- <label>Douglas City</label> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Douglas City/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </line> -->
+						<!-- <line> -->
+							<!-- <flag>Limekiln</flag> -->
+							<!-- <label>Limekiln Gulch</label> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Limekiln Gulch/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </line> -->
+					<!-- </lines> -->
+				<!-- </Object> -->
+				<!-- <Object> -->
+					<!-- <type>ErrorStatisticsTable</type> -->
+					<!-- <primarykeyheader>Location</primarykeyheader> -->
+					<!-- <unitsystem>english</unitsystem> -->
+					<!-- <description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description> -->
+					<!-- <xlims> -->
+						<!-- <min>01 May %%year%%</min> -->
+						<!-- <max>01 Sep %%year%%</max> -->
+					<!-- </xlims> -->
+					<!-- <Datapaths> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Lewiston</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Lewiston Dam/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Helena</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Helena/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Douglas</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Douglas City/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Limekiln</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Limekiln Gulch/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+					<!-- </Datapaths> -->
+					<!-- <rows> -->
+						<!-- <row>Lewiston|%%maximum.Lewiston%%|%%mean.Lewiston%%|%%minimum.Lewiston%%</row> -->
+						<!-- <row>Helena|%%maximum.Helena%%|%%mean.Helena%%|%%minimum.Helena%%</row> -->
+						<!-- <row>Douglas City|%%maximum.Douglas%%|%%mean.Douglas%%|%%minimum.Douglas%%</row> -->
+						<!-- <row>Limekiln Gulch|%%maximum.Limekiln%%|%%mean.Limekiln%%|%%minimum.Limekiln%%</row> -->
+					<!-- </rows> -->
+					<!-- <headers> -->
+						<!-- <header>Maximum</header> -->
+						<!-- <header>Mean</header> -->
+						<!-- <header>Minimum</header> -->
+					<!-- </headers> -->
+				<!-- </Object> -->
+				<!-- <Object> -->
+					<!-- <type>ErrorStatisticsTable</type> -->
+					<!-- <primarykeyheader>Month</primarykeyheader> -->
+					<!-- <unitsystem>english</unitsystem> -->
+					<!-- <description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description> -->
+					<!-- <Datapaths> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Lewiston</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Lewiston Dam/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Helena</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Helena/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Douglas</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Douglas City/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+						<!-- <Datapath> -->
+							<!-- <flag>Limekiln</flag> -->
+							<!-- <DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename> -->
+							<!-- <DSS_Path>//Limekiln Gulch/Flow//1Hour/*|%%FPART%%/</DSS_Path> -->
+							<!-- <interval>1DAY</interval> -->
+						<!-- </Datapath> -->
+					<!-- </Datapaths> -->
+					<!-- <rows> -->
+						<!-- <row>Apr|%%MEAN.Lewiston.MONTH=Apr%%|%%MEAN.Helena.MONTH=Apr%%|%%MEAN.Douglas.MONTH=Apr%%|%%MEAN.Limekiln.MONTH=Apr%%</row> -->
+						<!-- <row>May|%%MEAN.Lewiston.MONTH=MAY%%|%%MEAN.Helena.MONTH=MAY%%|%%MEAN.Douglas.MONTH=MAY%%|%%MEAN.Limekiln.MONTH=MAY%%</row> -->
+						<!-- <row>Jun|%%MEAN.Lewiston.MONTH=Jun%%|%%MEAN.Helena.MONTH=Jun%%|%%MEAN.Douglas.MONTH=Jun%%|%%MEAN.Limekiln.MONTH=Jun%%</row> -->
+						<!-- <row>Jul|%%MEAN.Lewiston.MONTH=Jul%%|%%MEAN.Helena.MONTH=Jul%%|%%MEAN.Douglas.MONTH=Jul%%|%%MEAN.Limekiln.MONTH=Jul%%</row> -->
+						<!-- <row>Aug|%%MEAN.Lewiston.MONTH=Aug%%|%%MEAN.Helena.MONTH=Aug%%|%%MEAN.Douglas.MONTH=Aug%%|%%MEAN.Limekiln.MONTH=Aug%%</row> -->
+						<!-- <row>Sep|%%MEAN.Lewiston.MONTH=Sep%%|%%MEAN.Helena.MONTH=Sep%%|%%MEAN.Douglas.MONTH=Sep%%|%%MEAN.Limekiln.MONTH=Sep%%</row> -->
+						<!-- <row>Oct|%%MEAN.Lewiston.MONTH=Oct%%|%%MEAN.Helena.MONTH=Oct%%|%%MEAN.Douglas.MONTH=Oct%%|%%MEAN.Limekiln.MONTH=Oct%%</row> -->
+					<!-- </rows> -->
+					<!-- <headers> -->
+						<!-- <header>Lewiston Dam (%%units%%)</header> -->
+						<!-- <header>Helena (%%units%%)</header> -->
+						<!-- <header>Douglas City (%%units%%)</header> -->
+						<!-- <header>Limekiln Gulch (%%units%%)</header> -->
+					<!-- </headers> -->
+				<!-- </Object> -->
+			</Section>
+		</Sections>
+	</Chapter>
+</Chapters>

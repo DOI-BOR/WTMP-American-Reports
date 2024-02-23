@@ -42,13 +42,13 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Parameter>Temperature</Parameter>
 							<lineColor>#5b9bd5</lineColor>
 							<lineWidth>2</lineWidth>
-							<units>f</units>
+							<units>c</units>
 							<zorder>5</zorder>
 							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>
 							<wse>
-								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Filename>%%observedDir%%/DMS_AmericanHydroTS.dss</DSS_Filename>
 								<parameter>elevation</parameter>
-								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+								<DSS_Path>/MR Am.-Folsom Lake/FOL-Elevation/Elev//1Hour/250.3.145.1.1/</DSS_Path>
 							</wse>
 						</Line>
 						<Line>
@@ -61,9 +61,9 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<zorder>4</zorder>
 							<FileName>%%observedDir%%\American_profiles_Site A.txt</FileName>
 							<wse>
-								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Filename>%%observedDir%%/DMS_AmericanHydroTS.dss</DSS_Filename>
 								<parameter>elevation</parameter>
-								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+								<DSS_Path>/MR Am.-Folsom Lake/FOL-Elevation/Elev//1Hour/250.3.145.1.1/</DSS_Path>
 							</wse>
 						</Line>
 						<Line>
@@ -76,9 +76,9 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<zorder>4</zorder>
 							<FileName>%%observedDir%%\American_profiles_Site B.txt</FileName>
 							<wse>
-								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Filename>%%observedDir%%/DMS_AmericanHydroTS.dss</DSS_Filename>
 								<parameter>elevation</parameter>
-								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+								<DSS_Path>/MR Am.-Folsom Lake/FOL-Elevation/Elev//1Hour/250.3.145.1.1/</DSS_Path>
 							</wse>
 						</Line>
 						<Line>
@@ -91,9 +91,9 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<zorder>4</zorder>
 							<FileName>%%observedDir%%\American_profiles_Site C.txt</FileName>
 							<wse>
-								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Filename>%%observedDir%%/DMS_AmericanHydroTS.dss</DSS_Filename>
 								<parameter>elevation</parameter>
-								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+								<DSS_Path>/MR Am.-Folsom Lake/FOL-Elevation/Elev//1Hour/250.3.145.1.1/</DSS_Path>
 							</wse>
 						</Line>
 						<Line>
@@ -106,9 +106,9 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<zorder>4</zorder>
 							<FileName>%%observedDir%%\American_profiles_Site D.txt</FileName>
 							<wse>
-								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Filename>%%observedDir%%/DMS_AmericanHydroTS.dss</DSS_Filename>
 								<parameter>elevation</parameter>
-								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+								<DSS_Path>/MR Am.-Folsom Lake/FOL-Elevation/Elev//1Hour/250.3.145.1.1/</DSS_Path>
 							</wse>
 						</Line>
 						<Line>
@@ -121,9 +121,9 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<zorder>4</zorder>
 							<FileName>%%observedDir%%\American_profiles_Site E.txt</FileName>
 							<wse>
-								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Filename>%%observedDir%%/DMS_AmericanHydroTS.dss</DSS_Filename>
 								<parameter>elevation</parameter>
-								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+								<DSS_Path>/MR Am.-Folsom Lake/FOL-Elevation/Elev//1Hour/250.3.145.1.1/</DSS_Path>
 							</wse>
 						</Line>
 					</Lines>
@@ -168,12 +168,12 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<label>Observed</label>
 							<Flag>Observed</Flag>
 							<Parameter>Temperature</Parameter>
-							<units>f</units>
+							<units>c</units>
 							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>				
 							<wse>
-								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Filename>%%observedDir%%/DMS_AmericanHydroTS.dss</DSS_Filename>
 								<parameter>elevation</parameter>
-								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+								<DSS_Path>/MR Am.-Folsom Lake/FOL-Elevation/Elev//1Hour/250.3.145.1.1/</DSS_Path>
 							</wse>
 						</DataPath>
 					</DataPaths>								
@@ -201,13 +201,13 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 						<DataPath>
 							<label>Observed</label>
 							<Flag>Observed</Flag>
-							<units>f</units>
+							<units>c</units>
 							<Parameter>Temperature</Parameter>
 							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>				
 							<wse>
-								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Filename>%%observedDir%%/DMS_AmericanHydroTS.dss</DSS_Filename>
 								<parameter>elevation</parameter>
-								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+								<DSS_Path>/MR Am.-Folsom Lake/FOL-Elevation/Elev//1Hour/250.3.145.1.1/</DSS_Path>
 							</wse>
 						</DataPath>
 					</DataPaths>
@@ -236,11 +236,11 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Flag>Observed</Flag>
 							<Parameter>Temperature</Parameter>
 							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>				
-							<units>f</units>
+							<units>c</units>
 							<wse>
-								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Filename>%%observedDir%%/DMS_AmericanHydroTS.dss</DSS_Filename>
 								<parameter>elevation</parameter>
-								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+								<DSS_Path>/MR Am.-Folsom Lake/FOL-Elevation/Elev//1Hour/250.3.145.1.1/</DSS_Path>
 							</wse>
 						</DataPath>
 					</DataPaths>
@@ -269,11 +269,11 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Flag>Observed</Flag>
 							<Parameter>Temperature</Parameter>
 							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>				
-							<units>f</units>
+							<units>c</units>
 							<wse>
-								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Filename>%%observedDir%%/DMS_AmericanHydroTS.dss</DSS_Filename>
 								<parameter>elevation</parameter>
-								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+								<DSS_Path>/MR Am.-Folsom Lake/FOL-Elevation/Elev//1Hour/250.3.145.1.1/</DSS_Path>
 							</wse>
 						</DataPath>
 					</DataPaths>
@@ -302,11 +302,11 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Flag>Observed</Flag>
 							<Parameter>Temperature</Parameter>
 							<FileName>%%observedDir%%\American_profiles_Site Dam.txt</FileName>				
-							<units>f</units>
+							<units>c</units>
 							<wse>
-								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Filename>%%observedDir%%/DMS_AmericanHydroTS.dss</DSS_Filename>
 								<parameter>elevation</parameter>
-								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+								<DSS_Path>/MR Am.-Folsom Lake/FOL-Elevation/Elev//1Hour/250.3.145.1.1/</DSS_Path>
 							</wse>
 						</DataPath>
 					</DataPaths>
@@ -587,6 +587,16 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 					</xlims>
 					<mergelines>
 						<mergeline>
+							<controller>AllOut_P1</controller>
+							<keeplines>False</keeplines>
+							<math>add</math>
+							<flags>
+								<flag>AllOut_P1</flag>
+								<flag>AllOut_P2</flag>
+								<flag>AllOut_P3</flag>
+							</flags>
+						</mergeline>
+						<mergeline>
 							<controller>leakage-P1L1</controller>
 							<keeplines>False</keeplines>
 							<math>add</math>
@@ -764,6 +774,49 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
 							</scalefrom>
 						</Line> -->
+						<Line>
+							<label>All Out</label>
+							<Flag>AllOut_P1</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 1/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<lineColor>#9932cd</lineColor>
+							<lineWidth>1</lineWidth>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<yaxis>right</yaxis>
+							<target_elevation>307</target_elevation>
+							<lineStylePattern>solid</lineStylePattern>
+							<zorder>4</zorder>
+							<lineType>stacked</lineType>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE1/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<Flag>AllOut_P2</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 2/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<target_elevation>307</target_elevation>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE2/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
+						<Line>
+							<Flag>AllOut_P3</Flag>
+							<DSS_Path>//Folsom Lake-Penstock 3/FLOW-DECISION//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
+							<Interval>1DAY</Interval>
+							<Type>PER-AVER</Type>
+							<target_elevation>307</target_elevation>
+							<elevation>
+								<DSS_Path>/FOLSOM/GATE3/ELEV//1DAY/USBR-CARDNO/</DSS_Path>
+								<DSS_Filename>%%observedDir%%/Folsom_shutter_op_6.dss</DSS_Filename>
+							</elevation>
+						</Line>
 						<Line>
 							<label>2 Out</label>
 							<Flag>2OUT_P1</Flag>
@@ -1575,7 +1628,7 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Parameter>Temperature</Parameter>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
-							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Path>//Folsom_FWA_Dam/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<lineColor>red</lineColor>
 							<lineStylePattern>dashed</lineStylePattern>
@@ -1647,7 +1700,7 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Flag>Computed</Flag>
 							<Interval>1DAY</Interval>
 							<Parameter>Temperature</Parameter>
-							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Path>//Folsom_FWA_Dam/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<omitvalue>0.0</omitvalue>
 						</DataPath>
@@ -1677,7 +1730,7 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Flag>Computed</Flag>
 							<Interval>1DAY</Interval>
 							<Parameter>Temperature</Parameter>
-							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Path>//Folsom_FWA_Dam/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<omitvalue>0.0</omitvalue>
 					</DataPath>
@@ -1706,7 +1759,7 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Flag>Computed</Flag>
 							<Interval>1DAY</Interval>
 							<Parameter>Temperature</Parameter>
-							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Path>//Folsom_FWA_Dam/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<omitvalue>0.0</omitvalue>
 						</DataPath>
@@ -1736,7 +1789,7 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Flag>Computed</Flag>
 							<Interval>1DAY</Interval>
 							<Parameter>Temperature</Parameter>
-							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Path>//Folsom_FWA_Dam/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<omitvalue>0.0</omitvalue>
 						</DataPath>
@@ -1766,7 +1819,7 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Flag>Computed</Flag>
 							<Interval>1DAY</Interval>
 							<Parameter>Temperature</Parameter>
-							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Path>//Folsom_FWA_Dam/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<omitvalue>0.0</omitvalue>
 						</DataPath>
@@ -2008,9 +2061,9 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<FileName>%%observedDir%%\LakeNatomaTempProfiles_ordered_Sparser_ft.txt</FileName>
 							<units>c</units>
 							<wse>
-								<DSS_Filename>%%observedDir%%/Folsom_data_6.dss</DSS_Filename>
+								<DSS_Filename>%%observedDir%%/Natoma_data_6.dss</DSS_Filename>
 								<parameter>elevation</parameter>
-								<DSS_Path>/FOLSOM RESERVOIR/Level/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
+								<DSS_Path>/NATOMA/NATOMA POOL/ELEV//1Hour/CDEC-CARDNO/</DSS_Path>
 							</wse>
 						</DataPath>
 					</DataPaths>

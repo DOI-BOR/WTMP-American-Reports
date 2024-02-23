@@ -1,0 +1,217 @@
+<Chapters>
+	<Chapter>
+		<Name>Summary of Models</Name>
+		<debug>true</debug>
+		<Sections>
+			<Section>
+				<header>Iteration Summary</header>
+				<Object>
+					<type>forecasttable</type>
+					<Description>Iteration run information</Description>
+				</Object>
+			</Section>
+			<Section>
+				<header>Folsom</header>
+				<Object>
+					<type>timeseriesplot</type>
+					<title>Folsom Lake Outflow Forecast Runs with Envelopes</title>
+					<Description>Folsom Lake Outflow Temperature variable input with percentile envelopes computed</Description>
+					<ylabel>Water Temperature (%%units%%)</ylabel>
+					<unitsystem>english</unitsystem>
+					<legend_outside>True</legend_outside>
+					<lines>
+						<line>
+							<flag>computed</flag>
+							<label>Computed</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//FOLSOM DAM/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<linecolor>darkgreen</linecolor>
+							<interval>1DAY</interval>
+							<envelopes>
+								<envelope>
+									<percent>100</percent>
+									<label>Maximum</label>
+									<linestylepattern>dotted</linestylepattern>
+									<linewidth>3</linewidth>
+								</envelope>
+								<envelope>
+									<percent>0</percent>
+									<label>Minimum</label>
+									<linewidth>3</linewidth>
+									<linestylepattern>dotted</linestylepattern>
+								</envelope>
+								<envelope>
+									<percent>25</percent>
+									<label>Percentile: 25%</label>
+									<linestylepattern>dashed</linestylepattern>
+								</envelope>
+								<envelope>
+									<percent>75</percent>
+									<label>Percentile 75%</label>
+									<linestylepattern>dashed</linestylepattern>
+								</envelope>
+								<envelope>
+									<percent>50</percent>
+									<label>Mean</label>
+									<linewidth>3</linewidth>
+									<linestylepattern>solid</linestylepattern>
+								</envelope>
+							</envelopes>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<type>timeseriesplot</type>
+					<title>Folsom Lake Outflow Forecast Runs</title>
+					<Description>Folsom Lake Outflow Temperature variable input</Description>
+					<ylabel>Water Temperature (%%units%%)</ylabel>
+					<legend_outside>True</legend_outside>
+					<unitsystem>english</unitsystem>
+					<lines>
+						<line>
+							<flag>computed</flag>
+							<label>%%member%%</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//FOLSOM DAM/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+							<coloreach>true</coloreach>
+						</line>
+					</lines>
+				</Object>
+				<!-- <Object> -->
+					<!-- <Type>tablefromfile</Type> -->
+					<!-- <Description>Folsom Lake Iterations</Description> -->
+					<!-- <formatPrimaryAsCollection>true</formatPrimaryAsCollection> -->
+					<!-- <Datapaths> -->
+						<!-- <Datapath> -->
+							<!-- <filename>%%SimulationDir%%\SRTTG_reporting.csv</filename> -->
+						<!-- </Datapath> -->
+					<!-- </Datapaths> -->
+				<!-- </Object> -->
+				<Object>
+					<type>ErrorStatisticsTable</type>
+					<primarykeyheader>Iteration</primarykeyheader>
+					<unitsystem>english</unitsystem>
+					<description>Folsom Lake Outflow Iteration Statistical Summary May-Sep %%year%% (%%units%%)</description>
+					<xlims>
+						<min>01 May %%year%%</min>
+						<max>01 Sep %%year%%</max>
+					</xlims>
+					<Datapaths>
+						<Datapath>
+							<flag>Computed</flag>
+							<label>Computed</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//FOLSOM DAM/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+					</Datapaths>
+					<rows>
+						<row>%%member%%|%%maximum.Computed%%|%%mean.Computed%%|%%minimum.Computed%%</row>
+					</rows>
+					<headers>
+						<header>Maximum</header>
+						<header>Mean</header>
+						<header>Minimum</header>
+					</headers>
+				</Object>
+			</Section>
+			<Section>
+				<header>American River at Watt Ave</header>
+				<Object>
+					<type>timeseriesplot</type>
+					<title>American River at Watt Ave Forecast Runs with Envelopes</title>
+					<Description>American River at Watt Ave River Temperature variable input with percentile envelopes computed</Description>
+					<ylabel>Water Temperature (%%units%%)</ylabel>
+					<unitsystem>english</unitsystem>
+					<legend_outside>True</legend_outside>
+					<lines>
+						<line>
+							<flag>computed</flag>
+							<label>CCR</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//WATT AVE BRIDGE/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<linecolor>darkgreen</linecolor>
+							<interval>1DAY</interval>
+							<envelopes>
+								<envelope>
+									<percent>100</percent>
+									<label>Maximum</label>
+									<linestylepattern>dotted</linestylepattern>
+									<linewidth>3</linewidth>
+								</envelope>
+								<envelope>
+									<percent>0</percent>
+									<label>Minimum</label>
+									<linewidth>3</linewidth>
+									<linestylepattern>dotted</linestylepattern>
+								</envelope>
+								<envelope>
+									<percent>25</percent>
+									<label>Percentile: 25%</label>
+									<linestylepattern>dashed</linestylepattern>
+								</envelope>
+								<envelope>
+									<percent>75</percent>
+									<label>Percentile 75%</label>
+									<linestylepattern>dashed</linestylepattern>
+								</envelope>
+								<envelope>
+									<percent>50</percent>
+									<label>Mean</label>
+									<linewidth>3</linewidth>
+									<linestylepattern>solid</linestylepattern>
+								</envelope>
+							</envelopes>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<type>timeseriesplot</type>
+					<title>American River at Watt Ave Temperature Forecast Runs</title>
+					<Description>American River at Watt Ave Temperature variable input</Description>
+					<ylabel>Water Temperature (%%units%%)</ylabel>
+					<legend_outside>True</legend_outside>
+					<unitsystem>english</unitsystem>
+					<lines>
+						<line>
+							<flag>computed</flag>
+							<label>%%member%%</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//WATT AVE BRIDGE/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+							<coloreach>true</coloreach>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<type>ErrorStatisticsTable</type>
+					<primarykeyheader>Iteration</primarykeyheader>
+					<unitsystem>english</unitsystem>
+					<description>American River at Watt Ave Iteration Statistical Summary May-Sep %%year%% (%%units%%)</description>
+					<xlims>
+						<min>01 May %%year%%</min>
+						<max>01 Sep %%year%%</max>
+					</xlims>
+					<Datapaths>
+						<Datapath>
+							<flag>Computed</flag>
+							<label>Computed</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//WATT AVE BRIDGE/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+					</Datapaths>
+					<rows>
+						<row>%%member%%|%%maximum.Computed%%|%%mean.Computed%%|%%minimum.Computed%%</row>
+					</rows>
+					<headers>
+						<header>Maximum</header>
+						<header>Mean</header>
+						<header>Minimum</header>
+					</headers>
+				</Object>
+			</Section>
+		</Sections>
+	</Chapter>
+</Chapters>
