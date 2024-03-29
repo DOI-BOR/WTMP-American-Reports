@@ -27,6 +27,7 @@
 							<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>
 							<linecolor>darkgreen</linecolor>
 							<interval>1DAY</interval>
+							<type>PER-AVER</type>
 							<envelopes>
 								<envelope>
 									<percent>100</percent>
@@ -74,6 +75,7 @@
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+							<type>PER-AVER</type>
 							<coloreach>true</coloreach>
 						</line>
 					</lines>
@@ -104,6 +106,7 @@
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+							<type>PER-AVER</type>
 						</Datapath>
 					</Datapaths>
 					<rows>

@@ -20,6 +20,7 @@
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>/W2:QWO_77.OPT/SEG 77 WITHDRAWAL/FLOW-QWD//1HOUR/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+							<type>PER-AVER</type>
 						</line>
 						<!-- <line> -->
 							<!-- <flag>Keswick</flag> -->
@@ -52,6 +53,7 @@
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>/W2:QWO_77.OPT/SEG 77 WITHDRAWAL/FLOW-QWD//1HOUR/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+							<type>PER-AVER</type>
 						</Datapath>
 						<!-- <Datapath> -->
 							<!-- <flag>Keswick</flag> -->
@@ -88,6 +90,7 @@
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>/W2:QWO_77.OPT/SEG 77 WITHDRAWAL/FLOW-QWD//1HOUR/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+							<type>PER-AVER</type>
 						</Datapath>
 						<!-- <Datapath> -->
 							<!-- <flag>Keswick</flag> -->
