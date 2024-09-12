@@ -40,9 +40,9 @@
 						<rotation>90</rotation>
 						<datetimeformat>%m/%d/%y</datetimeformat>
 					</xticks2>
-					<xlims>
+					<!--<xlims>
 						<min>180</min>
-					</xlims>
+					</xlims>-->
 					<mergelines>
 						<!--<mergeline>
 							<controller>leakage-P1L1</controller>
