@@ -671,8 +671,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Parameter>Temperature</Parameter>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446980 Watt Ave Brdg-Water Temp/Temp-Water//15Minute/252.500.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<lineColor>green</lineColor>
 							<lineWidth>1</lineWidth>
 							<lineStylePattern>dashed</lineStylePattern>
@@ -698,7 +698,7 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Parameter>Temperature</Parameter>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
-							<DSS_Path>//William Pond Park/Temp-Water Temperature//1Hour/%%FPART%%/</DSS_Path>
+							<DSS_Path>//Watt Ave Bridge/Temp-Water Temperature//1Hour/%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%modeldss%%</DSS_Filename>
 							<lineColor>darkgreen</lineColor>
 							<lineWidth>1</lineWidth>
@@ -1652,7 +1652,7 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Flag>Computed</Flag>
 							<Interval>1DAY</Interval>
 							<Parameter>Temperature</Parameter>
-							<DSS_Path>//Folsom Dam/Temp-Flow-weighted Water Temperature//1Day/%%Fpart%%/</DSS_Path>
+							<DSS_Path>//Folsom_FWA_Dam/Temp-Water//1Day/%%Fpart%%/</DSS_Path>
 							<DSS_Filename>%%ModelDSS%%</DSS_Filename>
 							<omitvalue>0.0</omitvalue>
 						</DataPath>
@@ -3170,8 +3170,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<label>Observed</label>
 							<Flag>Observed</Flag>
 							<Parameter>Temperature</Parameter>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446700 William B Pond Park-Water Temp/Temp-Water//15Minute/252.501.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<lineColor>#5b9bd5</lineColor>
 							<lineWidth>1</lineWidth>
 							<lineStylePattern>solid</lineStylePattern>
@@ -3184,8 +3184,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Parameter>Temperature</Parameter>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446700 William B Pond Park-Water Temp/Temp-Water//15Minute/252.501.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<lineColor>#5b9bd5</lineColor>
 							<lineWidth>1</lineWidth>
 							<lineStylePattern>solid</lineStylePattern>
@@ -3240,8 +3240,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 						<DataPath>
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446700 William B Pond Park-Water Temp/Temp-Water//15Minute/252.501.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
 						</DataPath>
 					</DataPaths>						
@@ -3287,8 +3287,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 						<DataPath>
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446700 William B Pond Park-Water Temp/Temp-Water//15Minute/252.501.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
 						</DataPath>
 					</DataPaths>						
@@ -3317,8 +3317,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 						<DataPath>
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446700 William B Pond Park-Water Temp/Temp-Water//15Minute/252.501.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
 						</DataPath>
 					</DataPaths>
@@ -3346,8 +3346,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 						<DataPath>
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446700 William B Pond Park-Water Temp/Temp-Water//15Minute/252.501.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
 						</DataPath>
 					</DataPaths>						
@@ -3375,8 +3375,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 						<DataPath>
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446700 William B Pond Park-Water Temp/Temp-Water//15Minute/252.501.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
 						</DataPath>
 					</DataPaths>						
@@ -3404,8 +3404,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 						<DataPath>
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
-							<DSS_Path>/USBR/At_Willam_by_Pond_Park_American 11446980/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446700 William B Pond Park-Water Temp/Temp-Water//15Minute/252.501.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
 						</DataPath>
 					</DataPaths>						
@@ -3433,8 +3433,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<label>Observed</label>
 							<Flag>Observed</Flag>
 							<Parameter>Temperature</Parameter>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446980 Watt Ave Brdg-Water Temp/Temp-Water//15Minute/252.500.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<lineColor>#5b9bd5</lineColor>
 							<lineWidth>1</lineWidth>
 							<lineStylePattern>solid</lineStylePattern>
@@ -3447,8 +3447,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 							<Parameter>Temperature</Parameter>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446980 Watt Ave Brdg-Water Temp/Temp-Water//15Minute/252.500.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<lineColor>#5b9bd5</lineColor>
 							<lineWidth>1</lineWidth>
 							<lineStylePattern>solid</lineStylePattern>
@@ -3503,8 +3503,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 						<DataPath>
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446980 Watt Ave Brdg-Water Temp/Temp-Water//15Minute/252.500.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
 						</DataPath>
 					</DataPaths>						
@@ -3550,8 +3550,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 						<DataPath>
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446980 Watt Ave Brdg-Water Temp/Temp-Water//15Minute/252.500.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
 						</DataPath>
 					</DataPaths>						
@@ -3580,8 +3580,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 						<DataPath>
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446980 Watt Ave Brdg-Water Temp/Temp-Water//15Minute/252.500.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
 						</DataPath>
 					</DataPaths>
@@ -3609,8 +3609,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 						<DataPath>
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446980 Watt Ave Brdg-Water Temp/Temp-Water//15Minute/252.500.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
 						</DataPath>
 					</DataPaths>						
@@ -3638,8 +3638,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 						<DataPath>
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446980 Watt Ave Brdg-Water Temp/Temp-Water//15Minute/252.500.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
 						</DataPath>
 					</DataPaths>						
@@ -3667,8 +3667,8 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 						<DataPath>
 							<Flag>Observed</Flag>
 							<Interval>1HOUR</Interval>
-							<DSS_Path>/USBR/Watt_Ave_Bridge_near_Carmichael_American 11446700/Temp-Water//1Hour/CARDNO/</DSS_Path>
-							<DSS_Filename>%%observedDir%%/USBR_American_calibration_6.dss</DSS_Filename>
+							<DSS_Path>/MR Am.-Lower American R./11446980 Watt Ave Brdg-Water Temp/Temp-Water//15Minute/252.500.50.1.1/</DSS_Path>
+							<DSS_Filename>%%observedDir%%/DMS_AmericanCalVal.dss</DSS_Filename>
 							<omitvalue>-901.0</omitvalue>
 						</DataPath>
 					</DataPaths>						

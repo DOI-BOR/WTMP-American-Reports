@@ -1,153 +1,10 @@
 <Chapters>
 	<Chapter>
-		<Name>Iterations</Name>
+		<Name>W2 Buzz Plot</Name>
 		<debug>true</debug>
 		<memberiteration>true</memberiteration>
 		<Sections>
 			<Section>
-				<header>Outflow Iteration %%member%%</header>
-				<Object>
-					<type>timeseriesplot</type>
-					<title>W2 Folsom Modeled Outflow: Iteration %%member%%</title>
-					<Description>W2 Folsom Modeled Outflow %%year%% Iteration %%member%%</Description>
-					<ylabel>Flow (%%units%%)</ylabel>
-					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
-					<lines>
-						<line>
-							<flag>Folsom</flag>
-							<label>Folsom Lake Outflow Temperature</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<!--<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>-->
-							<DSS_Path>//W2_NATOMA_INFLOWT/TEMP-WATER//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-							<type>PER-AVER</type>
-						</line>
-						<line>
-							<flag>Hazel</flag>
-							<label>Hazel Ave Regression Temperature</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONHAZEL/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-						<line>
-							<flag>Watt</flag>
-							<label>Watt Ave Regression Temperature</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONWATT/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-						<line>
-							<flag>Target</flag>
-							<label>Schedule Target Temperature</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-					</lines>
-				</Object>
-				<Object>
-					<type>ErrorStatisticsTable</type>
-					<primarykeyheader>Location</primarykeyheader>
-					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
-					<xlims>
-						<min>01 May %%year%%</min>
-						<max>01 Sep %%year%%</max>
-					</xlims>
-					<Datapaths>
-						<Datapath>
-							<flag>Folsom</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_NATOMA_INFLOWT/TEMP-WATER//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-							<type>PER-AVER</type>
-						</Datapath>
-						<Datapath>
-							<flag>Hazel</flag>
-							<label>Hazel Ave Regression</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONHAZEL/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Watt</flag>
-							<label>Watt Ave Regression</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONWATT/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Target</flag>
-							<label>Schedule Target Temperature</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-					</Datapaths>
-					<rows>
-						<row>Folsom|%%maximum.Folsom%%|%%mean.Folsom%%|%%minimum.Folsom%%</row>
-						<row>Hazel|%%maximum.Hazel%%|%%mean.Hazel%%|%%minimum.Hazel%%</row>
-						<row>Watt|%%maximum.Watt%%|%%mean.Watt%%|%%minimum.Watt%%</row>
-						<row>Target|%%maximum.Target%%|%%mean.Target%%|%%minimum.Target%%</row>
-					</rows>
-					<headers>
-						<header>Maximum</header>
-						<header>Mean</header>
-						<header>Minimum</header>
-					</headers>
-				</Object>
-				<Object>
-					<type>ErrorStatisticsTable</type>
-					<primarykeyheader>Month</primarykeyheader>
-					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description>
-					<Datapaths>
-						<Datapath>
-							<flag>Folsom</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_NATOMA_INFLOWT/TEMP-WATER//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-							<type>PER-AVER</type>
-						</Datapath>
-						<Datapath>
-							<flag>Hazel</flag>
-							<label>Hazel Ave Regression</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONHAZEL/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Watt</flag>
-							<label>Watt Ave Regression</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONWATT/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Target</flag>
-							<label>Schedule Target Temperature</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-					</Datapaths>
-					<rows>
-						<row>Apr|%%MEAN.Folsom.MONTH=Apr%%|%%MEAN.Hazel.MONTH=Apr%%|%%MEAN.Watt.MONTH=Apr%%|%%MEAN.Target.MONTH=Apr%%</row>
-						<row>May|%%MEAN.Folsom.MONTH=May%%|%%MEAN.Hazel.MONTH=May%%|%%MEAN.Watt.MONTH=May%%|%%MEAN.Target.MONTH=May%%</row>
-						<row>Jun|%%MEAN.Folsom.MONTH=Jun%%|%%MEAN.Hazel.MONTH=Jun%%|%%MEAN.Watt.MONTH=Jun%%|%%MEAN.Target.MONTH=Jun%%</row>
-						<row>Jul|%%MEAN.Folsom.MONTH=Jul%%|%%MEAN.Hazel.MONTH=Jul%%|%%MEAN.Watt.MONTH=Jul%%|%%MEAN.Target.MONTH=Jul%%</row>
-						<row>Aug|%%MEAN.Folsom.MONTH=Aug%%|%%MEAN.Hazel.MONTH=Aug%%|%%MEAN.Watt.MONTH=Aug%%|%%MEAN.Target.MONTH=Aug%%</row>
-						<row>Sep|%%MEAN.Folsom.MONTH=Sep%%|%%MEAN.Hazel.MONTH=Sep%%|%%MEAN.Watt.MONTH=Sep%%|%%MEAN.Target.MONTH=Sep%%</row>
-						<row>Oct|%%MEAN.Folsom.MONTH=Oct%%|%%MEAN.Hazel.MONTH=Oct%%|%%MEAN.Watt.MONTH=Oct%%|%%MEAN.Target.MONTH=Oct%%</row>
-					</rows>
-					<headers>
-						<header>Folsom (%%units%%)</header>
-						<header>Hazel (%%units%%)</header>
-						<header>Watt (%%units%%)</header>
-						<header>Target (%%units%%)</header>
-					</headers>
-				</Object>
 
 				<Object>
 					<Type>TimeSeriesPlot</Type>
@@ -289,19 +146,19 @@
 							<zorder>9</zorder>
 						</line>-->
 						<line>
-							<label>Watt Ave Temp Regression</label>
+							<label>Sim Watt Ave Temp</label>
 							<Flag>SimulatedWatt</Flag>
 							<Parameter>Temperature</Parameter>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONWATT/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//WATT AVE BRIDGE/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<lineColor>darkblue</lineColor>
 							<lineWidth>1</lineWidth>
 							<lineStylePattern>solid</lineStylePattern>
 							<zorder>8</zorder>
 						</line>
-						<!--<line>
+						<line>
 							<label>Sim William Pond Park Temp</label>
 							<Flag>SimulatedWatt</Flag>
 							<Parameter>Temperature</Parameter>
@@ -313,15 +170,15 @@
 							<lineWidth>1</lineWidth>
 							<lineStylePattern>solid</lineStylePattern>
 							<zorder>8</zorder>
-						</line>-->
+						</line>
 						<line>
-							<label>Hazel Ave Temp Regression</label>
+							<label>Sim Hazel Ave Temp</label>
 							<Flag>SimulatedHazel</Flag>
 							<Parameter>Temperature</Parameter>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
 							<yaxis>left</yaxis>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONHAZEL/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//AFO/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<lineColor>darkred</lineColor>
 							<lineStylePattern>solid</lineStylePattern>
@@ -688,10 +545,8 @@
 					</Lines>
 				</Object>
 
+
 			</Section>
-			
-			
-			
 		</Sections>
 	</Chapter>
 </Chapters>

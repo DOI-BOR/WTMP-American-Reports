@@ -24,8 +24,7 @@
 							<flag>computed</flag>
 							<label>Computed</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<!--<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>-->
-							<DSS_Path>//W2_NATOMA_INFLOWT/TEMP-WATER//1HOUR/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>
 							<linecolor>darkgreen</linecolor>
 							<interval>1DAY</interval>
 							<type>PER-AVER</type>
@@ -74,8 +73,7 @@
 							<flag>computed</flag>
 							<label>%%member%%</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<!--<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>-->
-							<DSS_Path>//W2_NATOMA_INFLOWT/TEMP-WATER//1HOUR/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
 							<type>PER-AVER</type>
 							<coloreach>true</coloreach>
@@ -106,119 +104,7 @@
 							<flag>Computed</flag>
 							<label>Computed</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<!--<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>-->
-							<DSS_Path>//W2_NATOMA_INFLOWT/TEMP-WATER//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-							<type>PER-AVER</type>
-						</Datapath>
-					</Datapaths>
-					<rows>
-						<row>%%member%%|%%maximum.Computed%%|%%mean.Computed%%|%%minimum.Computed%%</row>
-					</rows>
-					<headers>
-						<header>Maximum</header>
-						<header>Mean</header>
-						<header>Minimum</header>
-					</headers>
-				</Object>
-			</Section>
-			<Section>
-				<header>Hazel Ave W2 Regression</header>
-				<Object>
-					<type>timeseriesplot</type>
-					<title>Hazel Ave Bridge Temperature W2 Regression Temperature with Envelopes</title>
-					<Description>Hazel Ave Bridge Temperature W2 Regression Temperature variable input with percentile envelopes computed</Description>
-					<ylabel>Water Temperature (%%units%%)</ylabel>
-					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
-					<lines>
-						<line>
-							<flag>computed</flag>
-							<label>Computed</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONHAZEL/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
-							<linecolor>darkgreen</linecolor>
-							<interval>1DAY</interval>
-							<type>PER-AVER</type>
-							<envelopes>
-								<envelope>
-									<percent>100</percent>
-									<label>Maximum</label>
-									<linestylepattern>dotted</linestylepattern>
-									<linewidth>3</linewidth>
-								</envelope>
-								<envelope>
-									<percent>0</percent>
-									<label>Minimum</label>
-									<linewidth>3</linewidth>
-									<linestylepattern>dotted</linestylepattern>
-								</envelope>
-								<envelope>
-									<percent>25</percent>
-									<label>Percentile: 25%</label>
-									<linestylepattern>dashed</linestylepattern>
-								</envelope>
-								<envelope>
-									<percent>75</percent>
-									<label>Percentile 75%</label>
-									<linestylepattern>dashed</linestylepattern>
-								</envelope>
-								<envelope>
-									<percent>50</percent>
-									<label>Mean</label>
-									<linewidth>3</linewidth>
-									<linestylepattern>solid</linestylepattern>
-								</envelope>
-							</envelopes>
-						</line>
-					</lines>
-				</Object>
-				<Object>
-					<type>timeseriesplot</type>
-					<title>Hazel Ave Bridge Temperature W2 Regression Temperature Runs</title>
-					<Description>Hazel Ave Bridge Temperature W2 Regression Temperature variable input</Description>
-					<ylabel>Water Temperature (%%units%%)</ylabel>
-					<legend_outside>True</legend_outside>
-					<unitsystem>english</unitsystem>
-					<lines>
-						<line>
-							<flag>computed</flag>
-							<label>%%member%%</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONHAZEL/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-							<type>PER-AVER</type>
-							<coloreach>true</coloreach>
-						</line>
-					</lines>
-				</Object>
-				
-				<!-- <Object> -->
-					<!-- <Type>tablefromfile</Type> -->
-					<!-- <Description>Shasta Lake Iterations</Description> -->
-					<!-- <formatPrimaryAsCollection>true</formatPrimaryAsCollection> -->
-					<!-- <Datapaths> -->
-						<!-- <Datapath> -->
-							<!-- <filename>%%SimulationDir%%\SRTTG_reporting.csv</filename> -->
-						<!-- </Datapath> -->
-					<!-- </Datapaths> -->
-				<!-- </Object> -->
-				
-				<Object>
-					<type>ErrorStatisticsTable</type>
-					<primarykeyheader>Iteration</primarykeyheader>
-					<unitsystem>english</unitsystem>
-					<description>Hazel Ave Bridge Temperature W2 Regression Temperature Iteration Statistical Summary May-Sep %%year%% (%%units%%)</description>
-					<xlims>
-						<min>01 May %%year%%</min>
-						<max>01 Sep %%year%%</max>
-					</xlims>
-					<Datapaths>
-						<Datapath>
-							<flag>Computed</flag>
-							<label>Computed</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONHAZEL/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
 							<type>PER-AVER</type>
 						</Datapath>
@@ -247,7 +133,7 @@
 							<flag>computed</flag>
 							<label>Computed</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONWATT/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//W2_FOLSOM_DOWNSTREAM_TEMP/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
 							<linecolor>darkgreen</linecolor>
 							<interval>1DAY</interval>
 							<type>PER-AVER</type>
@@ -286,7 +172,7 @@
 				</Object>
 				<Object>
 					<type>timeseriesplot</type>
-					<title>Watt Ave Bridge Temperature W2 Regression Temperature Runs</title>
+					<title>Folsom Lake Outflow Forecast Runs</title>
 					<Description>Watt Ave Bridge Temperature W2 Regression Temperature variable input</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<legend_outside>True</legend_outside>
@@ -296,7 +182,7 @@
 							<flag>computed</flag>
 							<label>%%member%%</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONWATT/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//W2_FOLSOM_DOWNSTREAM_TEMP/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
 							<type>PER-AVER</type>
 							<coloreach>true</coloreach>
@@ -327,7 +213,7 @@
 							<flag>Computed</flag>
 							<label>Computed</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_DOWNSTREAMREGRESSIONWATT/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//W2_FOLSOM_DOWNSTREAM_TEMP/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
 							<type>PER-AVER</type>
 						</Datapath>

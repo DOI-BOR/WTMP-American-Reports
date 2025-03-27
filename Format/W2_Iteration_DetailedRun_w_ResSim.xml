@@ -688,8 +688,223 @@
 					</Lines>
 				</Object>
 
+				<Object>
+					<type>timeseriesplot</type>
+					<title>Hazel Ave Temperature, W2 Regression and ResSim Modeled: Iteration %%member%%</title>
+					<Description>Hazel Ave temperature comparison %%year%% Iteration %%member%%</Description>
+					<ylabel>Water Temperature (%%units%%)</ylabel>
+					<unitsystem>english</unitsystem>
+					<legend_outside>True</legend_outside>
+					<lines>
+						<line>
+							<flag>W2 Hazel Regression</flag>
+							<label>W2 Hazel Regression</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//W2_DOWNSTREAMREGRESSIONHAZEL/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</line>
+						<line>
+							<flag>ResSim Hazel Ave Modeled</flag>
+							<label>ResSim Hazel Ave Modeled</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//AFO/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</line>
+						<line>
+							<flag>Target</flag>
+							<label>Schedule Target Temperature</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<type>ErrorStatisticsTable</type>
+					<primarykeyheader>Location</primarykeyheader>
+					<unitsystem>english</unitsystem>
+					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
+					<xlims>
+						<min>01 May %%year%%</min>
+						<max>01 Sep %%year%%</max>
+					</xlims>
+					<Datapaths>
+						<Datapath>
+							<flag>Regression</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//W2_DOWNSTREAMREGRESSIONHAZEL/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+						<Datapath>
+							<flag>ResSim</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//AFO/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+					</Datapaths>
+					<rows>
+						<row>Regression|%%maximum.Regression%%|%%mean.Regression%%|%%minimum.Regression%%</row>
+						<row>ResSim|%%maximum.ResSim%%|%%mean.ResSim%%|%%minimum.ResSim%%</row>
+					</rows>
+					<headers>
+						<header>Maximum</header>
+						<header>Mean</header>
+						<header>Minimum</header>
+					</headers>
+				</Object>
+				
+				
+				<!--<Object>
+					<type>ErrorStatisticsTable</type>
+					<primarykeyheader>Month</primarykeyheader>
+					<unitsystem>english</unitsystem>
+					<description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description>
+					<Datapaths>
+						<Datapath>
+							<flag>Regression</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//W2_DOWNSTREAMREGRESSIONHAZEL/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+						<Datapath>
+							<flag>ResSim</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//AFO/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+					</Datapaths>
+					<rows>
+						<row>Apr|%%MEAN.Regression.MONTH=Apr%%</row>
+						<row>May|%%MEAN.Regression.MONTH=MAY%%</row>
+						<row>Jun|%%MEAN.Regression.MONTH=Jun%%</row>
+						<row>Jul|%%MEAN.Regression.MONTH=Jul%%</row>
+						<row>Aug|%%MEAN.Regression.MONTH=Aug%%</row>
+						<row>Sep|%%MEAN.Regression.MONTH=Sep%%</row>
+						<row>Oct|%%MEAN.Regression.MONTH=Oct%%</row>
+					</rows>
+					<rows>
+						<row>Apr|%%MEAN.ResSim.MONTH=Apr%%</row>
+						<row>May|%%MEAN.ResSim.MONTH=MAY%%</row>
+						<row>Jun|%%MEAN.ResSim.MONTH=Jun%%</row>
+						<row>Jul|%%MEAN.ResSim.MONTH=Jul%%</row>
+						<row>Aug|%%MEAN.ResSim.MONTH=Aug%%</row>
+						<row>Sep|%%MEAN.ResSim.MONTH=Sep%%</row>
+						<row>Oct|%%MEAN.ResSim.MONTH=Oct%%</row>
+					</rows>
+					<headers>
+						<header>Regression (%%units%%)</header>
+						<header>ResSim (%%units%%)</header>
+					</headers>
+				</Object>-->
+
+				<Object>
+					<type>timeseriesplot</type>
+					<title>Watt Ave Temperature, W2 Regression and ResSim Modeled: Iteration %%member%%</title>
+					<Description>Watt Ave temperature comparison %%year%% Iteration %%member%%</Description>
+					<ylabel>Water Temperature (%%units%%)</ylabel>
+					<unitsystem>english</unitsystem>
+					<legend_outside>True</legend_outside>
+					<lines>
+						<line>
+							<flag>W2 Watt Regression</flag>
+							<label>W2 Watt Regression</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//W2_DOWNSTREAMREGRESSIONWATT/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</line>
+						<line>
+							<flag>ResSim Watt Ave Modeled</flag>
+							<label>ResSim Watt Ave Modeled</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//WATT AVE BRIDGE/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</line>
+						<line>
+							<flag>Target</flag>
+							<label>Schedule Target Temperature</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<type>ErrorStatisticsTable</type>
+					<primarykeyheader>Location</primarykeyheader>
+					<unitsystem>english</unitsystem>
+					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
+					<xlims>
+						<min>01 May %%year%%</min>
+						<max>01 Sep %%year%%</max>
+					</xlims>
+					<Datapaths>
+						<Datapath>
+							<flag>Regression</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//W2_DOWNSTREAMREGRESSIONWATT/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+						<Datapath>
+							<flag>ResSim</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//WATT AVE BRIDGE/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+					</Datapaths>
+					<rows>
+						<row>Regression|%%maximum.Regression%%|%%mean.Regression%%|%%minimum.Regression%%</row>
+						<row>ResSim|%%maximum.ResSim%%|%%mean.ResSim%%|%%minimum.ResSim%%</row>
+					</rows>
+					<headers>
+						<header>Maximum</header>
+						<header>Mean</header>
+						<header>Minimum</header>
+					</headers>
+				</Object>
+				<!--<Object>
+					<type>ErrorStatisticsTable</type>
+					<primarykeyheader>Month</primarykeyheader>
+					<unitsystem>english</unitsystem>
+					<description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description>
+					<Datapaths>
+						<Datapath>
+							<flag>Regression</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//W2_DOWNSTREAMREGRESSIONWATT/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+						<Datapath>
+							<flag>ResSim</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//WATT AVE BRIDGE/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+					</Datapaths>
+					<rows>
+						<row>Apr|%%MEAN.Regression.MONTH=Apr%%</row>
+						<row>May|%%MEAN.Regression.MONTH=MAY%%</row>
+						<row>Jun|%%MEAN.Regression.MONTH=Jun%%</row>
+						<row>Jul|%%MEAN.Regression.MONTH=Jul%%</row>
+						<row>Aug|%%MEAN.Regression.MONTH=Aug%%</row>
+						<row>Sep|%%MEAN.Regression.MONTH=Sep%%</row>
+						<row>Oct|%%MEAN.Regression.MONTH=Oct%%</row>
+					</rows>
+					<rows>
+						<row>Apr|%%MEAN.ResSim.MONTH=Apr%%</row>
+						<row>May|%%MEAN.ResSim.MONTH=MAY%%</row>
+						<row>Jun|%%MEAN.ResSim.MONTH=Jun%%</row>
+						<row>Jul|%%MEAN.ResSim.MONTH=Jul%%</row>
+						<row>Aug|%%MEAN.ResSim.MONTH=Aug%%</row>
+						<row>Sep|%%MEAN.ResSim.MONTH=Sep%%</row>
+						<row>Oct|%%MEAN.ResSim.MONTH=Oct%%</row>
+					</rows>
+					<headers>
+						<header>Regression (%%units%%)</header>
+						<header>ResSim (%%units%%)</header>
+					</headers>
+				</Object>-->
+
 			</Section>
-			
 			
 			
 		</Sections>

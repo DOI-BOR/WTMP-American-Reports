@@ -1,0 +1,114 @@
+<Chapters>
+	<Chapter>
+		<Name>Summary of Models - W2 Folsom</Name>
+		<debug>true</debug>
+		<Sections>
+			<Section>
+				<header>Ensemble Summary</header>
+				<Object>
+					<type>forecasttable</type>
+					<Description>Iteration run information</Description>
+				</Object>
+			</Section>
+			<Section>
+				<header>W2 Folsom</header>
+				<Object>
+					<type>timeseriesplot</type>
+					<title>Folsom Lake Outflow Forecast Runs with Envelopes</title>
+					<Description>Folsom Lake Outflow Temperature variable input with percentile envelopes computed</Description>
+					<ylabel>Water Temperature (%%units%%)</ylabel>
+					<unitsystem>english</unitsystem>
+					<legend_outside>True</legend_outside>
+					<lines>
+						<line>
+							<flag>computed</flag>
+							<label>Computed</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>
+							<linecolor>darkgreen</linecolor>
+							<interval>1DAY</interval>
+							<type>PER-AVER</type>
+							<envelopes>
+								<envelope>
+									<percent>100</percent>
+									<label>Maximum</label>
+									<linestylepattern>dotted</linestylepattern>
+									<linewidth>3</linewidth>
+								</envelope>
+								<envelope>
+									<percent>0</percent>
+									<label>Minimum</label>
+									<linewidth>3</linewidth>
+									<linestylepattern>dotted</linestylepattern>
+								</envelope>
+								<envelope>
+									<percent>25</percent>
+									<label>Percentile: 25%</label>
+									<linestylepattern>dashed</linestylepattern>
+								</envelope>
+								<envelope>
+									<percent>75</percent>
+									<label>Percentile 75%</label>
+									<linestylepattern>dashed</linestylepattern>
+								</envelope>
+								<envelope>
+									<percent>50</percent>
+									<label>Mean</label>
+									<linewidth>3</linewidth>
+									<linestylepattern>solid</linestylepattern>
+								</envelope>
+							</envelopes>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<type>timeseriesplot</type>
+					<title>Folsom Lake Outflow Forecast Runs</title>
+					<Description>Folsom Lake Outflow Temperature variable input</Description>
+					<ylabel>Water Temperature (%%units%%)</ylabel>
+					<legend_outside>True</legend_outside>
+					<unitsystem>english</unitsystem>
+					<lines>
+						<line>
+							<flag>computed</flag>
+							<label>%%member%%</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+							<type>PER-AVER</type>
+							<coloreach>true</coloreach>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<type>ErrorStatisticsTable</type>
+					<primarykeyheader>Iteration</primarykeyheader>
+					<unitsystem>english</unitsystem>
+					<description>Folsom Lake Outflow Iteration Statistical Summary May-Sep %%year%% (%%units%%)</description>
+					<xlims>
+						<min>01 May %%year%%</min>
+						<max>01 Sep %%year%%</max>
+					</xlims>
+					<Datapaths>
+						<Datapath>
+							<flag>Computed</flag>
+							<label>Computed</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+							<type>PER-AVER</type>
+						</Datapath>
+					</Datapaths>
+					<rows>
+						<row>%%member%%|%%maximum.Computed%%|%%mean.Computed%%|%%minimum.Computed%%</row>
+					</rows>
+					<headers>
+						<header>Maximum</header>
+						<header>Mean</header>
+						<header>Minimum</header>
+					</headers>
+				</Object>
+			</Section>
+		</Sections>
+	</Chapter>
+</Chapters>

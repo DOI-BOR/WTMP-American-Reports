@@ -12,6 +12,150 @@
 				</Object>
 
 				<Object>
+					<type>timeseriesplot</type>
+					<title>ResSim American Temperatures: Iteration %%member%%</title>
+					<Description>ResSim American Temperatures %%year%% Iteration %%member%%</Description>
+					<ylabel>Flow (%%units%%)</ylabel>
+					<unitsystem>english</unitsystem>
+					<legend_outside>True</legend_outside>
+					<lines>
+						<line>
+							<flag>Folsom</flag>
+							<label>Folsom Lake Outflow Temperature</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//FOLSOM_FWA_DAM/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+							<type>PER-AVER</type>
+						</line>
+						<line>
+							<flag>Hazel</flag>
+							<label>Hazel Ave Temperature</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//AFO/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</line>
+						<line>
+							<flag>Watt</flag>
+							<label>Watt Ave Temperature</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//WATT AVE BRIDGE/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</line>
+						<line>
+							<flag>Target</flag>
+							<label>Schedule Target Temperature</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>/WTMP_American/Folsom Downstream/TEMP-WATER-TARGET//1Hour/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</line>
+					</lines>
+				</Object>
+				<Object>
+					<type>ErrorStatisticsTable</type>
+					<primarykeyheader>Location</primarykeyheader>
+					<unitsystem>english</unitsystem>
+					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
+					<xlims>
+						<min>01 May %%year%%</min>
+						<max>01 Sep %%year%%</max>
+					</xlims>
+					<Datapaths>
+						<Datapath>
+							<flag>Folsom</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//FOLSOM_FWA_DAM/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+							<type>PER-AVER</type>
+						</Datapath>
+						<Datapath>
+							<flag>Hazel</flag>
+							<label>Hazel Ave Regression</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//AFO/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+						<Datapath>
+							<flag>Watt</flag>
+							<label>Watt Ave Regression</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//WATT AVE BRIDGE/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+						<Datapath>
+							<flag>Target</flag>
+							<label>Schedule Target Temperature</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+					</Datapaths>
+					<rows>
+						<row>Folsom|%%maximum.Folsom%%|%%mean.Folsom%%|%%minimum.Folsom%%</row>
+						<row>Hazel|%%maximum.Hazel%%|%%mean.Hazel%%|%%minimum.Hazel%%</row>
+						<row>Watt|%%maximum.Watt%%|%%mean.Watt%%|%%minimum.Watt%%</row>
+						<row>Target|%%maximum.Target%%|%%mean.Target%%|%%minimum.Target%%</row>
+					</rows>
+					<headers>
+						<header>Maximum</header>
+						<header>Mean</header>
+						<header>Minimum</header>
+					</headers>
+				</Object>
+				<Object>
+					<type>ErrorStatisticsTable</type>
+					<primarykeyheader>Month</primarykeyheader>
+					<unitsystem>english</unitsystem>
+					<description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description>
+					<Datapaths>
+						<Datapath>
+							<flag>Folsom</flag>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//FOLSOM_FWA_DAM/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+							<type>PER-AVER</type>
+						</Datapath>
+						<Datapath>
+							<flag>Hazel</flag>
+							<label>Hazel Ave Regression</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//AFO/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+						<Datapath>
+							<flag>Watt</flag>
+							<label>Watt Ave Regression</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//WATT AVE BRIDGE/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+						<Datapath>
+							<flag>Target</flag>
+							<label>Schedule Target Temperature</label>
+							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
+							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
+							<interval>1DAY</interval>
+						</Datapath>
+					</Datapaths>
+					<rows>
+						<row>Apr|%%MEAN.Folsom.MONTH=Apr%%|%%MEAN.Hazel.MONTH=Apr%%|%%MEAN.Watt.MONTH=Apr%%|%%MEAN.Target.MONTH=Apr%%</row>
+						<row>May|%%MEAN.Folsom.MONTH=May%%|%%MEAN.Hazel.MONTH=May%%|%%MEAN.Watt.MONTH=May%%|%%MEAN.Target.MONTH=May%%</row>
+						<row>Jun|%%MEAN.Folsom.MONTH=Jun%%|%%MEAN.Hazel.MONTH=Jun%%|%%MEAN.Watt.MONTH=Jun%%|%%MEAN.Target.MONTH=Jun%%</row>
+						<row>Jul|%%MEAN.Folsom.MONTH=Jul%%|%%MEAN.Hazel.MONTH=Jul%%|%%MEAN.Watt.MONTH=Jul%%|%%MEAN.Target.MONTH=Jul%%</row>
+						<row>Aug|%%MEAN.Folsom.MONTH=Aug%%|%%MEAN.Hazel.MONTH=Aug%%|%%MEAN.Watt.MONTH=Aug%%|%%MEAN.Target.MONTH=Aug%%</row>
+						<row>Sep|%%MEAN.Folsom.MONTH=Sep%%|%%MEAN.Hazel.MONTH=Sep%%|%%MEAN.Watt.MONTH=Sep%%|%%MEAN.Target.MONTH=Sep%%</row>
+						<row>Oct|%%MEAN.Folsom.MONTH=Oct%%|%%MEAN.Hazel.MONTH=Oct%%|%%MEAN.Watt.MONTH=Oct%%|%%MEAN.Target.MONTH=Oct%%</row>
+					</rows>
+					<headers>
+						<header>Folsom (%%units%%)</header>
+						<header>Hazel (%%units%%)</header>
+						<header>Watt (%%units%%)</header>
+						<header>Target (%%units%%)</header>
+					</headers>
+				</Object>
+
+
+
+				<Object>
 					<Type>TimeSeriesPlot</Type>
 					<Title>Folsom Lake Buzz Plot %%Year%%</Title>
 					<Description>Folsom Lake Buzz Plot %%Year%%</Description>
@@ -205,7 +349,7 @@
 						<!--<Line>
 							<label>Leakage</label>
 							<Flag>leakage-P1L1</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 1/Flow-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 1 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<lineColor>#010066</lineColor>
 							<lineWidth>1</lineWidth>
@@ -223,7 +367,7 @@
 						</Line>
 						<Line>
 							<Flag>leakage-P2L1</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 2/Flow-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 2 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
@@ -235,7 +379,7 @@
 						</Line>
 						<Line>
 							<Flag>leakage-P3L1</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 3/Flow-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 3 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
@@ -248,7 +392,7 @@
 						<Line>
 							<label>All Out</label>
 							<Flag>AllOut_P1</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 1/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 1 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<lineColor>#9932cd</lineColor>
 							<lineWidth>1</lineWidth>
@@ -266,7 +410,7 @@
 						</Line>
 						<Line>
 							<Flag>AllOut_P2</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 2/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 2 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
@@ -278,7 +422,7 @@
 						</Line>
 						<Line>
 							<Flag>AllOut_P3</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 3/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 3 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
@@ -291,7 +435,7 @@
 						<Line>
 							<label>2 Out</label>
 							<Flag>2OUT_P1</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 1/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 1 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<lineColor>powderblue</lineColor>
 							<lineWidth>1</lineWidth>
@@ -309,7 +453,7 @@
 						</Line>
 						<Line>
 							<Flag>2OUT_P2</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 2/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 2 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
@@ -321,7 +465,7 @@
 						</Line>
 						<Line>
 							<Flag>2OUT_P3</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 3/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 3 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
@@ -334,7 +478,7 @@
 						<Line>
 							<label>Deganged Middle Shutter</label>
 							<Flag>DMS_P1</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 1/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 1 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<lineColor>lightslategray</lineColor>
 							<lineWidth>1</lineWidth>
@@ -352,7 +496,7 @@
 						</Line>
 						<Line>
 							<Flag>DMS_P2</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 2/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 2 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
@@ -364,7 +508,7 @@
 						</Line>
 						<Line>
 							<Flag>DMS_P3</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 3/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 3 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
@@ -377,7 +521,7 @@
 						<Line>
 							<label>1 Out</label>
 							<Flag>1OUT_P1</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 1/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 1 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<lineColor>#6797ff</lineColor>
 							<lineWidth>1</lineWidth>
@@ -395,7 +539,7 @@
 						</Line>
 						<Line>
 							<Flag>1OUT_P2</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 2/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 2 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
@@ -407,7 +551,7 @@
 						</Line>
 						<Line>
 							<Flag>1OUT_P3</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 3/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 3 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
@@ -420,7 +564,7 @@
 						<Line>
 							<label>All In</label>
 							<Flag>AllIn_P1</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 1/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 1 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<lineColor>#0002fe</lineColor>
 							<lineWidth>1</lineWidth>
@@ -438,7 +582,7 @@
 						</Line>
 						<Line>
 							<Flag>AllIn_P2</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 2/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 2 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
@@ -450,7 +594,7 @@
 						</Line>
 						<Line>
 							<Flag>AllIn_P3</Flag>
-							<DSS_Path>//Folsom Lake-Penstock 3/FLOW-DECISION//1Hour/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//Folsom Lake-Penstock 3 minus leakage/FLOW//1Hour/*|%%FPART%%/</DSS_Path>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<Interval>1DAY</Interval>
 							<Type>PER-AVER</Type>
@@ -520,496 +664,7 @@
 					</Lines>
 				</Object>
 
-<!--
-				<Object>
-					<type>timeseriesplot</type>
-					<title>Sacramento Modeled Outflow: Iteration %%member%%</title>
-					<Description>Sacramento Modeled Outflow %%year%% Iteration %%member%%</Description>
-					<ylabel>Flow (%%units%%)</ylabel>
-					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
-					<lines>
-						<line>
-							<flag>Shasta</flag>
-							<label>Shasta</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//SHASTA OUT/Flow//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-						<line>
-							<flag>Keswick</flag>
-							<label>Keswick</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Keswick Dam/Flow//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-						<line>
-							<flag>CCR</flag>
-							<label>CCR</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Sacramento R + Clear CR/Flow//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-					</lines>
-				</Object>
-				<Object>
-					<type>ErrorStatisticsTable</type>
-					<primarykeyheader>Location</primarykeyheader>
-					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
-					<xlims>
-						<min>01 May %%year%%</min>
-						<max>01 Sep %%year%%</max>
-					</xlims>
-					<Datapaths>
-						<Datapath>
-							<flag>Shasta</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Shasta out/Flow//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Keswick</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Keswick Dam/Flow//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>CCR</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//SACRAMENTO R + CLEAR CR/Flow//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-					</Datapaths>
-					<rows>
-						<row>Shasta|%%maximum.Shasta%%|%%mean.Shasta%%|%%minimum.Shasta%%</row>
-						<row>Keswick|%%maximum.Keswick%%|%%mean.Keswick%%|%%minimum.Keswick%%</row>
-						<row>CCR|%%maximum.CCR%%|%%mean.CCR%%|%%minimum.CCR%%</row>
-					</rows>
-					<headers>
-						<header>Maximum</header>
-						<header>Mean</header>
-						<header>Minimum</header>
-					</headers>
-				</Object>
-				<Object>
-					<type>ErrorStatisticsTable</type>
-					<primarykeyheader>Month</primarykeyheader>
-					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description>
-					<Datapaths>
-						<Datapath>
-							<flag>Shasta</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Shasta out/Flow//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Keswick</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Keswick Dam/Flow//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>CCR</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//SACRAMENTO R + CLEAR CR/Flow//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-					</Datapaths>
-					<rows>
-						<row>Apr|%%MEAN.Shasta.MONTH=Apr%%|%%MEAN.Keswick.MONTH=Apr%%|%%MEAN.CCR.MONTH=Apr%%</row>
-						<row>May|%%MEAN.Shasta.MONTH=MAY%%|%%MEAN.Keswick.MONTH=MAY%%|%%MEAN.CCR.MONTH=MAY%%</row>
-						<row>Jun|%%MEAN.Shasta.MONTH=Jun%%|%%MEAN.Keswick.MONTH=Jun%%|%%MEAN.CCR.MONTH=Jun%%</row>
-						<row>Jul|%%MEAN.Shasta.MONTH=Jul%%|%%MEAN.Keswick.MONTH=Jul%%|%%MEAN.CCR.MONTH=Jul%%</row>
-						<row>Aug|%%MEAN.Shasta.MONTH=Aug%%|%%MEAN.Keswick.MONTH=Aug%%|%%MEAN.CCR.MONTH=Aug%%</row>
-						<row>Sep|%%MEAN.Shasta.MONTH=Sep%%|%%MEAN.Keswick.MONTH=Sep%%|%%MEAN.CCR.MONTH=Sep%%</row>
-						<row>Oct|%%MEAN.Shasta.MONTH=Oct%%|%%MEAN.Keswick.MONTH=Oct%%|%%MEAN.CCR.MONTH=Oct%%</row>
-					</rows>
-					<headers>
-						<header>Shasta (%%units%%)</header>
-						<header>Keswick (%%units%%)</header>
-						<header>CCR (%%units%%)</header>
-					</headers>
-				</Object>
-				<Object>
-					<type>timeseriesplot</type>
-					<title>Sacramento Modeled Outflow Water Temperature: Iteration %%member%%</title>
-					<Description>Sacramento Modeled Outflow Water Temperature %%year%% Iteration %%member%%</Description>
-					<ylabel>Water Temperature (%%units%%)</ylabel>
-					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
-					<lines>
-						<line>
-							<flag>Shasta</flag>
-							<label>Shasta</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//SHASTA OUT/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-						<line>
-							<flag>Keswick</flag>
-							<label>Keswick</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Keswick Dam/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-						<line>
-							<flag>CCR</flag>
-							<label>CCR</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Sacramento R + Clear CR/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-					</lines>
-				</Object>
-				<Object>
-					<type>ErrorStatisticsTable</type>
-					<primarykeyheader>Location</primarykeyheader>
-					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
-					<xlims>
-						<min>01 May %%year%%</min>
-						<max>01 Sep %%year%%</max>
-					</xlims>
-					<Datapaths>
-						<Datapath>
-							<flag>Shasta</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Shasta out/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Keswick</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Keswick Dam/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>CCR</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//SACRAMENTO R + CLEAR CR/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-					</Datapaths>
-					<rows>
-						<row>Shasta|%%maximum.Shasta%%|%%mean.Shasta%%|%%minimum.Shasta%%</row>
-						<row>Keswick|%%maximum.Keswick%%|%%mean.Keswick%%|%%minimum.Keswick%%</row>
-						<row>CCR|%%maximum.CCR%%|%%mean.CCR%%|%%minimum.CCR%%</row>
-					</rows>
-					<headers>
-						<header>Maximum</header>
-						<header>Mean</header>
-						<header>Minimum</header>
-					</headers>
-				</Object>
-				<Object>
-					<type>ErrorStatisticsTable</type>
-					<primarykeyheader>Month</primarykeyheader>
-					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description>
-					<Datapaths>
-						<Datapath>
-							<flag>Shasta</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Shasta out/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Keswick</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Keswick Dam/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>CCR</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//SACRAMENTO R + CLEAR CR/Temp-Water Temperature//1HOUR/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-					</Datapaths>
-					<rows>
-						<row>Apr|%%MEAN.Shasta.MONTH=Apr%%|%%MEAN.Keswick.MONTH=Apr%%|%%MEAN.CCR.MONTH=Apr%%</row>
-						<row>May|%%MEAN.Shasta.MONTH=MAY%%|%%MEAN.Keswick.MONTH=MAY%%|%%MEAN.CCR.MONTH=MAY%%</row>
-						<row>Jun|%%MEAN.Shasta.MONTH=Jun%%|%%MEAN.Keswick.MONTH=Jun%%|%%MEAN.CCR.MONTH=Jun%%</row>
-						<row>Jul|%%MEAN.Shasta.MONTH=Jul%%|%%MEAN.Keswick.MONTH=Jul%%|%%MEAN.CCR.MONTH=Jul%%</row>
-						<row>Aug|%%MEAN.Shasta.MONTH=Aug%%|%%MEAN.Keswick.MONTH=Aug%%|%%MEAN.CCR.MONTH=Aug%%</row>
-						<row>Sep|%%MEAN.Shasta.MONTH=Sep%%|%%MEAN.Keswick.MONTH=Sep%%|%%MEAN.CCR.MONTH=Sep%%</row>
-						<row>Oct|%%MEAN.Shasta.MONTH=Oct%%|%%MEAN.Keswick.MONTH=Oct%%|%%MEAN.CCR.MONTH=Oct%%</row>
-					</rows>
-					<headers>
-						<header>Shasta (%%units%%)</header>
-						<header>Keswick (%%units%%)</header>
-						<header>CCR (%%units%%)</header>
-					</headers>
-				</Object>
-				<Object>
-					<type>timeseriesplot</type>
-					<title>Trinity Modeled Outflow: Iteration %%member%%</title>
-					<Description>Trinity Modeled Outflow %%year%% Iteration %%member%%</Description>
-					<ylabel>Flow (%%units%%)</ylabel>
-					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
-					<lines>
-		
-						<line>
-							<flag>Lewiston</flag>
-							<label>Lewiston Dam</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Lewiston Dam/Flow//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-						<line>
-							<flag>Helena</flag>
-							<label>Helena</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Helena/Flow//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-						<line>
-							<flag>Douglas</flag>
-							<label>Douglas City</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Douglas City/Flow//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-						<line>
-							<flag>Limekiln</flag>
-							<label>Limekiln Gulch</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Limekiln Gulch/Flow//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-					</lines>
-				</Object>
-				<Object>
-					<type>ErrorStatisticsTable</type>
-					<primarykeyheader>Location</primarykeyheader>
-					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
-					<xlims>
-						<min>01 May %%year%%</min>
-						<max>01 Sep %%year%%</max>
-					</xlims>
-					<Datapaths>
-						<Datapath>
-							<flag>Lewiston</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Lewiston Dam/Flow//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Helena</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Helena/Flow//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Douglas</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Douglas City/Flow//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Limekiln</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Limekiln Gulch/Flow//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-					</Datapaths>
-					<rows>
-						<row>Lewiston|%%maximum.Lewiston%%|%%mean.Lewiston%%|%%minimum.Lewiston%%</row>
-						<row>Helena|%%maximum.Helena%%|%%mean.Helena%%|%%minimum.Helena%%</row>
-						<row>Douglas City|%%maximum.Douglas%%|%%mean.Douglas%%|%%minimum.Douglas%%</row>
-						<row>Limekiln Gulch|%%maximum.Limekiln%%|%%mean.Limekiln%%|%%minimum.Limekiln%%</row>
-					</rows>
-					<headers>
-						<header>Maximum</header>
-						<header>Mean</header>
-						<header>Minimum</header>
-					</headers>
-				</Object>
-				<Object>
-					<type>ErrorStatisticsTable</type>
-					<primarykeyheader>Month</primarykeyheader>
-					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description>
-					<Datapaths>
-						<Datapath>
-							<flag>Lewiston</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Lewiston Dam/Flow//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Helena</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Helena/Flow//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Douglas</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Douglas City/Flow//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Limekiln</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Limekiln Gulch/Flow//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-					</Datapaths>
-					<rows>
-						<row>Apr|%%MEAN.Lewiston.MONTH=Apr%%|%%MEAN.Helena.MONTH=Apr%%|%%MEAN.Douglas.MONTH=Apr%%|%%MEAN.Limekiln.MONTH=Apr%%</row>
-						<row>May|%%MEAN.Lewiston.MONTH=MAY%%|%%MEAN.Helena.MONTH=MAY%%|%%MEAN.Douglas.MONTH=MAY%%|%%MEAN.Limekiln.MONTH=MAY%%</row>
-						<row>Jun|%%MEAN.Lewiston.MONTH=Jun%%|%%MEAN.Helena.MONTH=Jun%%|%%MEAN.Douglas.MONTH=Jun%%|%%MEAN.Limekiln.MONTH=Jun%%</row>
-						<row>Jul|%%MEAN.Lewiston.MONTH=Jul%%|%%MEAN.Helena.MONTH=Jul%%|%%MEAN.Douglas.MONTH=Jul%%|%%MEAN.Limekiln.MONTH=Jul%%</row>
-						<row>Aug|%%MEAN.Lewiston.MONTH=Aug%%|%%MEAN.Helena.MONTH=Aug%%|%%MEAN.Douglas.MONTH=Aug%%|%%MEAN.Limekiln.MONTH=Aug%%</row>
-						<row>Sep|%%MEAN.Lewiston.MONTH=Sep%%|%%MEAN.Helena.MONTH=Sep%%|%%MEAN.Douglas.MONTH=Sep%%|%%MEAN.Limekiln.MONTH=Sep%%</row>
-						<row>Oct|%%MEAN.Lewiston.MONTH=Oct%%|%%MEAN.Helena.MONTH=Oct%%|%%MEAN.Douglas.MONTH=Oct%%|%%MEAN.Limekiln.MONTH=Oct%%</row>
-					</rows>
-					<headers>
-						<header>Lewiston Dam (%%units%%)</header>
-						<header>Helena (%%units%%)</header>
-						<header>Douglas City (%%units%%)</header>
-						<header>Limekiln Gulch (%%units%%)</header>
-					</headers>
-				</Object>
-				<Object>
-					<type>timeseriesplot</type>
-					<title>Trinity Modeled Outflow Water Temperature: Iteration %%member%%</title>
-					<Description>Trinity Modeled Outflow Water Temperature %%year%% Iteration %%member%%</Description>
-					<ylabel>Flow (%%units%%)</ylabel>
-					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
-					<lines>
-		
-						<line>
-							<flag>Lewiston</flag>
-							<label>Lewiston Dam</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Lewiston Dam/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-						<line>
-							<flag>Helena</flag>
-							<label>Helena</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Helena/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-						<line>
-							<flag>Douglas</flag>
-							<label>Douglas City</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Douglas City/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-						<line>
-							<flag>Limekiln</flag>
-							<label>Limekiln Gulch</label>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Limekiln Gulch/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</line>
-					</lines>
-				</Object>
-				<Object>
-					<type>ErrorStatisticsTable</type>
-					<primarykeyheader>Location</primarykeyheader>
-					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
-					<xlims>
-						<min>01 May %%year%%</min>
-						<max>01 Sep %%year%%</max>
-					</xlims>
-					<Datapaths>
-						<Datapath>
-							<flag>Lewiston</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Lewiston Dam/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Helena</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Helena/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Douglas</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Douglas City/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Limekiln</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Limekiln Gulch/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-					</Datapaths>
-					<rows>
-						<row>Lewiston|%%maximum.Lewiston%%|%%mean.Lewiston%%|%%minimum.Lewiston%%</row>
-						<row>Helena|%%maximum.Helena%%|%%mean.Helena%%|%%minimum.Helena%%</row>
-						<row>Douglas City|%%maximum.Douglas%%|%%mean.Douglas%%|%%minimum.Douglas%%</row>
-						<row>Limekiln Gulch|%%maximum.Limekiln%%|%%mean.Limekiln%%|%%minimum.Limekiln%%</row>
-					</rows>
-					<headers>
-						<header>Maximum</header>
-						<header>Mean</header>
-						<header>Minimum</header>
-					</headers>
-				</Object>
-				<Object>
-					<type>ErrorStatisticsTable</type>
-					<primarykeyheader>Month</primarykeyheader>
-					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description>
-					<Datapaths>
-						<Datapath>
-							<flag>Lewiston</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Lewiston Dam/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Helena</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Helena/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Douglas</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Douglas City/Temp-Water Temperature//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-						<Datapath>
-							<flag>Limekiln</flag>
-							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//Limekiln Gulch/Flow//1Hour/*|%%FPART%%/</DSS_Path>
-							<interval>1DAY</interval>
-						</Datapath>
-					</Datapaths>
-					<rows>
-						<row>Apr|%%MEAN.Lewiston.MONTH=Apr%%|%%MEAN.Helena.MONTH=Apr%%|%%MEAN.Douglas.MONTH=Apr%%|%%MEAN.Limekiln.MONTH=Apr%%</row>
-						<row>May|%%MEAN.Lewiston.MONTH=MAY%%|%%MEAN.Helena.MONTH=MAY%%|%%MEAN.Douglas.MONTH=MAY%%|%%MEAN.Limekiln.MONTH=MAY%%</row>
-						<row>Jun|%%MEAN.Lewiston.MONTH=Jun%%|%%MEAN.Helena.MONTH=Jun%%|%%MEAN.Douglas.MONTH=Jun%%|%%MEAN.Limekiln.MONTH=Jun%%</row>
-						<row>Jul|%%MEAN.Lewiston.MONTH=Jul%%|%%MEAN.Helena.MONTH=Jul%%|%%MEAN.Douglas.MONTH=Jul%%|%%MEAN.Limekiln.MONTH=Jul%%</row>
-						<row>Aug|%%MEAN.Lewiston.MONTH=Aug%%|%%MEAN.Helena.MONTH=Aug%%|%%MEAN.Douglas.MONTH=Aug%%|%%MEAN.Limekiln.MONTH=Aug%%</row>
-						<row>Sep|%%MEAN.Lewiston.MONTH=Sep%%|%%MEAN.Helena.MONTH=Sep%%|%%MEAN.Douglas.MONTH=Sep%%|%%MEAN.Limekiln.MONTH=Sep%%</row>
-						<row>Oct|%%MEAN.Lewiston.MONTH=Oct%%|%%MEAN.Helena.MONTH=Oct%%|%%MEAN.Douglas.MONTH=Oct%%|%%MEAN.Limekiln.MONTH=Oct%%</row>
-					</rows>
-					<headers>
-						<header>Lewiston Dam (%%units%%)</header>
-						<header>Helena (%%units%%)</header>
-						<header>Douglas City (%%units%%)</header>
-						<header>Limekiln Gulch (%%units%%)</header>
-					</headers>
-				</Object>
-				-->
+
 			</Section>
 		</Sections>
 	</Chapter>
