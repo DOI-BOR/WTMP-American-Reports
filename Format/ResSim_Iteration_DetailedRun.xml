@@ -15,7 +15,7 @@
 					<type>timeseriesplot</type>
 					<title>ResSim American Temperatures: Iteration %%member%%</title>
 					<Description>ResSim American Temperatures %%year%% Iteration %%member%%</Description>
-					<ylabel>Flow (%%units%%)</ylabel>
+					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
 					<legend_outside>True</legend_outside>
 					<lines>

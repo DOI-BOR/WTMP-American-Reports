@@ -10,7 +10,7 @@
 					<type>timeseriesplot</type>
 					<title>W2 Folsom Modeled Outflow: Iteration %%member%%</title>
 					<Description>W2 Folsom Modeled Outflow %%year%% Iteration %%member%%</Description>
-					<ylabel>Flow (%%units%%)</ylabel>
+					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
 					<legend_outside>True</legend_outside>
 					<lines>
