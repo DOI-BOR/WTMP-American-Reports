@@ -43,6 +43,7 @@
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+                            <window>May-November</window>
 						</line>
 					</lines>
 				</Object>
@@ -83,6 +84,7 @@
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+                            <window>May-November</window>
 						</Datapath>
 					</Datapaths>
 					<rows>
@@ -130,6 +132,7 @@
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+                            <window>May-November</window>
 						</Datapath>
 					</Datapaths>
 					<rows>
@@ -716,6 +719,7 @@
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+                            <window>May-November</window>
 						</line>
 					</lines>
 				</Object>
@@ -825,6 +829,7 @@
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+                            <window>May-November</window>
 						</line>
 					</lines>
 				</Object>
