@@ -81,7 +81,7 @@
 							<flag>Target</flag>
 							<label>Schedule Target Temperature</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
 						</Datapath>
 					</Datapaths>
@@ -128,7 +128,7 @@
 							<flag>Target</flag>
 							<label>Schedule Target Temperature</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
 						</Datapath>
 					</Datapaths>
@@ -714,7 +714,7 @@
 							<flag>Target</flag>
 							<label>Schedule Target Temperature</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
 						</line>
 					</lines>
@@ -823,7 +823,7 @@
 							<flag>Target</flag>
 							<label>Schedule Target Temperature</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
 						</line>
 					</lines>
