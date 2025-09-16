@@ -5,16 +5,16 @@
 		<memberiteration>true</memberiteration>
 		<Sections>
 			<Section>
-				<header>Iteration %%member%%</header>
+				<header>%%baseSimulationName%% %%metname%% Meteorology: Schedule %%member%%</header>
 				<Object>
 					<type>forecasttable</type>
-					<Description>Iteration %%member%% run information</Description>
+					<Description>%%baseSimulationName%%: Schedule %%member%% run information</Description>
 				</Object>
 
 				<Object>
 					<type>timeseriesplot</type>
-					<title>ResSim American Temperatures: Iteration %%member%%</title>
-					<Description>ResSim American Temperatures %%year%% Iteration %%member%%</Description>
+					<title>%%baseSimulationName%% Modeled Outflow %%metname%% Meteorology: Schedule %%member%%</title>
+					<Description>%%baseSimulationName%% American Temperatures %%year%% %%metname%% Meteorology: Schedule %%member%%</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
 					<legend_outside>True</legend_outside>
@@ -55,7 +55,7 @@
 					<type>ErrorStatisticsTable</type>
 					<primarykeyheader>Location</primarykeyheader>
 					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
+					<description>%%baseSimulationName%% %%metname%% Meteorology: Schedule %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
 					<xlims>
 						<min>01 May %%year%%</min>
 						<max>01 Sep %%year%%</max>
@@ -107,7 +107,7 @@
 					<type>ErrorStatisticsTable</type>
 					<primarykeyheader>Month</primarykeyheader>
 					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description>
+					<description>%%baseSimulationName%% %%metname%% Meteorology: Schedule %%member%% Monthly Average %%year%% (%%units%%)</description>
 					<Datapaths>
 						<Datapath>
 							<flag>Folsom</flag>
