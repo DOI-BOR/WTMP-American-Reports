@@ -5,12 +5,12 @@
 		<memberiteration>true</memberiteration>
 		<Sections>
 			<Section>
-				<header>Outflow Iteration %%member%%</header>
+				<header>%%baseSimulationName%% %%metname%% Meteorology: Schedule %%member%%</header>
 				<Object>
 					<type>timeseriesplot</type>
-					<title>W2 Folsom Modeled Outflow: Iteration %%member%%</title>
-					<Description>W2 Folsom Modeled Outflow %%year%% Iteration %%member%%</Description>
-					<ylabel>Flow (%%units%%)</ylabel>
+					<title>%%baseSimulationName%% Modeled Outflow %%metname%% Meteorology: Schedule %%member%%</title>
+					<Description>%%baseSimulationName%% Folsom Modeled Outflow %%year%% %%metname%% Meteorology: Schedule %%member%%</Description>
+					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
 					<legend_outside>True</legend_outside>
 					<lines>
@@ -43,6 +43,7 @@
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+                            <window>May-November</window>
 						</line>
 					</lines>
 				</Object>
@@ -50,7 +51,7 @@
 					<type>ErrorStatisticsTable</type>
 					<primarykeyheader>Location</primarykeyheader>
 					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
+					<description>%%baseSimulationName%% %%metname%% Meteorology: Schedule %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
 					<xlims>
 						<min>01 May %%year%%</min>
 						<max>01 Sep %%year%%</max>
@@ -81,8 +82,9 @@
 							<flag>Target</flag>
 							<label>Schedule Target Temperature</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+                            <window>May-November</window>
 						</Datapath>
 					</Datapaths>
 					<rows>
@@ -101,7 +103,7 @@
 					<type>ErrorStatisticsTable</type>
 					<primarykeyheader>Month</primarykeyheader>
 					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Monthly Average %%year%% (%%units%%)</description>
+					<description>%%baseSimulationName%% %%metname%% Meteorology: Schedule %%member%% Monthly Average %%year%% (%%units%%)</description>
 					<Datapaths>
 						<Datapath>
 							<flag>Folsom</flag>
@@ -128,8 +130,9 @@
 							<flag>Target</flag>
 							<label>Schedule Target Temperature</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+                            <window>May-November</window>
 						</Datapath>
 					</Datapaths>
 					<rows>
@@ -690,8 +693,8 @@
 
 				<Object>
 					<type>timeseriesplot</type>
-					<title>Hazel Ave Temperature, W2 Regression and ResSim Modeled: Iteration %%member%%</title>
-					<Description>Hazel Ave temperature comparison %%year%% Iteration %%member%%</Description>
+					<title>Hazel Ave Temperature, W2 Regression and ResSim Modeled %%metname%% Meteorology: Schedule %%member%%</title>
+					<Description>Hazel Ave temperature comparison %%year%% Iteration %%metname%% Meteorology: Schedule %%member%%</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
 					<legend_outside>True</legend_outside>
@@ -714,8 +717,9 @@
 							<flag>Target</flag>
 							<label>Schedule Target Temperature</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+                            <window>May-November</window>
 						</line>
 					</lines>
 				</Object>
@@ -723,7 +727,7 @@
 					<type>ErrorStatisticsTable</type>
 					<primarykeyheader>Location</primarykeyheader>
 					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
+					<description>%%baseSimulationName%% %%metname%% Meteorology: Schedule %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
 					<xlims>
 						<min>01 May %%year%%</min>
 						<max>01 Sep %%year%%</max>
@@ -799,8 +803,8 @@
 
 				<Object>
 					<type>timeseriesplot</type>
-					<title>Watt Ave Temperature, W2 Regression and ResSim Modeled: Iteration %%member%%</title>
-					<Description>Watt Ave temperature comparison %%year%% Iteration %%member%%</Description>
+					<title>Watt Ave Temperature, W2 Regression and ResSim Modeled %%metname%% Meteorology: Schedule %%member%%</title>
+					<Description>Watt Ave temperature comparison %%year%% %%metname%% Meteorology: Schedule %%member%%</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
 					<legend_outside>True</legend_outside>
@@ -823,8 +827,9 @@
 							<flag>Target</flag>
 							<label>Schedule Target Temperature</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
-							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
+							<DSS_Path>//W2_FOLSOM_SCHEDULE_TEMP_FINAL/TEMP-WATER-TARGET//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
+                            <window>May-November</window>
 						</line>
 					</lines>
 				</Object>
@@ -832,7 +837,7 @@
 					<type>ErrorStatisticsTable</type>
 					<primarykeyheader>Location</primarykeyheader>
 					<unitsystem>english</unitsystem>
-					<description>Iteration %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
+					<description>%%baseSimulationName%% %%metname%% Meteorology: Schedule %%member%% Statistical Summary May-Sep %%year%% (%%units%%)</description>
 					<xlims>
 						<min>01 May %%year%%</min>
 						<max>01 Sep %%year%%</max>
