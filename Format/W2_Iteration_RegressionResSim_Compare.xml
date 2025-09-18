@@ -13,7 +13,7 @@
 					<Description>Hazel Ave temperature comparison %%year%% Iteration %%member%%</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Right</legend_outside>
 					<lines>
 						<line>
 							<flag>W2 Hazel Regression</flag>
@@ -119,7 +119,7 @@
 					<Description>Watt Ave temperature comparison %%year%% Iteration %%member%%</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Right</legend_outside>
 					<lines>
 						<line>
 							<flag>W2 Watt Regression</flag>

@@ -18,7 +18,7 @@
 					<Description>American River at Watt Ave River Temperature variable input with percentile envelopes computed</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Right</legend_outside>
 					<lines>
 						<line>
 							<flag>computed</flag>
@@ -65,7 +65,7 @@
 					<title>American River at Watt Ave Temperature Forecast Runs</title>
 					<Description>American River at Watt Ave Temperature variable input</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Right</legend_outside>
 					<unitsystem>english</unitsystem>
 					<lines>
 						<line>

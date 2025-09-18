@@ -13,7 +13,7 @@
 					<Description>Hazel Ave temperature comparison %%year%% Iteration %%member%%</Description>forecastResults.dss://W2_DOWNSTREAMREGRESSIONHAZEL/TEMP-WATER/16Apr2024 - 29Nov2024/1DAY/C:001015|W2 FOL-NAT:2009:CEQUALW2-W2 FOLSOM FIXEDATSP/
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Right</legend_outside>
 					<lines>
 						<line>
 							<flag>W2 Hazel Regression</flag>
@@ -117,7 +117,7 @@
 					<Description>Watt Ave temperature comparison %%year%% Iteration %%member%%</Description>forecastResults.dss://W2_DOWNSTREAMREGRESSIONHAZEL/TEMP-WATER/16Apr2024 - 29Nov2024/1DAY/C:001015|W2 FOL-NAT:2009:CEQUALW2-W2 FOLSOM FIXEDATSP/
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Right</legend_outside>
 					<lines>
 						<line>
 							<flag>W2 Watt Regression</flag>

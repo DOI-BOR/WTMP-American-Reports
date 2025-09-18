@@ -659,7 +659,7 @@
 					<Title>%%region%%, Simulation: %%SimulationName%% %%year%%</Title>
 					<Description>Folsom Elevation %%year%%</Description>
 					<unitsystem>metric</unitsystem>
-					<legend_outside>true</legend_outside>
+					<legend_outside>Right</legend_outside>
 					<legendsize>9</legendsize>
 					<splitbyyear>True</splitbyyear>
 					<includeallyears>True</includeallyears>

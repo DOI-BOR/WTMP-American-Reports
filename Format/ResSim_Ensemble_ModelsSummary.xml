@@ -18,7 +18,8 @@
 					<Description>Folsom Lake Outflow Temperature variable input with percentile envelopes computed</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Below</legend_outside>
+                    <numlegendcolumns>3</numlegendcolumns>
 					<lines>
 						<line>
 							<flag>computed</flag>
@@ -65,12 +66,13 @@
 					<title>Folsom Lake Outflow Forecast Runs</title>
 					<Description>Folsom Lake Outflow Temperature variable input</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Below</legend_outside>
+                    <numlegendcolumns>2</numlegendcolumns>
 					<unitsystem>english</unitsystem>
 					<lines>
 						<line>
 							<flag>computed</flag>
-							<label>%%member%%</label>
+							<label>Folsom Temperature at Schedule %%member%%</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>//FOLSOM DAM/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
@@ -125,7 +127,8 @@
 					<Description>American River at Watt Ave River Temperature variable input with percentile envelopes computed</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Below</legend_outside>
+                    <numlegendcolumns>3</numlegendcolumns>
 					<lines>
 						<line>
 							<flag>computed</flag>
@@ -173,12 +176,13 @@
 					<title>American River at Watt Ave Temperature Forecast Runs</title>
 					<Description>American River at Watt Ave Temperature variable input</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Below</legend_outside>
+                    <numlegendcolumns>2</numlegendcolumns>
 					<unitsystem>english</unitsystem>
 					<lines>
 						<line>
 							<flag>computed</flag>
-							<label>%%member%%</label>
+							<label>Watt Ave Temperature at Schedule %%member%%</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>//WATT AVE BRIDGE/TEMP-WATER TEMPERATURE//1HOUR/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
