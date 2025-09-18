@@ -1342,7 +1342,7 @@ Each profile includes the date, observed (light blue) and simulated (red-dashed)
 					<Template>format/templates/Plot_Defaults_FOL_EL.xml</Template>
 					<Description>Folsom Lake hourly elevation, %%year%%. ResSim.</Description>					
 					<unitsystem>english</unitsystem>
-					<legend_outside>true</legend_outside>
+					<legend_outside>Right</legend_outside>
 					<legendsize>9</legendsize>
 					<includeallyears>True</includeallyears><!--Phase1-->
 					<splitbyyear>False</splitbyyear>
