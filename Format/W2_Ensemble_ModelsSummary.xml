@@ -18,7 +18,8 @@
 					<Description>Folsom Lake Outflow Temperature variable input with percentile envelopes computed</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Below</legend_outside>
+                    <numlegendcolumns>3</numlegendcolumns>
 					<lines>
 						<line>
 							<flag>computed</flag>
@@ -67,12 +68,13 @@
 					<title>Folsom Lake Outflow Forecast Runs</title>
 					<Description>Folsom Lake Outflow Temperature variable input</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Below</legend_outside>
+                    <numlegendcolumns>2</numlegendcolumns>
 					<unitsystem>english</unitsystem>
 					<lines>
 						<line>
 							<flag>computed</flag>
-							<label>%%member%%</label>
+							<label>Folsom Temperature at Schedule %%member%%</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<!--<DSS_Path>/W2:TWO_105.CSV/SEG 105 WITHDRAWAL/TEMP-TWO//1HOUR/*|%%FPART%%/</DSS_Path>-->
 							<DSS_Path>//W2_NATOMA_INFLOWT/TEMP-WATER//1HOUR/*|%%FPART%%/</DSS_Path>
@@ -130,7 +132,8 @@
 					<Description>Hazel Ave Bridge Temperature W2 Regression Temperature variable input with percentile envelopes computed</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Below</legend_outside>
+                    <numlegendcolumns>3</numlegendcolumns>
 					<lines>
 						<line>
 							<flag>computed</flag>
@@ -178,12 +181,13 @@
 					<title>Hazel Ave Bridge Temperature W2 Regression Temperature Runs</title>
 					<Description>Hazel Ave Bridge Temperature W2 Regression Temperature variable input</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Below</legend_outside>
+                    <numlegendcolumns>2</numlegendcolumns>
 					<unitsystem>english</unitsystem>
 					<lines>
 						<line>
 							<flag>computed</flag>
-							<label>%%member%%</label>
+							<label>Hazel Ave Temperature at Schedule %%member%%</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>//W2_DOWNSTREAMREGRESSIONHAZEL/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
@@ -241,7 +245,8 @@
 					<Description>Watt Ave Bridge Temperature W2 Regression Temperature variable input with percentile envelopes computed</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
 					<unitsystem>english</unitsystem>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Below</legend_outside>
+                    <numlegendcolumns>3</numlegendcolumns>
 					<lines>
 						<line>
 							<flag>computed</flag>
@@ -289,12 +294,13 @@
 					<title>Watt Ave Bridge Temperature W2 Regression Temperature Runs</title>
 					<Description>Watt Ave Bridge Temperature W2 Regression Temperature variable input</Description>
 					<ylabel>Water Temperature (%%units%%)</ylabel>
-					<legend_outside>True</legend_outside>
+					<legend_outside>Below</legend_outside>
+                    <numlegendcolumns>2</numlegendcolumns>
 					<unitsystem>english</unitsystem>
 					<lines>
 						<line>
 							<flag>computed</flag>
-							<label>%%member%%</label>
+							<label>Watt Ave Temperature at Schedule %%member%%</label>
 							<DSS_Filename>%%SimulationDir%%\forecastResults.dss</DSS_Filename>
 							<DSS_Path>//W2_DOWNSTREAMREGRESSIONWATT/TEMP-WATER//1DAY/*|%%FPART%%/</DSS_Path>
 							<interval>1DAY</interval>
